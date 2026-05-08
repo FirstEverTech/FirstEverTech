@@ -1,3 +1,5 @@
+<div align="center">
+  
 # FirstEver Technology / www.FirstEver.tech
 
 <a href="https://www.firstever.tech">
@@ -12,6 +14,8 @@
 
 **IT Architect · Strategic Consultant · The Soloist Who Replaces a Full IT Orchestra**
 
+<div align="left">
+
 I am an IT Architect & Engineer who delivers global‑scale solutions alone – because I can.
 I don’t just advise; I **build, fix, and improve** whatever is broken or outdated. Whether it’s a legacy system, a missing automation pipeline, or a hardware limitation that others call “impossible” – I step in and do the work that usually requires a whole cross‑functional team.
 
@@ -23,7 +27,7 @@ I don’t just advise; I **build, fix, and improve** whatever is broken or outda
 </p>
 
 ---
-
+  
 Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small and medium businesses as well as individual clients with:
 
 - **IT Strategy & Business Alignment** – bridging the gap between technical possibilities and real business goals.
@@ -42,7 +46,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Universal Intel Chipset Device Updater (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Chipset.png" style="width: 100%; max-width: 100%;" alt="Intel Chipset Updater">
+    <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Chipset.png" style="width: 100%; max-width: 100%;" alt="Intel Chipset Updater">
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Chipset Device Updater (2025)</strong><br>
@@ -64,7 +69,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Wireless.png" style="width: 100%; max-width: 100%;" alt="Intel WiFi BT Updater">
+    <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Wireless.png" style="width: 100%; max-width: 100%;" alt="Intel WiFi BT Updater">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025)</strong><br>
@@ -74,7 +80,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- RTX 4000 DLSS 4 Multi Frame Generation Research (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/RTX4000_MFG.png" style="width: 100%; max-width: 100%;" alt="RTX4000 Research">
+    <a href="https://github.com/FirstEverTech/RTX4000-MFG-Unlock">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/RTX4000_MFG.png" style="width: 100%; max-width: 100%;" alt="RTX4000 Research">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>RTX 4000 DLSS 4 Multi Frame Generation Research (2025)</strong><br>
@@ -84,7 +91,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/FirstEver_HUB.png" style="width: 100%; max-width: 100%;" alt="USB-C Hub">
+    <a href="https://www.ebay.co.uk/itm/154816474118">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/FirstEver_HUB.png" style="width: 100%; max-width: 100%;" alt="USB-C Hub">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022)</strong><br>
@@ -94,7 +102,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- MEGA Light – 400 RGB LEDs (2018) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/MEGA_Light.png" style="width: 100%; max-width: 100%;" alt="MEGA Light">
+    <a href="https://www.youtube.com/watch?v=x8FHWtH01j0">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/MEGA_Light.png" style="width: 100%; max-width: 100%;" alt="MEGA Light">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>MEGA Light – 400 RGB LEDs (2018)</strong><br>
@@ -104,7 +113,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- shareVR – VR on a smartphone (2015) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/shareVR.png" style="width: 100%; max-width: 100%;" alt="shareVR">
+    <a href="https://www.kickstarter.com/projects/sharevr/sharevr-turn-your-smartphone-into-a-virtual-realit">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/shareVR.png" style="width: 100%; max-width: 100%;" alt="shareVR">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>shareVR – VR on a smartphone (2015)</strong><br>
@@ -114,7 +124,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- First VR Goggles with Built‑in Cooling (2015) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/VR_Headset_Cooling.png" style="width: 100%; max-width: 100%;" alt="VR Goggles">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/VR_Headset_Cooling.png" style="width: 100%; max-width: 100%;" alt="VR Goggles">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>First VR Goggles with Built‑in Cooling (2015)</strong><br>
@@ -124,7 +134,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- First to Run Windows 7 on an Android Smartphone (2015) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nexus5_Win7.png" style="width: 100%; max-width: 100%;" alt="Windows 7 on Android">
+    <a href="https://www.youtube.com/watch?v=0FwJT60fTxI">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nexus5_Win7.png" style="width: 100%; max-width: 100%;" alt="Windows 7 on Android">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>First to Run Windows 7 on an Android Smartphone (2015)</strong><br>
@@ -134,7 +145,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Mining Servers – Ethereum & Scrypt (2013‑2014) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Mining_Rig.png" style="width: 100%; max-width: 100%;" alt="Mining Servers">
+    <a href="https://www.youtube.com/watch?v=n9hNqsCtoUE">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Mining_Rig.png" style="width: 100%; max-width: 100%;" alt="Mining Servers">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Mining Servers – Ethereum & Scrypt (2013‑2014)</strong><br>
@@ -144,7 +156,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Windows 3.1 on Nokia N95 (2009) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nokia_N95_Win31.png" style="width: 100%; max-width: 100%;" alt="Windows 3.1 on Nokia">
+    <a href="https://www.youtube.com/watch?v=OB06ZqpH2hE">
+    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nokia_N95_Win31.png" style="width: 100%; max-width: 100%;" alt="Windows 3.1 on Nokia">
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Windows 3.1 on Nokia N95 (2009)</strong><br>
@@ -162,11 +175,10 @@ All projects are maintained in my free time. Your support helps cover developmen
 [![PayPal](https://img.shields.io/badge/PayPal-Support_Development-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_Work-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)
 
 **Your support means everything!** If this project helped you, please consider:
-- If this project helped you, please give it a ⭐ "Star" on GitHub
+- If my project helped you, please give it a ⭐ "Star" on GitHub
 - Sharing with friends and colleagues
 - Reporting issues or suggesting features
 - Supporting development financially
-- 👉 [Share your feedback!](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/discussions/16)
 
 ---
 
