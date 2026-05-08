@@ -48,7 +48,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Chipset Device Updater (2025)</strong><br>
-      I built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less. It has achieved over 25,000 downloads and scored 9.4/10 in an audit by six major AI models.
+      I built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
      </td>
   </tr>
   <!-- Adobe AVX2 Patch (2025) -->
@@ -60,7 +60,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Adobe AVX2 Patch (2025)</strong><br>
-      I built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files. It supports 21 Adobe Creative Cloud products, features a clean WinUI 3 interface with automatic light/dark mode, and runs without admin rights.
+      I built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files. It supports 21 Adobe Creative Cloud products.
      </td>
   </tr>
   <!-- Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025) -->
@@ -70,7 +70,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025)</strong><br>
-      I built a security‑focused tool that automatically detects your Intel wireless hardware and installs the latest official Wi‑Fi and Bluetooth drivers with enterprise‑grade safety measures. Intel distributes Wi‑Fi and Bluetooth drivers as large CAB packages — but your system only needs the version that matches your specific adapter. My tool automatically identifies your hardware, fetches the correct driver package from official sources, verifies its integrity with SHA256, and installs it cleanly. It also includes automatic failover to backup mirrors for maximum reliability.
+      I built a security‑focused tool that automatically detects your Intel wireless hardware and installs the latest official Wi‑Fi and Bluetooth drivers with enterprise‑grade safety measures. Intel distributes Wi‑Fi and Bluetooth drivers as large CAB packages — but your system only needs the version that matches your specific adapter. My tool automatically identifies your hardware, and install the correct driver package from official sources.
      </td>
   </tr>
   <!-- RTX 4000 DLSS 4 Multi Frame Generation Research (2025) -->
@@ -80,7 +80,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
      </td>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>RTX 4000 DLSS 4 Multi Frame Generation Research (2025)</strong><br>
-      This is my ongoing research into whether DLSS 4 Multi Frame Generation 3x/4x on RTX 4000 series GPUs is truly blocked by hardware or if at least part of the limitation is enforced in software. My working conclusion: forced MFG 3x/4x on the tested RTX 4070 Ti appears to generate and present additional frames at the pipeline level, but output is obscured by a black‑image enforcement path that has not yet been fully neutralized. This is not a ready‑made unlock package — it's a public research log documenting my findings using tools like NVIDIA Nsight Systems and Ghidra static analysis.
+      This is my ongoing research into whether DLSS 4 Multi Frame Generation 3x/4x on RTX 4000 series GPUs is truly blocked by hardware or if at least part of the limitation is enforced in software. My working conclusion: forced MFG 3x/4x on the tested RTX 4070 Ti appears to generate and present additional frames at the pipeline level, but output is obscured by a black‑image enforcement path that has not yet been fully neutralized.
      </td>
   </tr>
   <!-- FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022) -->
