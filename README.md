@@ -3,11 +3,14 @@
 # FirstEver Technology / www.FirstEver.tech
 
 <a href="https://www.firstever.tech">
-  <img width="600" alt="" title="FirstEver.tech"
-       src="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/assets/FirstEverTech-animation.gif" />
+  <img width="600" alt="FirstEver.tech" title="FirstEver.tech"
+       src="https://raw.githubusercontent.com/FirstEverTech/Universal-Intel-Chipset-Updater/main/assets/FirstEverTech-animation.gif" />
 </a>
 
-[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)![Downloads](https://img.shields.io/badge/Downloads-68K+-blue?style=for-the-badge&label=Downloads)
+[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)
+[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge&label=Followers)](https://github.com/FirstEverTech)
+[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)
+![Downloads](https://img.shields.io/badge/Downloads-68K+-blue?style=for-the-badge&label=Downloads)
 
 ## Marcin Grygiel aka First Ever
 
@@ -22,11 +25,10 @@ I don’t just advise; I **build, fix, and improve** whatever is broken or outda
 
 <a href="https://github.com/FirstEverTech">
     <img src="https://github-readme-activity-graph.vercel.app/graph?username=FirstEverTech&theme=github-dark&hide_border=true&bg_color=0d1117&color=58a6ff&line=1f6feb&point=58a6ff&area=true&area_color=1f6feb" width="100%" alt="Activity Graph" />
-  </a>
-</p>
+</a>
 
 ---
-  
+
 Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small and medium businesses as well as individual clients with:
 
 - **IT Strategy & Business Alignment** – bridging the gap between technical possibilities and real business goals.
@@ -37,33 +39,35 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 ---
 
+## 📰 As seen in
+
 <p align="center">
-  <!-- Pierwszy wiersz (6 logo) -->
-  <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="130"></a>
+  <!-- First row (6 logos) -->
+  <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="130" alt="Engadget"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://web.archive.org/web/20141001213638/https://gizmodo.com/5159221/windows-31-runs-on-a-nokia-n95-creating-dangerous-ripple-in-space-time"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gizmodo_logo.png?raw=true" width="130"></a>
+  <a href="https://web.archive.org/web/20141001213638/https://gizmodo.com/5159221/windows-31-runs-on-a-nokia-n95-creating-dangerous-ripple-in-space-time"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gizmodo_logo.png?raw=true" width="130" alt="Gizmodo"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.bit-tech.net/news/hacker-loads-win-31-on-n95/1/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/bit-tech_logo.png?raw=true" width="130"></a>
+  <a href="http://www.bit-tech.net/news/hacker-loads-win-31-on-n95/1/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/bit-tech_logo.png?raw=true" width="130" alt="bit-tech"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://betanews.com/2009/02/23/windows-3-1-installed-on-nokia-n95/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/betanews_logo.png?raw=true" width="130"></a>
+  <a href="https://betanews.com/2009/02/23/windows-3-1-installed-on-nokia-n95/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/betanews_logo.png?raw=true" width="130" alt="betanews"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://gry.onet.pl/artykuly/share-vr-obiecujaca-technologia-z-polski/hckb6"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/onet_logo.png?raw=true" width="130"></a>
+  <a href="http://gry.onet.pl/artykuly/share-vr-obiecujaca-technologia-z-polski/hckb6"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/onet_logo.png?raw=true" width="130" alt="Onet"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://tech.wp.pl/pomyslowy-polak-rzuca-wyzwanie-oculusowi-i-facebookowi-tania-wirtualna-rzeczywistosc-dla-kazdego-6034816926012545a"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/wp_logo.png?raw=true" width="130"></a>
+  <a href="https://tech.wp.pl/pomyslowy-polak-rzuca-wyzwanie-oculusowi-i-facebookowi-tania-wirtualna-rzeczywistosc-dla-kazdego-6034816926012545a"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/wp_logo.png?raw=true" width="130" alt="Wirtualna Polska"></a>
 </p>
 <p align="center">
-  <!-- Drugi wiersz (6 logo) -->
-  <a href="http://www.gazetawroclawska.pl/artykul/96298,gwiazdor-internetu-ze-swiebodzic,id,t.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gazeta_wroclawska_logo.png?raw=true" width="130"></a>
+  <!-- Second row (6 logos) -->
+  <a href="http://www.gazetawroclawska.pl/artykul/96298,gwiazdor-internetu-ze-swiebodzic,id,t.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gazeta_wroclawska_logo.png?raw=true" width="130" alt="Gazeta Wrocławska"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.radiowroclaw.pl/articles/view/5154/Zamontowal-Windows-w-komorce-Po-co-Zobacz"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/radio_wroclaw_logo.png?raw=true" width="130"></a>
+  <a href="http://www.radiowroclaw.pl/articles/view/5154/Zamontowal-Windows-w-komorce-Po-co-Zobacz"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/radio_wroclaw_logo.png?raw=true" width="130" alt="Radio Wrocław"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.komputerswiat.pl/artykuly/redakcyjne/2014/08/okulary-vr-domowej-roboty.aspx"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/komputer_swiat_logo.png?raw=true" width="130"></a>
+  <a href="http://www.komputerswiat.pl/artykuly/redakcyjne/2014/08/okulary-vr-domowej-roboty.aspx"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/komputer_swiat_logo.png?raw=true" width="130" alt="Komputer Świat"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.pcworld.pl/news/Windows-8-dziala-na-128-MB-RAM,375140.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/pcworld-logo.png?raw=true" width="130"></a>
+  <a href="https://web.archive.org/web/20190921213013/https://www.pcworld.pl/news/Windows-8-dziala-na-128-MB-RAM,375140.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/pcworld-logo.png?raw=true" width="130" alt="PC World"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.chip.pl/2014/10/sharevr-polskie-oprogramowanie-vr-szturmuje-kickstartera/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/chip_logo.png?raw=true" width="130"></a>
+  <a href="http://www.chip.pl/2014/10/sharevr-polskie-oprogramowanie-vr-szturmuje-kickstartera/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/chip_logo.png?raw=true" width="130" alt="CHIP"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.gsmmaniak.pl/353030/share-vr-marcin-grygiel-kickstarter/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gsmmaniak_logo.png?raw=true" width="130"></a>
+  <a href="https://www.gsmmaniak.pl/353030/share-vr-marcin-grygiel-kickstarter/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gsmmaniak_logo.png?raw=true" width="130" alt="GSMManiaK"></a>
 </p>
 
 ---
@@ -76,22 +80,23 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Universal Intel Chipset Device Updater (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Chipset.png" style="width: 100%; max-width: 100%;" alt="Intel Chipset Updater">
+      <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Chipset.png?raw=true" style="width: 100%; max-width: 100%;" alt="Intel Chipset Updater">
+      </a>
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Chipset Device Updater (2025)</strong><br>
-      I built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less. 
+      I built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
      </td>
   </tr>
   <!-- Adobe AVX2 Patch (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://www.youtube.com/watch?v=PaJg91RZIro">
-    <img alt="Adobe AVX2 Patch Demo" src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Adobe_AVX2_Patch.png" style="width: 100%; max-width: 100%;" />
-    </a>
+      <a href="https://www.youtube.com/watch?v=PaJg91RZIro">
+        <img alt="Adobe AVX2 Patch Demo" src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Adobe_AVX2_Patch.png?raw=true" style="width: 100%; max-width: 100%;" />
+      </a>
     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Adobe AVX2 Patch (2025)</strong><br>
       I built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files.
      </td>
@@ -99,21 +104,23 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Wireless.png" style="width: 100%; max-width: 100%;" alt="Intel WiFi BT Updater">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Wireless.png?raw=true" style="width: 100%; max-width: 100%;" alt="Intel WiFi BT Updater">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025)</strong><br>
-      I built a security‑focused tool that automatically detects your Intel wireless hardware and installs the latest official Wi‑Fi and Bluetooth drivers with enterprise‑grade safety measures. Intel distributes Wi‑Fi and Bluetooth drivers as large CAB packages — but your system only needs the version that matches your specific adapter. My tool automatically identifies your hardware, and install the correct driver package from official sources.
+      I built a security‑focused tool that automatically detects your Intel wireless hardware and installs the latest official Wi‑Fi and Bluetooth drivers with enterprise‑grade safety measures. Intel distributes Wi‑Fi and Bluetooth drivers as large CAB packages — but your system only needs the version that matches your specific adapter. My tool automatically identifies your hardware and installs the correct driver package from official sources.
      </td>
   </tr>
   <!-- RTX 4000 DLSS 4 Multi Frame Generation Research (2025) -->
-  <tr>
+  <table>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://github.com/FirstEverTech/RTX4000-MFG-Unlock">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/RTX4000_MFG.png" style="width: 100%; max-width: 100%;" alt="RTX4000 Research">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://github.com/FirstEverTech/RTX4000-MFG-Unlock">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/RTX4000_MFG.png?raw=true" style="width: 100%; max-width: 100%;" alt="RTX4000 Research">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>RTX 4000 DLSS 4 Multi Frame Generation Research (2025)</strong><br>
       This is my ongoing research into whether DLSS 4 Multi Frame Generation 3x/4x on RTX 4000 series GPUs is truly blocked by hardware or if at least part of the limitation is enforced in software. My working conclusion: forced MFG 3x/4x on the tested RTX 4070 Ti appears to generate and present additional frames at the pipeline level, but output is obscured by a black‑image enforcement path that has not yet been fully neutralized.
      </td>
@@ -121,10 +128,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://www.ebay.co.uk/itm/154816474118">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/FirstEver_HUB.png" style="width: 100%; max-width: 100%;" alt="USB-C Hub">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.ebay.co.uk/itm/154816474118">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/FirstEver_HUB.png?raw=true" style="width: 100%; max-width: 100%;" alt="USB-C Hub">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022)</strong><br>
       I released the first product under my brand. It is the smallest (43g / 1.5oz) USB‑C 10Gbps hub on the market and has illuminated USB ports. I designed the PCB, wrote the firmware, and handled production from concept to final retail. It is available in the UK from my official online shop and on eBay.
      </td>
@@ -132,10 +140,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- MEGA Light – 400 RGB LEDs (2018) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://www.youtube.com/watch?v=x8FHWtH01j0">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/MEGA_Light.png" style="width: 100%; max-width: 100%;" alt="MEGA Light">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.youtube.com/watch?v=x8FHWtH01j0">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/MEGA_Light.png?raw=true" style="width: 100%; max-width: 100%;" alt="MEGA Light">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>MEGA Light – 400 RGB LEDs (2018)</strong><br>
       I built the best backlight system for PC monitors in the world. The device features 400 RGB LEDs and extremely high responsiveness (near‑zero latency). I designed the custom control software and embedded timing optimization. To this day, no better device has emerged, and it remains a reference in the DIY monitor lighting community.
      </td>
@@ -143,10 +152,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- shareVR – VR on a smartphone (2015) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://www.kickstarter.com/projects/sharevr/sharevr-turn-your-smartphone-into-a-virtual-realit">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/shareVR.png" style="width: 100%; max-width: 100%;" alt="shareVR">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.kickstarter.com/projects/sharevr/sharevr-turn-your-smartphone-into-a-virtual-realit">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/shareVR.png?raw=true" style="width: 100%; max-width: 100%;" alt="shareVR">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>shareVR – VR on a smartphone (2015)</strong><br>
       I created a start‑up called shareVR, a software that allows you to use your smartphone as a screen for virtual reality goggles and play PC games. I was the first to play titles such as ARMA 3, Alien Isolation, Crysis 2 and Project CARS in VR. The software used low‑latency streaming and wide game compatibility – all built alone and funded via Kickstarter.
      </td>
@@ -154,9 +164,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- First VR Goggles with Built‑in Cooling (2015) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/VR_Headset_Cooling.png" style="width: 100%; max-width: 100%;" alt="VR Goggles">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.firstever.eu/projects/">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/VR_Headset_Cooling.png?raw=true" style="width: 100%; max-width: 100%;" alt="VR Goggles">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>First VR Goggles with Built‑in Cooling (2015)</strong><br>
       I designed and built the first VR goggles with a built‑in cooling system comprising two mini fans. This solved the problem of foggy headset lenses, a common issue in early VR headsets. The design included custom airflow channels and a lightweight frame, proving that practical improvements to VR comfort could be achieved without external accessories.
      </td>
@@ -164,10 +176,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- First to Run Windows 7 on an Android Smartphone (2015) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://www.youtube.com/watch?v=0FwJT60fTxI">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nexus5_Win7.png" style="width: 100%; max-width: 100%;" alt="Windows 7 on Android">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.youtube.com/watch?v=0FwJT60fTxI">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nexus5_Win7.png?raw=true" style="width: 100%; max-width: 100%;" alt="Windows 7 on Android">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>First to Run Windows 7 on an Android Smartphone (2015)</strong><br>
       I was the first to run Windows 7 on an Android smartphone thanks to x86 virtualization on an ARM processor. This proof‑of‑concept demonstrated the feasibility of running full desktop operating systems on mobile hardware years before mainstream solutions appeared.
      </td>
@@ -175,10 +188,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Mining Servers – Ethereum & Scrypt (2013‑2014) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://www.youtube.com/watch?v=n9hNqsCtoUE">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Mining_Rig.png" style="width: 100%; max-width: 100%;" alt="Mining Servers">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.youtube.com/watch?v=n9hNqsCtoUE">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Mining_Rig.png?raw=true" style="width: 100%; max-width: 100%;" alt="Mining Servers">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Mining Servers – Ethereum & Scrypt (2013‑2014)</strong><br>
       I built the first 8‑GPU mining servers for Scrypt‑based cryptocurrencies based on the most powerful AMD Radeon HD 7990 cards. In the following years, I built many Ethereum mining servers. Many of these servers are still in operation today and continue to make a profit despite increased electricity charges, thanks to custom cooling and power efficiency optimizations.
      </td>
@@ -186,10 +200,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Windows 3.1 on Nokia N95 (2009) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://www.youtube.com/watch?v=OB06ZqpH2hE">
-    <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nokia_N95_Win31.png" style="width: 100%; max-width: 100%;" alt="Windows 3.1 on Nokia">
-     </td>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.youtube.com/watch?v=OB06ZqpH2hE">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nokia_N95_Win31.png?raw=true" style="width: 100%; max-width: 100%;" alt="Windows 3.1 on Nokia">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Windows 3.1 on Nokia N95 (2009)</strong><br>
       I was the first to run a Windows operating system on a Nokia N95 smartphone. You may have read about it on technology portals all over the world – "The most awesome – and pointless – hack in smartphone history" (BitTech). In the same year, the FirstEver website was created, the place for my future projects. This hack proved my ability to break constraints and make the “impossible” work, a mindset that still drives every project I touch.
      </td>
@@ -202,19 +217,23 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 All projects are maintained in my free time. Your support helps cover development costs and server expenses.
 
-[![PayPal](https://img.shields.io/badge/PayPal-Support_Development-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_Work-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)
+[![PayPal](https://img.shields.io/badge/PayPal-Support_Development-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_Work-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)
 
-**Your support means everything!** If this project helped you, please consider:
-- If my project helped you, please give it a ⭐ "Star" on GitHub
-- Sharing with friends and colleagues
-- Reporting issues or suggesting features
-- Supporting development financially
+**Your support means everything!** If this project helped you, please:
+- Give it a ⭐ "Star" on GitHub
+- Share with friends and colleagues
+- Report issues or suggest features
+- Support development financially
 
 ---
 
 ## 📫 Contact
 
-- 🌍 **Business:** [firstever.tech](https://www.firstever.tech/)
+- 🌍 **Business:** [FirstEver.tech](https://www.firstever.tech/)
 - 💼 **LinkedIn:** [linkedin.com/in/marcin-grygiel](https://www.linkedin.com/in/marcin-grygiel/)
 - 📧 **E-mail:** `contact@firstever.tech`
 - 🐙 **GitHub:** [github.com/FirstEverTech](https://github.com/FirstEverTech)
+
+</div>
