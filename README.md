@@ -38,7 +38,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 <div align="center">
 
-## 📰 As seen in
+## 📰 Media mentions
 
 <p align="center">
   <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="110" alt="Engadget"></a>
