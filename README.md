@@ -7,7 +7,6 @@
        src="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/assets/FirstEverTech-animation.gif" />
 </a>
 
-
 [![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)![Downloads](https://img.shields.io/badge/Downloads-68K+-blue?style=for-the-badge&label=Downloads)
 
 ## Marcin Grygiel aka First Ever
@@ -35,6 +34,37 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 - **Infrastructure Optimization** – cloud migrations (Azure AD, M365), on‑prem improvements, and security hardening.
 - **Legacy System Rescue** – reviving unsupported software or hardware that everyone else has given up on.
 - **Full‑Cycle Tool Development** – from an idea to a deployed, documented, and maintained solution (scripts, desktop tools, or even custom firmware).
+
+---
+
+<p align="center">
+  <!-- Pierwszy wiersz (6 logo) -->
+  <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://web.archive.org/web/20141001213638/https://gizmodo.com/5159221/windows-31-runs-on-a-nokia-n95-creating-dangerous-ripple-in-space-time"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gizmodo_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="http://www.bit-tech.net/news/hacker-loads-win-31-on-n95/1/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/bit-tech_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://betanews.com/2009/02/23/windows-3-1-installed-on-nokia-n95/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/betanews_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="http://gry.onet.pl/artykuly/share-vr-obiecujaca-technologia-z-polski/hckb6"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/onet_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://tech.wp.pl/pomyslowy-polak-rzuca-wyzwanie-oculusowi-i-facebookowi-tania-wirtualna-rzeczywistosc-dla-kazdego-6034816926012545a"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/wp_logo.png?raw=true" width="130"></a>
+</p>
+<p align="center">
+  <!-- Drugi wiersz (6 logo) -->
+  <a href="http://www.gazetawroclawska.pl/artykul/96298,gwiazdor-internetu-ze-swiebodzic,id,t.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gazeta_wroclawska_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="http://www.radiowroclaw.pl/articles/view/5154/Zamontowal-Windows-w-komorce-Po-co-Zobacz"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/radio_wroclaw_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="http://www.komputerswiat.pl/artykuly/redakcyjne/2014/08/okulary-vr-domowej-roboty.aspx"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/komputer_swiat_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.pcworld.pl/news/Windows-8-dziala-na-128-MB-RAM,375140.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/pcworld-logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="http://www.chip.pl/2014/10/sharevr-polskie-oprogramowanie-vr-szturmuje-kickstartera/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/chip_logo.png?raw=true" width="130"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.gsmmaniak.pl/353030/share-vr-marcin-grygiel-kickstarter/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gsmmaniak_logo.png?raw=true" width="130"></a>
+</p>
 
 ---
 
