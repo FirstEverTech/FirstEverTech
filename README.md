@@ -244,7 +244,7 @@ Support development financially
 
 ## 📫 Contact
 
-🌍 **Business:** [FirstEver.tech](https://www.firstever.tech/)  
+🌍 **FirstEver Technology:** [FirstEver.tech](https://www.firstever.tech/)  
 💼 **LinkedIn:** [linkedin.com/in/marcin-grygiel](https://www.linkedin.com/in/marcin-grygiel/)  
 📧 **E-mail:** `contact@firstever.tech`  
 🐙 **GitHub:** [github.com/FirstEverTech](https://github.com/FirstEverTech)  
