@@ -36,6 +36,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 ---
 
+<div align="center">
+
 ## 📰 As seen in
 
 <p align="center">
@@ -214,23 +216,21 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 All projects are maintained in my free time. Your support helps cover development costs and server expenses.
 
-[![PayPal](https://img.shields.io/badge/PayPal-Support_Development-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_Work-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)
-[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)
+[![PayPal](https://img.shields.io/badge/PayPal-Support_Development-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_Work-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)
 
-**Your support means everything!** If this project helped you, please:
-- Give it a ⭐ "Star" on GitHub
-- Share with friends and colleagues
-- Report issues or suggest features
-- Support development financially
+**Your support means everything!** If this project helped you, please:  
+Give it a ⭐ "Star" on GitHub  
+Share with friends and colleagues  
+Report issues or suggest features  
+Support development financially  
 
 ---
 
 ## 📫 Contact
 
-- 🌍 **Business:** [FirstEver.tech](https://www.firstever.tech/)
-- 💼 **LinkedIn:** [linkedin.com/in/marcin-grygiel](https://www.linkedin.com/in/marcin-grygiel/)
-- 📧 **E-mail:** `contact@firstever.tech`
-- 🐙 **GitHub:** [github.com/FirstEverTech](https://github.com/FirstEverTech)
+🌍 **Business:** [FirstEver.tech](https://www.firstever.tech/)  
+💼 **LinkedIn:** [linkedin.com/in/marcin-grygiel](https://www.linkedin.com/in/marcin-grygiel/)  
+📧 **E-mail:** `contact@firstever.tech`  
+🐙 **GitHub:** [github.com/FirstEverTech](https://github.com/FirstEverTech)  
 
 </div>
