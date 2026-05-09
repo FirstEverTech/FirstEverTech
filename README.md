@@ -140,6 +140,18 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
       Ongoing research into whether DLSS 4 Multi Frame Generation 3x/4x on RTX 4000 series GPUs is truly blocked by hardware or if at least part of the limitation is enforced in software. My working conclusion: forced MFG 3x/4x on the tested RTX 4070 Ti appears to generate and present additional frames at the pipeline level, but output is obscured by a black‑image enforcement path that has not yet been fully neutralized.
     </td>
   </tr>
+    <!-- CrystalDiskMark World Record (2025) -->
+  <tr>
+    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://www.techpowerup.com/forums/threads/post-your-crystaldiskmark-speeds.250319/page-25#post-5486042">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/CrystalDiskMark_Record.png?raw=true" style="width: 100%; max-width: 100%;" alt="CrystalDiskMark World Record">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <strong>CrystalDiskMark World Record (2025)</strong><br>
+      Achieved the highest documented CrystalDiskMark read speed of 214 GB/s, surpassing previous records. Identified the program's 64‑thread limitation as the primary bottleneck, demonstrating deep expertise in benchmarking and system architecture. Featured as a world‑leading result in global tech communities including Tom's Hardware and benchmark.pl.
+    </td>
+  </tr>
   <!-- FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
