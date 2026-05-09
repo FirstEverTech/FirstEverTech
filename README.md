@@ -41,7 +41,6 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 ## 📰 As seen in
 
 <p align="center">
-  <!-- First row (6 logos) -->
   <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="110" alt="Engadget"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://web.archive.org/web/20141001213638/https://gizmodo.com/5159221/windows-31-runs-on-a-nokia-n95-creating-dangerous-ripple-in-space-time"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gizmodo_logo.png?raw=true" width="110" alt="Gizmodo"></a>
@@ -53,9 +52,6 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <a href="http://gry.onet.pl/artykuly/share-vr-obiecujaca-technologia-z-polski/hckb6"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/onet_logo.png?raw=true" width="110" alt="Onet"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://tech.wp.pl/pomyslowy-polak-rzuca-wyzwanie-oculusowi-i-facebookowi-tania-wirtualna-rzeczywistosc-dla-kazdego-6034816926012545a"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/wp_logo.png?raw=true" width="110" alt="Wirtualna Polska"></a>
-</p>
-<p align="center">
-  <!-- Second row (6 logos) -->
   <a href="http://www.gazetawroclawska.pl/artykul/96298,gwiazdor-internetu-ze-swiebodzic,id,t.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gazeta_wroclawska_logo.png?raw=true" width="110" alt="Gazeta Wrocławska"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="http://www.radiowroclaw.pl/articles/view/5154/Zamontowal-Windows-w-komorce-Po-co-Zobacz"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/radio_wroclaw_logo.png?raw=true" width="110" alt="Radio Wrocław"></a>
@@ -91,7 +87,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <!-- Adobe AVX2 Patch (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <a href="https://www.youtube.com/watch?v=PaJg91RZIro">
+      <a href="https://github.com/FirstEverTech/Adobe-AVX2-Patch">
         <img alt="Adobe AVX2 Patch Demo" src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Adobe_AVX2_Patch.png?raw=true" style="width: 100%; max-width: 100%;" />
       </a>
     </td>
