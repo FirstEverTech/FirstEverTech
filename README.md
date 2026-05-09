@@ -38,6 +38,15 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 <div align="center">
 
+## 💼 Career Opportunity
+
+> [!TIP]
+> **I'm currently seeking new challenges where I can apply my expertise in solving complex IT infrastructure problems. If your organization struggles with system compatibility, automation, or tooling gaps – let's discuss how I can help.**
+>
+> 🔗 **Connect with me:** [linkedin.com/in/marcin-grygiel](https://linkedin.com/in/marcin-grygiel)
+
+---
+
 ## 📰 Media mentions
 
 <p align="center">
