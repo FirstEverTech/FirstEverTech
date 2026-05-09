@@ -149,7 +149,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022)</strong><br>
-      Released the first product under my brand. It is the smallest (43g / 1.5oz) USB‑C 10Gbps hub on the market and has illuminated USB ports. I designed the PCB, wrote the firmware, and handled production from concept to final retail. It is available in the UK from my official online shop and on eBay.
+      Released the first product under my brand. It is the smallest (43g / 1.5oz) USB‑C 10Gbps hub on the market and has illuminated USB ports. I oversaw design selection, logistics, documentation, packaging, customs, shipping, and distribution – from factory cooperation to final retail. It is available in the UK from my official online shop and on eBay.
     </td>
   </tr>
   <!-- MEGA Light – 400 RGB LEDs (2018) -->
