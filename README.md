@@ -15,7 +15,7 @@
 
 <div align="left">
 
-I am an IT Architect & Engineer who delivers global‑scale solutions alone – because I can.
+An IT Architect & Engineer who delivers global‑scale solutions alone – because I can.
 I don’t just advise; I **build, fix, and improve** whatever is broken or outdated. Whether it’s a legacy system, a missing automation pipeline, or a hardware limitation that others call “impossible” – I step in and do the work that usually requires a whole cross‑functional team.
 
 > *“One person, team‑level results.”*
