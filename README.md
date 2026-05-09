@@ -84,6 +84,18 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
       I built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
      </td>
   </tr>
+<!-- NVIDIA Smooth Motion – First YouTube demonstration (2025) -->
+<tr>
+  <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+    <a href="https://youtu.be/GZfJ_UtcB4g">
+      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/NVIDIA_Smooth_Motion.png" style="width: 100%; max-width: 100%;" alt="NVIDIA Smooth Motion First Demo">
+    </a>
+  </td>
+  <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
+    <strong>NVIDIA Smooth Motion – First YouTube Demonstration (2025)</strong><br>
+    I created the first public video showing NVIDIA's Smooth Motion technology – days before NVIDIA’s own official presentation. Running on a 12‑year‑old Xeon PC (2013) with an RTX 4070 Ti, the video also showcases my full production skills: script, capture, editing, colour grade, and voiceover in DaVinci Resolve. The final quality matches corporate NVIDIA promos, proving that one person can deliver world‑class tech content.
+  </td>
+</tr>
   <!-- Adobe AVX2 Patch (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
@@ -172,7 +184,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <a href="https://www.youtube.com/watch?v=0FwJT60fTxI">
-        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nexus5_Win7.png?raw=true" style="width: 100%; max-width: 100%;" alt="Windows 7 on Android">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nexus_5_Win7.png?raw=true" style="width: 100%; max-width: 100%;" alt="Windows 7 on Android">
       </a>
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
