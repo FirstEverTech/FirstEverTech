@@ -149,7 +149,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>CrystalDiskMark World Record (2025)</strong><br>
-      Achieved the highest documented CrystalDiskMark read speed of 214 GB/s, surpassing previous records. Identified the program's 64‑thread limitation as the primary bottleneck, demonstrating deep expertise in benchmarking and system architecture. Featured as a world‑leading result in global tech communities including Tom's Hardware and benchmark.pl.
+      Achieved the highest documented CrystalDiskMark read speed of 214 GB/s, surpassing previous records. Identified the program's 64‑thread limitation as the primary bottleneck, demonstrating deep expertise in benchmarking and system architecture. Featured as a world‑leading result in global tech communities including Tom's Hardware and TechPowerUp.
     </td>
   </tr>
   <!-- FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022) -->
