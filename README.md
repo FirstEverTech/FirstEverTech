@@ -88,7 +88,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 <tr>
   <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
     <a href="https://youtu.be/GZfJ_UtcB4g">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/NVIDIA_Smooth_Motion.png" style="width: 100%; max-width: 100%;" alt="NVIDIA Smooth Motion First Demo">
+      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nvidia_Smooth_Motion.png" style="width: 100%; max-width: 100%;" alt="NVIDIA Smooth Motion First Demo">
     </a>
   </td>
   <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
