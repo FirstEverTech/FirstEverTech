@@ -42,31 +42,31 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 <p align="center">
   <!-- First row (6 logos) -->
-  <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="100" alt="Engadget"></a>
+  <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="110" alt="Engadget"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://web.archive.org/web/20141001213638/https://gizmodo.com/5159221/windows-31-runs-on-a-nokia-n95-creating-dangerous-ripple-in-space-time"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gizmodo_logo.png?raw=true" width="100" alt="Gizmodo"></a>
+  <a href="https://web.archive.org/web/20141001213638/https://gizmodo.com/5159221/windows-31-runs-on-a-nokia-n95-creating-dangerous-ripple-in-space-time"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gizmodo_logo.png?raw=true" width="110" alt="Gizmodo"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.bit-tech.net/news/hacker-loads-win-31-on-n95/1/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/bit-tech_logo.png?raw=true" width="100" alt="bit-tech"></a>
+  <a href="http://www.bit-tech.net/news/hacker-loads-win-31-on-n95/1/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/bit-tech_logo.png?raw=true" width="110" alt="bit-tech"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://betanews.com/2009/02/23/windows-3-1-installed-on-nokia-n95/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/betanews_logo.png?raw=true" width="100" alt="betanews"></a>
+  <a href="https://betanews.com/2009/02/23/windows-3-1-installed-on-nokia-n95/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/betanews_logo.png?raw=true" width="110" alt="betanews"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://gry.onet.pl/artykuly/share-vr-obiecujaca-technologia-z-polski/hckb6"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/onet_logo.png?raw=true" width="100" alt="Onet"></a>
+  <a href="http://gry.onet.pl/artykuly/share-vr-obiecujaca-technologia-z-polski/hckb6"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/onet_logo.png?raw=true" width="110" alt="Onet"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://tech.wp.pl/pomyslowy-polak-rzuca-wyzwanie-oculusowi-i-facebookowi-tania-wirtualna-rzeczywistosc-dla-kazdego-6034816926012545a"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/wp_logo.png?raw=true" width="100" alt="Wirtualna Polska"></a>
+  <a href="https://tech.wp.pl/pomyslowy-polak-rzuca-wyzwanie-oculusowi-i-facebookowi-tania-wirtualna-rzeczywistosc-dla-kazdego-6034816926012545a"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/wp_logo.png?raw=true" width="110" alt="Wirtualna Polska"></a>
 </p>
 <p align="center">
   <!-- Second row (6 logos) -->
-  <a href="http://www.gazetawroclawska.pl/artykul/96298,gwiazdor-internetu-ze-swiebodzic,id,t.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gazeta_wroclawska_logo.png?raw=true" width="100" alt="Gazeta Wrocławska"></a>
+  <a href="http://www.gazetawroclawska.pl/artykul/96298,gwiazdor-internetu-ze-swiebodzic,id,t.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gazeta_wroclawska_logo.png?raw=true" width="110" alt="Gazeta Wrocławska"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.radiowroclaw.pl/articles/view/5154/Zamontowal-Windows-w-komorce-Po-co-Zobacz"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/radio_wroclaw_logo.png?raw=true" width="100" alt="Radio Wrocław"></a>
+  <a href="http://www.radiowroclaw.pl/articles/view/5154/Zamontowal-Windows-w-komorce-Po-co-Zobacz"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/radio_wroclaw_logo.png?raw=true" width="110" alt="Radio Wrocław"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.komputerswiat.pl/artykuly/redakcyjne/2014/08/okulary-vr-domowej-roboty.aspx"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/komputer_swiat_logo.png?raw=true" width="100" alt="Komputer Świat"></a>
+  <a href="http://www.komputerswiat.pl/artykuly/redakcyjne/2014/08/okulary-vr-domowej-roboty.aspx"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/komputer_swiat_logo.png?raw=true" width="110" alt="Komputer Świat"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://web.archive.org/web/20190921213013/https://www.pcworld.pl/news/Windows-8-dziala-na-128-MB-RAM,375140.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/pcworld-logo.png?raw=true" width="100" alt="PC World"></a>
+  <a href="https://web.archive.org/web/20190921213013/https://www.pcworld.pl/news/Windows-8-dziala-na-128-MB-RAM,375140.html"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/pcworld-logo.png?raw=true" width="110" alt="PC World"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="http://www.chip.pl/2014/10/sharevr-polskie-oprogramowanie-vr-szturmuje-kickstartera/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/chip_logo.png?raw=true" width="100" alt="CHIP"></a>
+  <a href="http://www.chip.pl/2014/10/sharevr-polskie-oprogramowanie-vr-szturmuje-kickstartera/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/chip_logo.png?raw=true" width="110" alt="CHIP"></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://www.gsmmaniak.pl/353030/share-vr-marcin-grygiel-kickstarter/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gsmmaniak_logo.png?raw=true" width="100" alt="GSMManiaK"></a>
+  <a href="https://www.gsmmaniak.pl/353030/share-vr-marcin-grygiel-kickstarter/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/gsmmaniak_logo.png?raw=true" width="110" alt="GSMManiaK"></a>
 </p>
 
 ---
