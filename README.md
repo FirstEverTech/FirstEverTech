@@ -81,21 +81,21 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Chipset Device Updater (2025)</strong><br>
-      I built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
-     </td>
+      Built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
+    </td>
   </tr>
-<!-- NVIDIA Smooth Motion – First YouTube demonstration (2025) -->
-<tr>
-  <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <a href="https://youtu.be/GZfJ_UtcB4g">
-      <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nvidia_Smooth_Motion.png" style="width: 100%; max-width: 100%;" alt="NVIDIA Smooth Motion First Demo">
-    </a>
-  </td>
-  <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
-    <strong>NVIDIA Smooth Motion – First YouTube Demonstration (2025)</strong><br>
-    I created the first public video showing NVIDIA's Smooth Motion technology – days before NVIDIA’s own official presentation. Running on a 12‑year‑old Xeon PC (2013) with an RTX 4070 Ti, the video also showcases my full production skills: script, capture, editing, colour grade, and voiceover in DaVinci Resolve. The final quality matches corporate NVIDIA promos, proving that one person can deliver world‑class tech content.
-  </td>
-</tr>
+  <!-- NVIDIA Smooth Motion – First YouTube demonstration (2025) -->
+  <tr>
+    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://youtu.be/GZfJ_UtcB4g">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Nvidia_Smooth_Motion.png" style="width: 100%; max-width: 100%;" alt="NVIDIA Smooth Motion First Demo">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <strong>NVIDIA Smooth Motion – First YouTube Demonstration (2025)</strong><br>
+      Created the first public video showing NVIDIA's Smooth Motion technology – days before NVIDIA’s own official presentation. Running on a 12‑year‑old Xeon PC (2013) with an RTX 4070 Ti, the video also showcases my full production skills: script, capture, editing, colour grade, and voiceover in DaVinci Resolve. The final quality matches corporate NVIDIA promos, proving that one person can deliver world‑class tech content.
+    </td>
+  </tr>
   <!-- Adobe AVX2 Patch (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
@@ -105,8 +105,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Adobe AVX2 Patch (2025)</strong><br>
-      I built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files.
-     </td>
+      Built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files.
+    </td>
   </tr>
   <!-- Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025) -->
   <tr>
@@ -117,11 +117,11 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025)</strong><br>
-      I built a security‑focused tool that automatically detects your Intel wireless hardware and installs the latest official Wi‑Fi and Bluetooth drivers with enterprise‑grade safety measures. Intel distributes Wi‑Fi and Bluetooth drivers as large CAB packages — but your system only needs the version that matches your specific adapter. My tool automatically identifies your hardware and installs the correct driver package from official sources.
-     </td>
+      Built a security‑focused tool that automatically detects your Intel wireless hardware and installs the latest official Wi‑Fi and Bluetooth drivers with enterprise‑grade safety measures. Intel distributes Wi‑Fi and Bluetooth drivers as large CAB packages — but your system only needs the version that matches your specific adapter. My tool automatically identifies your hardware and installs the correct driver package from official sources.
+    </td>
   </tr>
   <!-- RTX 4000 DLSS 4 Multi Frame Generation Research (2025) -->
-  <table>
+  <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <a href="https://github.com/FirstEverTech/RTX4000-MFG-Unlock">
         <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/RTX4000_MFG.png?raw=true" style="width: 100%; max-width: 100%;" alt="RTX4000 Research">
@@ -129,8 +129,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>RTX 4000 DLSS 4 Multi Frame Generation Research (2025)</strong><br>
-      This is my ongoing research into whether DLSS 4 Multi Frame Generation 3x/4x on RTX 4000 series GPUs is truly blocked by hardware or if at least part of the limitation is enforced in software. My working conclusion: forced MFG 3x/4x on the tested RTX 4070 Ti appears to generate and present additional frames at the pipeline level, but output is obscured by a black‑image enforcement path that has not yet been fully neutralized.
-     </td>
+      Ongoing research into whether DLSS 4 Multi Frame Generation 3x/4x on RTX 4000 series GPUs is truly blocked by hardware or if at least part of the limitation is enforced in software. My working conclusion: forced MFG 3x/4x on the tested RTX 4070 Ti appears to generate and present additional frames at the pipeline level, but output is obscured by a black‑image enforcement path that has not yet been fully neutralized.
+    </td>
   </tr>
   <!-- FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022) -->
   <tr>
@@ -141,8 +141,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>FirstEver 4‑Port USB‑C 10Gbps Gaming Hub (2022)</strong><br>
-      I released the first product under my brand. It is the smallest (43g / 1.5oz) USB‑C 10Gbps hub on the market and has illuminated USB ports. I designed the PCB, wrote the firmware, and handled production from concept to final retail. It is available in the UK from my official online shop and on eBay.
-     </td>
+      Released the first product under my brand. It is the smallest (43g / 1.5oz) USB‑C 10Gbps hub on the market and has illuminated USB ports. I designed the PCB, wrote the firmware, and handled production from concept to final retail. It is available in the UK from my official online shop and on eBay.
+    </td>
   </tr>
   <!-- MEGA Light – 400 RGB LEDs (2018) -->
   <tr>
@@ -153,8 +153,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>MEGA Light – 400 RGB LEDs (2018)</strong><br>
-      I built the best backlight system for PC monitors in the world. The device features 400 RGB LEDs and extremely high responsiveness (near‑zero latency). I designed the custom control software and embedded timing optimization. To this day, no better device has emerged, and it remains a reference in the DIY monitor lighting community.
-     </td>
+      Built the best backlight system for PC monitors in the world. The device features 400 RGB LEDs and extremely high responsiveness (near‑zero latency). I designed the custom control software and embedded timing optimization. To this day, no better device has emerged, and it remains a reference in the DIY monitor lighting community.
+    </td>
   </tr>
   <!-- shareVR – VR on a smartphone (2015) -->
   <tr>
@@ -165,8 +165,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>shareVR – VR on a smartphone (2015)</strong><br>
-      I created a start‑up called shareVR, a software that allows you to use your smartphone as a screen for virtual reality goggles and play PC games. I was the first to play titles such as ARMA 3, Alien Isolation, Crysis 2 and Project CARS in VR. The software used low‑latency streaming and wide game compatibility – all built alone and funded via Kickstarter.
-     </td>
+      Created a start‑up called shareVR, a software that allows you to use your smartphone as a screen for virtual reality goggles and play PC games. I was the first to play titles such as ARMA 3, Alien Isolation, Crysis 2 and Project CARS in VR. The software used low‑latency streaming and wide game compatibility – all built alone and funded via Kickstarter.
+    </td>
   </tr>
   <!-- First VR Goggles with Built‑in Cooling (2015) -->
   <tr>
@@ -177,8 +177,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>First VR Goggles with Built‑in Cooling (2015)</strong><br>
-      I designed and built the first VR goggles with a built‑in cooling system comprising two mini fans. This solved the problem of foggy headset lenses, a common issue in early VR headsets. The design included custom airflow channels and a lightweight frame, proving that practical improvements to VR comfort could be achieved without external accessories.
-     </td>
+      Designed and built the first VR goggles with a built‑in cooling system comprising two mini fans. This solved the problem of foggy headset lenses, a common issue in early VR headsets. The design included custom airflow channels and a lightweight frame, proving that practical improvements to VR comfort could be achieved without external accessories.
+    </td>
   </tr>
   <!-- First to Run Windows 7 on an Android Smartphone (2015) -->
   <tr>
@@ -189,8 +189,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>First to Run Windows 7 on an Android Smartphone (2015)</strong><br>
-      I was the first to run Windows 7 on an Android smartphone thanks to x86 virtualization on an ARM processor. This proof‑of‑concept demonstrated the feasibility of running full desktop operating systems on mobile hardware years before mainstream solutions appeared.
-     </td>
+      First to run Windows 7 on an Android smartphone thanks to x86 virtualization on an ARM processor. This proof‑of‑concept demonstrated the feasibility of running full desktop operating systems on mobile hardware years before mainstream solutions appeared.
+    </td>
   </tr>
   <!-- Mining Servers – Ethereum & Scrypt (2013‑2014) -->
   <tr>
@@ -201,8 +201,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Mining Servers – Ethereum & Scrypt (2013‑2014)</strong><br>
-      I built the first 8‑GPU mining servers for Scrypt‑based cryptocurrencies based on the most powerful AMD Radeon HD 7990 cards. In the following years, I built many Ethereum mining servers. Many of these servers are still in operation today and continue to make a profit despite increased electricity charges, thanks to custom cooling and power efficiency optimizations.
-     </td>
+      Built the first 8‑GPU mining servers for Scrypt‑based cryptocurrencies based on the most powerful AMD Radeon HD 7990 cards. In the following years, I built many Ethereum mining servers. Many of these servers are still in operation today and continue to make a profit despite increased electricity charges, thanks to custom cooling and power efficiency optimizations.
+    </td>
   </tr>
   <!-- Windows 3.1 on Nokia N95 (2009) -->
   <tr>
@@ -213,8 +213,8 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Windows 3.1 on Nokia N95 (2009)</strong><br>
-      I was the first to run a Windows operating system on a Nokia N95 smartphone. You may have read about it on technology portals all over the world – "The most awesome – and pointless – hack in smartphone history" (BitTech). In the same year, the FirstEver website was created, the place for my future projects. This hack proved my ability to break constraints and make the “impossible” work, a mindset that still drives every project I touch.
-     </td>
+      First to run a Windows operating system on a Nokia N95 smartphone. You may have read about it on technology portals all over the world – "The most awesome – and pointless – hack in smartphone history" (BitTech). In the same year, the FirstEver website was created, the place for my future projects. This hack proved my ability to break constraints and make the “impossible” work, a mindset that still drives every project I touch.
+    </td>
   </tr>
 </table>
 
