@@ -1,3 +1,22 @@
+<p align="center">
+  <a href="README.md">🇬🇧 English</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=pl&u=https://github.com/FirstEverTech">🇵🇱 Polski</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=de&u=https://github.com/FirstEverTech">🇩🇪 Deutsch</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=fr&u=https://github.com/FirstEverTech">🇫🇷 Français</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=es&u=https://github.com/FirstEverTech">🇪🇸 Español</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=pt&u=https://github.com/FirstEverTech">🇧🇷 Português</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=nl&u=https://github.com/FirstEverTech">🇳🇱 Nederlands</a>
+  <br>
+  <a href="https://translate.google.com/translate?sl=en&tl=zh-CN&u=https://github.com/FirstEverTech">🇨🇳 中文</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ja&u=https://github.com/FirstEverTech">🇯🇵 日本語</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ko&u=https://github.com/FirstEverTech">🇰🇷 한국어</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=it&u=https://github.com/FirstEverTech">🇮🇹 Italiano</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=tr&u=https://github.com/FirstEverTech">🇹🇷 Türkçe</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ar&u=https://github.com/FirstEverTech">🇸🇦 العربية</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=hi&u=https://github.com/FirstEverTech">🇮🇳 हिन्दी</a> |
+  <a href="https://translate.google.com/translate?sl=en&tl=ru&u=https://github.com/FirstEverTech">🇷🇺 Русский</a>
+</p>
+
 <div align="center">
   
 # FirstEver Technology / www.FirstEver.tech
