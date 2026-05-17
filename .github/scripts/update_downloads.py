@@ -35,11 +35,11 @@ print("Total downloads:", total_downloads)
 
 # formatowanie
 if total_downloads >= 1000:
-    badge_value = f"{total_downloads / 1000:.1f}K+"
+    badge_value = f"{total_downloads / 1000:.1f}K"
 else:
     badge_value = str(total_downloads)
 
-badge_value = badge_value.replace(".0K+", "K+")
+badge_value = badge_value.replace(".0K+", "K")
 
 new_badge = f"![Downloads](https://img.shields.io/badge/Downloads-{badge_value}-blue?style=for-the-badge&label=Downloads)"
 
