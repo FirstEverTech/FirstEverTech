@@ -259,7 +259,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Windows 3.1 on Nokia N95 (2009)</strong><br>
-      First to run a Windows operating system on a Nokia N95 smartphone. You may have read about it on technology portals all over the world – "The most awesome – and pointless – hack in smartphone history" (BitTech). In the same year, the FirstEver website was created, the place for my future projects. This hack proved my ability to break constraints and make the “impossible” work, a mindset that still drives every project I touch.
+      First to run a Windows desktop operating system on a smartphone. You may have read about it on technology portals all over the world – "The most awesome – and pointless – hack in smartphone history" (BitTech). In the same year, the FirstEver website was created, the place for my future projects. This hack proved my ability to break constraints and make the “impossible” work, a mindset that still drives every project I touch.
     </td>
   </tr>
 </table>
