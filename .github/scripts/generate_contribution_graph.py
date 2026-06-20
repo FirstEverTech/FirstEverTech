@@ -63,19 +63,19 @@ def fetch_activity(username, days=31):
 # ---------- KOLORY ----------
 BLUE     = "#58a6ff"
 LINE     = "#1f6feb"
-GRID_MAJ = "#283d58"   # nowy kolor siatki
+GRID_MAJ = "#283d58"
 
 def generate(dates, counts, username, out):
     x_dates = [datetime.combine(d, datetime.min.time()) for d in dates]
     y = counts
-
-    # Numeryczne reprezentacje dat
     x_num = mdates.date2num(x_dates)
 
     # Wygładzanie splajnem
     cs = CubicSpline(x_num, y, bc_type='natural')
     x_smooth = np.linspace(x_num[0], x_num[-1], 300)
     y_smooth = cs(x_smooth)
+    # Obetnij wartości ujemne – nie mogą zejść poniżej 0
+    y_smooth = np.maximum(y_smooth, 0)
 
     fig, ax = plt.subplots(figsize=(10, 3.2), dpi=150)
     fig.patch.set_facecolor("none")
@@ -88,18 +88,18 @@ def generate(dates, counts, username, out):
     # Kropki na każdym dniu (31 punktów)
     ax.scatter(x_num, y, color=BLUE, s=30, zorder=4, linewidths=0)
 
-    # Marginesy aby kropki nie były ucinane
-    ax.set_xlim(x_num[0] - 0.5, x_num[-1] + 0.5)
-    y_max = max(y) if y else 1
-    ax.set_ylim(0, y_max * 1.05)
+    # Marginesy, aby kropki nie były ucinane (ale bez dużych przerw)
+    ax.margins(x=0.02, y=0.05)
+    ax.set_ylim(bottom=-0.5)   # dodatkowy margines na dole dla kropek na 0
 
-    # Siatka pionowa co dzień – etykiety to numery dni
+    # Siatka pionowa co dzień – kropkowana (przerywana)
     ax.xaxis.set_major_locator(mdates.DayLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d"))
-    ax.grid(True, which='major', axis='x', color=GRID_MAJ, linewidth=0.7, linestyle='-')
+    ax.grid(True, which='major', axis='x', color=GRID_MAJ, linewidth=0.7, linestyle=':')
 
-    # Siatka pozioma – 8 linii
+    # Siatka pozioma – 8 linii, kropkowana
     NUM_Y_LINES = 8
+    y_max = max(y) if y else 1
     if y_max > 0:
         nice_max = math.ceil(y_max / (NUM_Y_LINES-1)) * (NUM_Y_LINES-1)
         if nice_max < NUM_Y_LINES-1:
@@ -107,7 +107,7 @@ def generate(dates, counts, username, out):
     else:
         nice_max = 7
     ax.set_yticks(np.linspace(0, nice_max, NUM_Y_LINES))
-    ax.grid(True, which='major', axis='y', color=GRID_MAJ, linewidth=0.7, linestyle='-')
+    ax.grid(True, which='major', axis='y', color=GRID_MAJ, linewidth=0.7, linestyle=':')
 
     # Stylizacja osi
     ax.tick_params(axis='both', which='both', colors=BLUE, labelsize=7)
@@ -120,13 +120,13 @@ def generate(dates, counts, username, out):
 
     ax.set_ylabel("Contributions", color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold")
-    ax.set_xlabel("Day", color=BLUE, fontsize=8,
+    ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold")
 
-    # Tytuł – nowa treść, większa czcionka
+    # Tytuł – pogrubiony, czcionka 11
     ax.set_title(
         "Marcin Grygiel aka FirstEver's Contribution Graph",
-        color=BLUE, fontsize=11, fontweight="normal",
+        color=BLUE, fontsize=11, fontweight="bold",
         fontfamily="DejaVu Sans", pad=10,
     )
 
