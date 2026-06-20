@@ -56,7 +56,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     <img src="https://img.shields.io/badge/📅_Book_a_Free_30_Min_Consultation-1f6feb?style=for-the-badge&logo=calendly&logoColor=white" alt="Book a Consultation">
   </a>
   <a href="https://www.firstever.tech/contact">
-    <img src="https://img.shields.io/badge/📧_Contact_Me-58a6ff?style=for-the-badge&logo=maildotru&logoColor=white" alt="Contact Me">
+    <img src="https://img.shields.io/badge/📧_Contact_Me-58a6ff?style=for-the-badge&logo=maildotru&logoColor=white" alt="Contact">
   </a>
 </p>
 
