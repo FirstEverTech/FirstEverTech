@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
-import os
-import sys
-import requests
-import numpy as np
-import matplotlib
+import os, sys, math, requests, numpy as np, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+import matplotlib.dates as mdates
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -17,12 +13,8 @@ HEADERS  = {
     "Authorization": f"Bearer {TOKEN}",
 }
 
-# ---------- Pobieranie danych aktywności ----------
-def fetch_daily_contributions(username, days=31):
-    """
-    Pobiera publiczne zdarzenia użytkownika i zlicza je na dzień.
-    Zwraca słownik {data: liczba_zdarzeń} dla ostatnich `days` dni.
-    """
+def fetch_activity(username, days=31):
+    """Pobiera dzienną liczbę zdarzeń (aktywność) dla ostatnich 'days' dni."""
     url = f"https://api.github.com/users/{username}/events/public"
     params = {"per_page": 100}
     all_events = []
@@ -36,104 +28,115 @@ def fetch_daily_contributions(username, days=31):
             break
         all_events.extend(data)
         page += 1
-        # Bezpiecznik – max 10 stron (1000 zdarzeń)
-        if page > 10:
+        if page > 10:   # bezpiecznik – max 1000 zdarzeń
             break
 
-    # Typy zdarzeń uznawane za aktywność
-    relevant_types = {
+    # Zdarzenia uznawane za aktywność
+    relevant = {
         "PushEvent", "PullRequestEvent", "IssuesEvent", "IssueCommentEvent",
         "PullRequestReviewEvent", "PullRequestReviewCommentEvent", "CreateEvent",
         "DeleteEvent", "ForkEvent", "WatchEvent"
     }
 
     cutoff = datetime.now(timezone.utc) - timedelta(days=days)
-    daily_counts = {}
+    daily = {}
     for ev in all_events:
-        if ev["type"] not in relevant_types:
+        if ev["type"] not in relevant:
             continue
         created = datetime.fromisoformat(ev["created_at"].rstrip("Z")).replace(tzinfo=timezone.utc)
         if created < cutoff:
             continue
-        day_key = created.date()
-        daily_counts[day_key] = daily_counts.get(day_key, 0) + 1
+        day = created.date()
+        daily[day] = daily.get(day, 0) + 1
 
-    # Uzupełnij brakujące dni zerami
-    start_date = datetime.now(timezone.utc).date() - timedelta(days=days-1)
+    # Generuj pełną listę dni od start do dziś
+    start = datetime.now(timezone.utc).date() - timedelta(days=days-1)
+    dates = []
+    counts = []
     for i in range(days):
-        d = start_date + timedelta(days=i)
-        if d not in daily_counts:
-            daily_counts[d] = 0
+        d = start + timedelta(days=i)
+        dates.append(d)
+        counts.append(daily.get(d, 0))
+    return dates, counts
 
-    return {d: daily_counts[d] for d in sorted(daily_counts.keys())}
+# ---------- KOLORY (takie same jak w star-history) ----------
+BLUE     = "#58a6ff"
+LINE     = "#1f6feb"
+GRID_MAJ = "#444444"
+GRID_MIN = "#2a2a2a"
 
-# ---------- Rysowanie heatmapy ----------
-def generate_heatmap(daily_data, username, out):
-    dates = list(daily_data.keys())
-    counts = list(daily_data.values())
-    days = len(dates)  # oczekiwane 31
+def x_axis_config(start: datetime, end: datetime):
+    """Dostosowanie etykiet osi X – dla 31 dni co 5 dni."""
+    days = (end - start).days
+    if days < 32:
+        loc = mdates.DayLocator(interval=5)
+        fmt = mdates.DateFormatter("%d %b")
+        lbl = "Date"
+    else:
+        loc = mdates.MonthLocator()
+        fmt = mdates.DateFormatter("%b %y")
+        lbl = "Month"
+    return loc, fmt, lbl
 
-    # Dzień tygodnia pierwszej daty (pon=0, niedz=6)
-    first_weekday = dates[0].weekday()
+def generate(dates, counts, username, out):
+    # dates – lista obiektów date, counts – lista int
+    x_dates = [datetime.combine(d, datetime.min.time()) for d in dates]
+    y = counts
 
-    # Macierz 7 wierszy (dni tygodnia) x liczba dni
-    rows = 7
-    cols = days
-    matrix = np.zeros((rows, cols))
-    for i, d in enumerate(dates):
-        wd = d.weekday()
-        row = (wd - first_weekday) % rows
-        matrix[row, i] = daily_data[d]
-
-    max_count = max(counts) if counts else 1
-
-    # Niebieska paleta kolorów (od jasnego do ciemnego)
-    colors = ["#ebedf0", "#c8d9f0", "#79b8ff", "#2188ff", "#0366d6"]
+    now = datetime.utcnow()
+    x_start = x_dates[0]
+    x_end   = x_dates[-1]   # ostatni dzień (dziś)
 
     fig, ax = plt.subplots(figsize=(10, 3.2), dpi=150)
     fig.patch.set_facecolor("none")
     ax.set_facecolor("none")
 
-    cell_size = 0.9
-    for row in range(rows):
-        for col in range(cols):
-            val = matrix[row, col]
-            if val == 0:
-                color_idx = 0
-            else:
-                norm = val / max_count
-                idx = min(int(norm * 4) + 1, 4)
-                color_idx = idx
-            rect = mpatches.Rectangle(
-                (col - 0.5, row - 0.5), cell_size, cell_size,
-                facecolor=colors[color_idx], edgecolor="none", linewidth=0
-            )
-            ax.add_patch(rect)
+    # Konwersja na numery dla matplotlib
+    date_nums = mdates.date2num(x_dates)
 
-    ax.set_xlim(-0.5, cols - 0.5)
-    ax.set_ylim(-0.5, rows - 0.5)
-    ax.set_aspect("equal")
+    # Linia + wypełnienie (dokładnie jak w star-history)
+    ax.plot(x_dates, y, color=LINE, linewidth=2.5, zorder=3)
+    ax.fill_between(x_dates, y, color=LINE, alpha=0.15, zorder=2)
 
-    # Etykiety dni tygodnia po lewej (skrócone)
-    weekday_names = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    for row in range(rows):
-        actual_wd = (row + first_weekday) % 7
-        ax.text(-0.8, row, weekday_names[actual_wd][:2], ha="right", va="center",
-                fontsize=7, color="#58a6ff", fontweight="bold")
+    # 31 równomiernie rozmieszczonych punktów
+    x31 = np.linspace(mdates.date2num(x_start), mdates.date2num(x_end), 31)
+    y31 = np.interp(x31, date_nums, y)
+    ax.scatter(mdates.num2date(x31), y31, color=BLUE, s=30, zorder=4, linewidths=0)
 
-    # Etykiety numerów dni na dole (co 5 dni)
-    for col in range(cols):
-        if col % 5 == 0 or col == cols - 1:
-            day_num = dates[col].day
-            ax.text(col, -0.8, str(day_num), ha="center", va="top",
-                    fontsize=7, color="#58a6ff", fontweight="bold")
+    # Oś X – bez marginesu z prawej
+    ax.set_xlim(x_start, x_end)
 
-    ax.axis("off")
+    # Oś Y – 8 poziomych linii (zmiana z 10 na 8)
+    NUM_Y_LINES = 8
+    nice_max = max(math.ceil(max(y) / (NUM_Y_LINES-1)) * (NUM_Y_LINES-1), NUM_Y_LINES-1) if y else 7
+    ax.set_ylim(0, nice_max)
+    ax.set_yticks(np.linspace(0, nice_max, NUM_Y_LINES))
 
+    # Siatka
+    ax.set_axisbelow(True)
+    loc, fmt, x_lbl = x_axis_config(x_start, x_end)
+    ax.xaxis.set_major_locator(loc)
+    ax.xaxis.set_major_formatter(fmt)
+    ax.grid(True, which="major", color=GRID_MAJ, linewidth=0.7)
+
+    # Stylizacja
+    ax.tick_params(axis="both", which="both", colors=BLUE, labelsize=7)
+    fig.autofmt_xdate(rotation=0, ha="center")
+    for lbl in ax.get_xticklabels() + ax.get_yticklabels():
+        lbl.set_fontweight("bold")
+        lbl.set_color(BLUE)
+
+    for spine in ax.spines.values():
+        spine.set_edgecolor(GRID_MAJ)
+
+    ax.set_ylabel("Contributions", color=BLUE, fontsize=8,
+                  fontfamily="DejaVu Sans", fontweight="bold")
+    ax.set_xlabel(x_lbl, color=BLUE, fontsize=8,
+                  fontfamily="DejaVu Sans", fontweight="bold")
     ax.set_title(
-        f"{username} · Activity (last {days} days)",
-        color="#58a6ff", fontsize=10, fontweight="normal",
-        fontfamily="DejaVu Sans", pad=10
+        f"{username} · Activity (last {len(x_dates)} days)",
+        color=BLUE, fontsize=10, fontweight="normal",
+        fontfamily="DejaVu Sans", pad=10,
     )
 
     plt.tight_layout(pad=0.8)
@@ -144,7 +147,7 @@ def generate_heatmap(daily_data, username, out):
 if __name__ == "__main__":
     username = USERNAME
     days = 31
-    data = fetch_daily_contributions(username, days)
-    if not data:
+    dates, counts = fetch_activity(username, days)
+    if not counts:
         sys.exit(0)
-    generate_heatmap(data, username, Path("assets/contribution-graph.svg"))
+    generate(dates, counts, username, Path("assets/contribution-graph.svg"))
