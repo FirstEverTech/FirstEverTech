@@ -68,14 +68,6 @@ def add_draw_animation(svg_path):
     with open(svg_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Znajdź pierwszy <path> który ma kolor linii (LINE)
-    # Użyjemy wyrażenia regularnego, aby wstawić atrybuty
-    line_color = LINE.lower()
-    # Szukamy <path ... stroke="..." ...
-    # Proste podejście: znajdź wszystkie <path> i dla pierwszego który pasuje do koloru
-    # dodaj atrybuty class="draw-line" oraz stroke-dasharray i stroke-dashoffset
-
-    # Najpierw wstawiamy style w <svg>
     style = """
     <style>
         .draw-line {
@@ -88,25 +80,25 @@ def add_draw_animation(svg_path):
         }
     </style>
     """
-    # Wstawiamy style zaraz po otwarciu <svg>
-    content = content.replace("<svg", "<svg\n" + style, 1)
 
-    # Teraz dodajemy klasę do odpowiedniego <path>
-    # Znajdź pierwszy <path> który ma atrybut stroke o wartości LINE
-    # Użyjmy prostego zastąpienia:
-    # Szukamy <path ... stroke="#1f6feb" ...> i dodajemy class="draw-line"
-    # Użyjemy re.sub z funkcją zamiany
+    # Znajdź pierwszy znacznik <svg ...> i wstaw style zaraz po jego zamknięciu
+    match = re.search(r'(<svg[^>]*>)', content, re.DOTALL)
+    if match:
+        opening_tag = match.group(1)
+        content = content.replace(opening_tag, opening_tag + "\n" + style, 1)
+    else:
+        # Awaryjnie – wstaw przed </svg>
+        content = content.replace("</svg>", style + "\n</svg>", 1)
+
+    # Dodaj klasę do ścieżki z linią (kolor #1f6feb)
     def add_class_to_path(match):
         original = match.group(0)
-        # Jeśli już ma class, dodajemy draw-line
         if 'class="' in original:
             return original.replace('class="', 'class="draw-line ')
         else:
-            # Wstawiamy class przed > lub przed innymi atrybutami
             return original.replace('<path', '<path class="draw-line"', 1)
 
-    # Znajdź wszystkie path z atrybutem stroke dokładnie pasującym
-    pattern = r'<path[^>]*stroke="#{}"[^>]*>'.format(line_color.lstrip("#"))
+    pattern = r'<path[^>]*stroke="#1f6feb"[^>]*>'
     content = re.sub(pattern, add_class_to_path, content, count=1)
 
     with open(svg_path, "w", encoding="utf-8") as f:
@@ -169,7 +161,7 @@ def generate(dates, counts, username, out):
     ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold")
 
-    # Tytuł – czcionka 10 (zmniejszona o 1)
+    # Tytuł – czcionka 10
     ax.set_title(
         "Marcin Grygiel aka FirstEver's Contribution Graph",
         color=BLUE, fontsize=10, fontweight="bold",
