@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: pip install requests matplotlib numpy
+        run: pip install requests matplotlib numpy scipy
       - name: Generate SVG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
