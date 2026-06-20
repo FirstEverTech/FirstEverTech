@@ -51,6 +51,15 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 - **Legacy System Rescue** – reviving unsupported software or hardware that everyone else has given up on.
 - **Full‑Cycle Tool Development** – from an idea to a deployed, documented, and maintained solution (scripts, desktop tools, or even custom firmware).
 
+<p align="center">
+  <a href="https://calendly.com/marcin-grygiel-firstever/30min">
+    <img src="https://img.shields.io/badge/📅_Book_a_Free_30_Min_Consultation-1f6feb?style=for-the-badge&logo=calendly&logoColor=white" alt="Book a Consultation">
+  </a>
+  <a href="https://www.firstever.tech/contact">
+    <img src="https://img.shields.io/badge/📧_Contact_Me-58a6ff?style=for-the-badge&logo=maildotru&logoColor=white" alt="Contact Me">
+  </a>
+</p>
+
 ---
 
 <div align="center">
