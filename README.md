@@ -39,12 +39,6 @@ I don’t just advise; I **build, fix, and improve** whatever is broken or outda
 
 > *“One person, team‑level results.”*
 
-<a href="https://github.com/FirstEverTech">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=FirstEverTech&theme=github-dark&hide_border=true&bg_color=0d1117&color=58a6ff&line=1f6feb&point=58a6ff&area=true&area_color=1f6feb" width="100%" alt="Activity Graph" />
-</a>
-
-NEW
-
 ![Contribution Graph](assets/contribution-graph.svg)
 
 ---
