@@ -122,7 +122,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Chipset Device Updater (2025)</strong><br>
-      built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
+      Built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
     </td>
   </tr>
   <!-- NVIDIA Smooth Motion – First YouTube demonstration (2025) -->
@@ -218,7 +218,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>shareVR – VR on a smartphone (2015)</strong><br>
-      Created a start‑up called shareVR, a software that allows you to use your smartphone as a screen for virtual reality goggles and play PC games. I was the first to play titles such as ARMA 3, Alien Isolation, Crysis 2 and Project CARS in VR. The software used low‑latency streaming and wide game compatibility – all built alone and funded via Kickstarter.
+      Created a start‑up called shareVR, software that allows you to use your smartphone as a screen for virtual reality goggles and play PC games. I was the first to play titles such as ARMA 3, Alien Isolation, Crysis 2 and Project CARS in VR. The software used low‑latency streaming and wide game compatibility – all built alone and funded via Kickstarter.
     </td>
   </tr>
   <!-- First VR Goggles with Built‑in Cooling (2015) -->
