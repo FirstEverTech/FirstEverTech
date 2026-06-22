@@ -64,7 +64,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 ## 💖 Support This Author
 
-If these tool were saved you time, improved device identification, or helped keep older hardware updated — consider supporting development.
+If these tools have saved you time, improved device identification, or helped keep older hardware updated — consider supporting development.
 
 [![Patreon](https://img.shields.io/badge/Patreon-Patron-F96854?style=for-the-badge&logo=patreon)](https://www.patreon.com/FirstEverTech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Coffee-Donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![Ko-fi](https://img.shields.io/badge/Ko--fi-Donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/firstever)
 
@@ -122,7 +122,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Intel Chipset Device Updater (2025)</strong><br>
-      Built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
+      built an advanced, security‑focused tool that automatically detects your Intel hardware and installs the latest official chipset INF files with enterprise‑grade safety measures. Intel's official Chipset Device Software has evolved over 25 years into a complex, bloated package. My tool simplifies the process by automatically detecting and installing only the INF files your system actually needs — nothing more, nothing less.
     </td>
   </tr>
   <!-- NVIDIA Smooth Motion – First YouTube demonstration (2025) -->
@@ -272,8 +272,6 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 </table>
 
 ---
-
-<div align="center">
   
 ## 📫 Contact
 
@@ -282,4 +280,11 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 📧 **E-mail:** `contact@firstever.tech`  
 🐙 **GitHub:** [github.com/FirstEverTech](https://github.com/FirstEverTech)  
 
-</div>
+---
+
+> **⚠️ Disclaimer**  
+> All tools and projects provided by FirstEver Technology are shared **"as-is"** for educational, research, and convenience purposes only.  
+> 
+> While we strive for accuracy, security, and reliability, **you assume full responsibility** for verifying compatibility and functionality in your specific environment. Always cross-check critical updates, patches, or system modifications through **official vendor channels** before deployment in production.  
+> 
+> We believe in full transparency—source code, methodologies, and supporting databases (where applicable) are open for community review, auditing, and contributions.
