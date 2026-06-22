@@ -33,6 +33,7 @@ jobs:
               org,
               'Universal-Intel-Chipset-Updater',
               'Universal-Intel-WiFi-BT-Updater',
+              'Adobe-AVX2-Patch',    
           ]
 
           for repo in repos:
