@@ -62,15 +62,23 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 ---
 
-<div align="center">
+## 💖 Support This Author
 
-## 💼 Career opportunity
+If these tool were saved you time, improved device identification, or helped keep older hardware updated — consider supporting development.
 
-> **I'm currently seeking new challenges where I can apply my expertise in solving complex IT infrastructure problems. If your organization struggles with system compatibility, automation, or tooling gaps – let's discuss how I can help.**
->
-> 🔗 **Connect with me:** [linkedin.com/in/marcin-grygiel](https://linkedin.com/in/marcin-grygiel)
+[![Patreon](https://img.shields.io/badge/Patreon-Patron-F96854?style=for-the-badge&logo=patreon)](https://www.patreon.com/FirstEverTech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Coffee-Donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![Ko-fi](https://img.shields.io/badge/Ko--fi-Donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/firstever)
 
 ---
+
+## 💼 Career Opportunity
+
+I specialize in Windows deployment, driver automation, hardware compatibility, Microsoft technologies, infrastructure analysis, and custom IT tooling. If your organization faces automation, deployment, device management, or driver management challenges, let's discuss how I can help.
+
+🔗 **Business Contact:** [firstever.tech/contact](https://www.firstever.tech/contact)
+🔗 **LinkedIn Profile:** [linkedin.com/in/marcin-grygiel](https://linkedin.com/in/marcin-grygiel)
+
+---
+
 
 ## 📰 Media mentions
 
@@ -263,20 +271,6 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
     </td>
   </tr>
 </table>
-
----
-
-## 💖 Support
-
-All projects are maintained in my free time. Your support helps cover development costs and server expenses.
-
-[![PayPal](https://img.shields.io/badge/PayPal-Support_Development-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Support_Work-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)
-
-**Your support means everything!** If this project helped you, please:  
-Give it a ⭐ "Star" on GitHub  
-Share with friends and colleagues  
-Report issues or suggest features  
-Support development financially  
 
 ---
 
