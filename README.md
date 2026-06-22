@@ -64,7 +64,7 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 ## 💖 Support This Author
 
-If these tools have saved you time, improved device identification, or helped keep older hardware updated — consider supporting development.
+If these tools saved you time or kept hardware updated — consider supporting development.
 
 [![Patreon](https://img.shields.io/badge/Patreon-Patron-F96854?style=for-the-badge&logo=patreon)](https://www.patreon.com/FirstEverTech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Coffee-Donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![Ko-fi](https://img.shields.io/badge/Ko--fi-Donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/firstever)
 
