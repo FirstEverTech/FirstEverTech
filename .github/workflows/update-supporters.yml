@@ -1,0 +1,67 @@
+name: Update Supporters
+
+on:
+  push:
+    paths:
+      - 'assets/SUPPORTERS.txt'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update all repos
+        env:
+          PAT: ${{ secrets.SUPPORTERS_PAT }}
+        run: |
+          python3 << 'EOF'
+          import os, re, subprocess
+
+          pat = os.environ['PAT']
+          org = 'FirstEverTech'
+
+          with open('assets/SUPPORTERS.txt') as f:
+              names = [l.strip() for l in f if l.strip()]
+
+          block = "<!-- SUPPORTERS_START -->\n" + \
+                  "\n".join(f"- {n}" for n in names) + \
+                  "\n<!-- SUPPORTERS_END -->"
+
+          repos = [
+              org,
+              'Universal-Intel-Chipset-Updater',
+              'Universal-Intel-WiFi-BT-Updater',
+          ]
+
+          for repo in repos:
+              url = f"https://x-access-token:{pat}@github.com/{org}/{repo}.git"
+              subprocess.run(['git', 'clone', '--depth=1', url, repo], check=True)
+
+              path = f"{repo}/README.md"
+              with open(path) as f:
+                  content = f.read()
+
+              updated = re.sub(
+                  r'<!-- SUPPORTERS_START -->.*?<!-- SUPPORTERS_END -->',
+                  block, content, flags=re.DOTALL
+              )
+
+              if updated == content:
+                  print(f"{repo}: no changes")
+                  continue
+
+              with open(path, 'w') as f:
+                  f.write(updated)
+
+              for cmd in [
+                  ['git', '-C', repo, 'config', 'user.email', 'actions@github.com'],
+                  ['git', '-C', repo, 'config', 'user.name', 'GitHub Actions'],
+                  ['git', '-C', repo, 'add', 'README.md'],
+                  ['git', '-C', repo, 'commit', '-m', 'chore: update supporters'],
+                  ['git', '-C', repo, 'push'],
+              ]:
+                  subprocess.run(cmd, check=True)
+              print(f"{repo}: updated")
+          EOF
