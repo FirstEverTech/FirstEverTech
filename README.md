@@ -79,8 +79,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 
 ---
 
-
-## 📰 Media mentions
+## 📰 Media Mentions
 
 <p align="center">
   <a href="https://www.engadget.com/2009/02/24/windows-3-1-running-on-nokia-n95-is-both-awesome-and-depressing/"><img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Logos/engadget_logo.png?raw=true" width="110" alt="Engadget"></a>
@@ -109,7 +108,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 
 ---
 
-## 💎 Selected projects (chronologically)
+## 💎 Selected Projects (chronologically)
 
 > Every project below shows a different face of my "orchestra" ability. Click the image to see the full story.
 
