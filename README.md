@@ -274,6 +274,8 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 
 ---
 
+<div align="center">
+  
 ## 📫 Contact
 
 🌍 **FirstEver Technology:** [FirstEver.tech](https://www.firstever.tech/)  
