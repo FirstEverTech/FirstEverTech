@@ -75,7 +75,7 @@ If these tools saved you time or kept hardware updated — consider supporting d
 ## ❤️ Supporters
 
 <!-- SUPPORTERS_START -->
-- jadeanemail, westor7, J. A. Dean, Bartechr, tsantaliki
+- Sqania, jadeanemail, westor7, J. A. Dean, Bartechr, tsantaliki
 <!-- SUPPORTERS_END -->
 
 ## 💼 Career Opportunity
