@@ -26,14 +26,14 @@ jobs:
               names = [l.strip() for l in f if l.strip()]
 
           block = "<!-- SUPPORTERS_START -->\n" + \
-                  "\n".join(f"- {n}" for n in names) + \
+                  "- " + ", ".join(names) + \
                   "\n<!-- SUPPORTERS_END -->"
 
           repos = [
               org,
               'Universal-Intel-Chipset-Updater',
               'Universal-Intel-WiFi-BT-Updater',
-              'Adobe-AVX2-Patch',    
+              'Adobe-AVX2-Patch',
           ]
 
           for repo in repos:
