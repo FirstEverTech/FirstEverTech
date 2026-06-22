@@ -37,10 +37,11 @@ jobs:
           ]
 
           for repo in repos:
+              clone_dir = f"clone_{repo}"
               url = f"https://x-access-token:{pat}@github.com/{org}/{repo}.git"
-              subprocess.run(['git', 'clone', '--depth=1', url, repo], check=True)
+              subprocess.run(['git', 'clone', '--depth=1', url, clone_dir], check=True)
 
-              path = f"{repo}/README.md"
+              path = f"{clone_dir}/README.md"
               with open(path) as f:
                   content = f.read()
 
@@ -57,12 +58,12 @@ jobs:
                   f.write(updated)
 
               for cmd in [
-                  ['git', '-C', repo, 'config', 'user.email', 'actions@github.com'],
-                  ['git', '-C', repo, 'config', 'user.name', 'GitHub Actions'],
-                  ['git', '-C', repo, 'add', 'README.md'],
-                  ['git', '-C', repo, 'commit', '-m', 'chore: update supporters'],
-                  ['git', '-C', repo, 'push'],
+                  ['git', '-C', clone_dir, 'config', 'user.email', 'actions@github.com'],
+                  ['git', '-C', clone_dir, 'config', 'user.name', 'GitHub Actions'],
+                  ['git', '-C', clone_dir, 'add', 'README.md'],
+                  ['git', '-C', clone_dir, 'commit', '-m', 'chore: update supporters'],
+                  ['git', '-C', clone_dir, 'push'],
               ]:
                   subprocess.run(cmd, check=True)
-              print(f"{repo}: updated")
+               print(f"{repo}: updated")
           EOF
