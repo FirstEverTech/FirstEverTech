@@ -70,3 +70,9 @@ Total daily stars across all repositories.
 Daily traffic on the profile README (last 31 days, sourced from GitHub traffic API — only 14 days of history available per API call, older days show 0).
 
 ![Profile Views](assets/profile-views.svg)
+
+---
+
+## 👁️ Contribution
+
+![Contribution Graph](assets/contribution-graph.svg)
