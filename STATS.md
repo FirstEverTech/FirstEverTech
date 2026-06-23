@@ -73,6 +73,6 @@ Daily traffic on the profile README (last 31 days, sourced from GitHub traffic A
 
 ---
 
-## 👁️ Contribution
+## 🤝 Contribution
 
 ![Contribution Graph](assets/contribution-graph.svg)
