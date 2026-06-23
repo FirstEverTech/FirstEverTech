@@ -1,0 +1,38 @@
+name: Generate Stats Graphs
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 01:00 UTC daily (offset from contribution-graph workflow)
+  workflow_dispatch:        # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests matplotlib numpy scipy
+
+      - name: Generate stats SVGs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USERNAME:  ${{ github.repository_owner }}
+          # Set these in:
+          # Settings → Secrets and variables → Actions → Variables (not Secrets)
+          PS_REP1_MODULE: ${{ vars.PS_REP1_MODULE }}
+          PS_REP2_MODULE: ${{ vars.PS_REP2_MODULE }}
+        run: python .github/scripts/generate_stats.py
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update stats graphs"
+          file_pattern: "assets/*.svg assets/data/stats_history.json"
