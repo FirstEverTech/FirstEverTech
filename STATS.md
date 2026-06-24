@@ -65,12 +65,12 @@ Daily traffic on the profile README (last 31 days, sourced from GitHub traffic A
 
 ![Contribution Graph](assets/contribution-graph.svg)
 
-#$ 📘 Useful Links
+## 📘 Useful Links
 
-- [FirstEver Technology GitHub](https://github.com/FirstEverTech)
-- [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater)
-- [Universal Intel Wi-Fi and Bluetooth Drivers Updater](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater)
-- [Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)
+[FirstEver Technology GitHub](https://github.com/FirstEverTech)
+[Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater)
+[Universal Intel Wi-Fi and Bluetooth Drivers Updater](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater)
+[Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)
 
 ---
 
