@@ -34,12 +34,12 @@ REPOS = {
     "Rep3": "FirstEverTech/Adobe-AVX2-Patch",
 }
 
-# Set as Repository Variables: Settings → Secrets and variables → Actions → Variables
+# PSGallery module names — hardcoded with env var override
+# Set PS_REP1_MODULE / PS_REP2_MODULE as Repository Variables to override
 PS_MODULES = {
-    "Rep1": os.environ.get("PS_REP1_MODULE", ""),
-    "Rep2": os.environ.get("PS_REP2_MODULE", ""),
+    "Rep1": os.environ.get("PS_REP1_MODULE", "Universal-Intel-Chipset-Updater"),
+    "Rep2": os.environ.get("PS_REP2_MODULE", "Universal-Intel-WiFi-BT-Updater"),
 }
-PS_MODULES = {k: v for k, v in PS_MODULES.items() if v}
 
 HISTORY_FILE  = Path("assets/data/stats_history.json")
 RELEASES_FILE = Path("assets/releases.conf")
@@ -472,18 +472,14 @@ def main():
               allowed_aliases=set(REPOS.keys()))
 
     # ── PSGallery Downloads — Rep1/Rep2 + markers (Rep1/Rep2 only) + stats
-    if PS_MODULES:
-        ps_dl = {alias: daily_delta(h, "ps_downloads", alias) for alias in PS_MODULES}
-        gen_multi(dates, ps_dl,
-                  f"{name} — PSGallery Downloads / day",
-                  "Downloads / day",
-                  ASSETS_DIR / "psgallery-downloads.svg",
-                  show_total=False,
-                  releases=releases,
-                  allowed_aliases={"Rep1", "Rep2"})
-    else:
-        print("[INFO] PS_MODULE env vars not set — skipping psgallery-downloads.svg",
-              file=sys.stderr)
+    ps_dl = {alias: daily_delta(h, "ps_downloads", alias) for alias in PS_MODULES}
+    gen_multi(dates, ps_dl,
+              f"{name} — PSGallery Downloads / day",
+              "Downloads / day",
+              ASSETS_DIR / "psgallery-downloads.svg",
+              show_total=False,
+              releases=releases,
+              allowed_aliases={"Rep1", "Rep2"})
 
 if __name__ == "__main__":
     main()
