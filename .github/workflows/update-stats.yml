@@ -2,7 +2,7 @@ name: Generate Stats Graphs
 
 on:
   schedule:
-    - cron: '0 1 * * *'   # 01:00 UTC daily (offset from contribution-graph workflow)
+    - cron: '23 0 * * *'   # 01:00 UTC daily (offset from contribution-graph workflow)
   workflow_dispatch:        # manual trigger
 
 permissions:
