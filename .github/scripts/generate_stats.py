@@ -2,11 +2,11 @@
 """
 Stats SVG generator — FirstEverTech profile
 Outputs:
-  assets/github-downloads.svg   – 3 repo lines + Total (dashed), release markers
-  assets/psgallery-downloads.svg – Rep1/Rep2 PSGallery lines, release markers
-  assets/stars.svg               – daily star gain (total across repos)
+  assets/github-downloads.svg    – Rep1/Rep2/Rep3 + Total, release markers, stats bar
+  assets/psgallery-downloads.svg – Rep1/Rep2, release markers, stats bar
+  assets/stars.svg               – daily stars total
   assets/followers.svg           – daily follower delta
-  assets/profile-views.svg       – daily traffic views on profile repo
+  assets/profile-views.svg       – daily profile traffic
 """
 import os, sys, json, math, re, requests
 import numpy as np
@@ -34,15 +34,12 @@ REPOS = {
     "Rep3": "FirstEverTech/Adobe-AVX2-Patch",
 }
 
-# Set these as Repository Variables in GitHub:
-#   Settings → Secrets and variables → Actions → Variables
-#   PS_REP1_MODULE  e.g. "Universal-Intel-Chipset-Updater"
-#   PS_REP2_MODULE  e.g. "Universal-Intel-WiFi-BT-Updater"
+# Set as Repository Variables: Settings → Secrets and variables → Actions → Variables
 PS_MODULES = {
     "Rep1": os.environ.get("PS_REP1_MODULE", ""),
     "Rep2": os.environ.get("PS_REP2_MODULE", ""),
 }
-PS_MODULES = {k: v for k, v in PS_MODULES.items() if v}  # drop blanks
+PS_MODULES = {k: v for k, v in PS_MODULES.items() if v}
 
 HISTORY_FILE  = Path("assets/data/stats_history.json")
 RELEASES_FILE = Path("assets/releases.conf")
@@ -50,19 +47,27 @@ ASSETS_DIR    = Path("assets")
 DAYS = 31
 TODAY = date.today()
 
-# ── Visual style — identical palette to contribution-graph.py ──────────────
-BLUE     = "#58a6ff"
-LINE     = "#1f6feb"
+# ── Color palette ──────────────────────────────────────────────────────────
+# Rep colors apply to: graph lines, release marker dots, release labels,
+# AND the X-axis day number when a release lands on that day.
+#
+#   Rep1 = white  (clearly visible on GitHub dark-mode background)
+#   Rep2 = green
+#   Rep3 = red-orange
+#   Total = yellow (dashed line, no release markers)
+#
+BLUE     = "#58a6ff"   # default / axis labels / grid
+LINE     = "#1f6feb"   # single-line charts
 GRID_MAJ = "#283d58"
 
-LINE_COLORS = {
-    "Rep1":  "#58a6ff",
-    "Rep2":  "#3fb950",
-    "Rep3":  "#f78166",
-    "Total": "#e3b341",
+REP_COLORS = {
+    "Rep1":  "#ffffff",   # white
+    "Rep2":  "#3fb950",   # green
+    "Rep3":  "#f78166",   # red-orange
+    "Total": "#e3b341",   # yellow
 }
 
-# ── GitHub API helpers ─────────────────────────────────────────────────────
+# ── GitHub API ─────────────────────────────────────────────────────────────
 def gh(path, params=None):
     r = requests.get(f"https://api.github.com{path}", headers=HEADERS,
                      params=params, timeout=30)
@@ -81,7 +86,7 @@ def fetch_repo_downloads(full_repo: str) -> int:
                for rel in releases for a in rel.get("assets", []))
 
 def fetch_profile_views() -> list[tuple[date, int]]:
-    """GitHub traffic API — last 14 days, requires push access (GITHUB_TOKEN is fine for own repo)."""
+    """Traffic API returns last 14 days of daily counts. Requires push access (own repo = ok)."""
     try:
         data = gh(f"/repos/{PROFILE_REPO}/traffic/views")
         return [
@@ -93,10 +98,7 @@ def fetch_profile_views() -> list[tuple[date, int]]:
         return []
 
 def fetch_psgallery(module: str) -> int:
-    """
-    PSGallery v2 OData (NuGet). Sums DownloadCount across all versions of a module.
-    Note: DownloadCount per entry = per-version count, not cumulative total.
-    """
+    """PSGallery v2 OData — sums DownloadCount across all versions of the module."""
     try:
         r = requests.get(
             "https://www.powershellgallery.com/api/v2/FindPackagesById()",
@@ -130,7 +132,7 @@ def take_snapshot(h: dict) -> dict:
     return h
 
 def daily_delta(h: dict, *key_path) -> list[int]:
-    """31-element list of (today_val - nearest_prev_val) for each day in window."""
+    """31-element list of non-negative daily deltas within the rolling window."""
     def get_val(day_key: str):
         node = h.get(day_key, {})
         for k in key_path:
@@ -145,11 +147,11 @@ def daily_delta(h: dict, *key_path) -> list[int]:
 
     for i in range(DAYS):
         d_key = (start + timedelta(days=i)).isoformat()
-        curr = get_val(d_key)
-        prev = next(
+        curr  = get_val(d_key)
+        prev  = next(
             (get_val(k) for k in reversed(sorted_keys)
              if k < d_key and get_val(k) is not None),
-            None
+            None,
         )
         if curr is None or prev is None:
             result.append(0)
@@ -162,13 +164,13 @@ def date_range() -> list[date]:
     start = TODAY - timedelta(days=DAYS - 1)
     return [start + timedelta(days=i) for i in range(DAYS)]
 
-# ── Release markers ────────────────────────────────────────────────────────
+# ── Release config ─────────────────────────────────────────────────────────
 def load_releases() -> list[tuple[str, date]]:
     """
     Parses assets/releases.conf:
         Rep1 = 4/06
         Rep2 = 10/06
-    Returns list of (alias, date). Year is always current year.
+    Returns list of (alias, date). Year = current year.
     """
     if not RELEASES_FILE.exists():
         return []
@@ -186,29 +188,32 @@ def load_releases() -> list[tuple[str, date]]:
                 pass
     return result
 
-def draw_release_markers(ax, releases: list, x_start: float, x_end: float,
-                          allowed: set | None = None):
+# ── Stats computation ──────────────────────────────────────────────────────
+def compute_stats(total_counts: np.ndarray) -> tuple[str, str, str]:
     """
-    Draws ▼ + label (R1/R2/R3) below X-axis for each release within the 31-day window.
-    Must be called AFTER tight_layout so ylim is final.
+    Returns (delta_vs_yesterday, avg_7day, avg_31day) as formatted strings.
+    total_counts: 31-element array of daily totals.
     """
-    y_bot = ax.get_ylim()[0]
-    for alias, rel_date in releases:
-        if allowed and alias not in allowed:
-            continue
-        rx = mdates.date2num(datetime.combine(rel_date, datetime.min.time()))
-        if not (x_start <= rx <= x_end):
-            continue
-        label = re.sub(r"(?i)rep", "R", alias)
-        ax.plot(rx, y_bot, "v", color=BLUE, markersize=5, clip_on=False, zorder=6)
-        ax.annotate(
-            label, xy=(rx, y_bot), xycoords="data",
-            xytext=(0, -14), textcoords="offset points",
-            fontsize=6, color=BLUE, ha="center", va="top",
-            fontweight="bold", annotation_clip=False,
-        )
+    arr = total_counts.astype(float)
+    delta = arr[-1] - arr[-2] if len(arr) >= 2 else arr[-1] if len(arr) else 0.0
+    avg7  = float(np.mean(arr[-7:]))  if len(arr) >= 7  else float(np.mean(arr))
+    avg31 = float(np.mean(arr))
 
-# ── SVG draw animation (same implementation as contribution-graph.py) ──────
+    delta_str = f"+{delta:.0f}" if delta >= 0 else f"{delta:.0f}"
+    return delta_str, f"{avg7:.1f}", f"{avg31:.1f}"
+
+def add_stats_bar(fig, total_counts: np.ndarray):
+    """Adds a one-line stats strip at the very bottom of the figure."""
+    delta_str, avg7, avg31 = compute_stats(total_counts)
+    text = (
+        f"▲ vs yesterday: {delta_str} / day   "
+        f"│   ⌀ last 7 days: {avg7} / day   "
+        f"│   ⌀ last 31 days: {avg31} / day"
+    )
+    fig.text(0.5, 0.005, text, ha="center", va="bottom",
+             color=BLUE, fontsize=7.5, fontfamily="DejaVu Sans", fontweight="bold")
+
+# ── SVG animation (identical to contribution-graph.py) ────────────────────
 def add_draw_animation(svg_path: Path):
     content = svg_path.read_text(encoding="utf-8")
     style = (
@@ -224,10 +229,9 @@ def add_draw_animation(svg_path: Path):
     else:
         content = content.replace("</svg>", style + "\n</svg>", 1)
 
-    target_colors = [LINE] + list(LINE_COLORS.values())
-    for color in target_colors:
+    for color in [LINE] + list(REP_COLORS.values()):
         pat = rf'<path[^>]*stroke="{re.escape(color)}"[^>]*>'
-        def add_cls(mo, _color=color):
+        def add_cls(mo):
             o = mo.group(0)
             return (o.replace('class="', 'class="draw-line ', 1)
                     if 'class="' in o
@@ -236,7 +240,7 @@ def add_draw_animation(svg_path: Path):
 
     svg_path.write_text(content, encoding="utf-8")
 
-# ── Shared plot primitives ─────────────────────────────────────────────────
+# ── Core plot helpers ──────────────────────────────────────────────────────
 def base_fig(height: float = 3.2):
     fig, ax = plt.subplots(figsize=(10, height), dpi=150)
     fig.patch.set_facecolor("none")
@@ -285,13 +289,75 @@ def save_svg(fig, out: Path):
     plt.close(fig)
     add_draw_animation(out)
 
+# ── Release markers + colored tick labels ──────────────────────────────────
+def apply_release_visuals(ax, fig, dates: list[date],
+                           releases: list[tuple[str, date]],
+                           allowed: set | None = None):
+    """
+    1. Draws ▼ + label below X-axis for each release in the 31-day window.
+    2. Recolors the X-axis day number to match the rep's color.
+    Colors: Rep1=white, Rep2=green, Rep3=red-orange (from REP_COLORS).
+    Call AFTER tight_layout so ylim and tick positions are stable.
+    """
+    # Build date→color map (if two releases on same day, last entry wins)
+    release_color_map: dict[date, str] = {}
+    release_label_map: dict[date, str] = {}
+    for alias, rel_date in releases:
+        if allowed and alias not in allowed:
+            continue
+        if rel_date not in [d for d in dates]:
+            # Still mark it even if outside dates list — but only if in window
+            pass
+        release_color_map[rel_date] = REP_COLORS.get(alias, BLUE)
+        release_label_map[rel_date] = re.sub(r"(?i)rep", "R", alias)
+
+    x_num = mdates.date2num([datetime.combine(d, datetime.min.time()) for d in dates])
+    x_start, x_end = x_num[0], x_num[-1]
+
+    # ── Markers below X-axis ──────────────────────────────────────────────
+    y_bot = ax.get_ylim()[0]
+    for alias, rel_date in releases:
+        if allowed and alias not in allowed:
+            continue
+        rx = mdates.date2num(datetime.combine(rel_date, datetime.min.time()))
+        if not (x_start <= rx <= x_end):
+            continue
+        color = REP_COLORS.get(alias, BLUE)
+        label = re.sub(r"(?i)rep", "R", alias)
+        ax.plot(rx, y_bot, "v", color=color, markersize=5, clip_on=False, zorder=6)
+        ax.annotate(
+            label, xy=(rx, y_bot), xycoords="data",
+            xytext=(0, -14), textcoords="offset points",
+            fontsize=6, color=color, ha="center", va="top",
+            fontweight="bold", annotation_clip=False,
+        )
+
+    # ── Color the day-number tick labels ──────────────────────────────────
+    if not release_color_map:
+        return
+    fig.canvas.draw()  # required to populate tick label positions
+    for label in ax.get_xticklabels():
+        text = label.get_text()
+        if not text:
+            continue
+        try:
+            # Resolve the tick position back to an actual date
+            pos = label.get_position()[0]  # x in data coords (matplotlib date float)
+            tick_date = mdates.num2date(pos).date()
+        except (ValueError, OverflowError):
+            continue
+        if tick_date in release_color_map:
+            label.set_color(release_color_map[tick_date])
+            label.set_fontweight("bold")
+            label.set_fontsize(8)
+
 # ── Single-line graph ──────────────────────────────────────────────────────
 def gen_single(dates: list[date], counts: list[int],
                title: str, ylabel: str, out: Path):
     y = np.array(counts, float)
     fig, ax = base_fig()
     x_num = setup_x_axis(ax, dates)
-    setup_y_axis(ax, y.max() if y.size else 0)
+    setup_y_axis(ax, float(y.max()) if y.size else 0)
     ax.margins(x=0.02, y=0.05)
     ax.set_ylim(bottom=-0.5)
 
@@ -304,13 +370,17 @@ def gen_single(dates: list[date], counts: list[int],
     plt.tight_layout(pad=0.8)
     save_svg(fig, out)
 
-# ── Multi-line graph with optional total + release markers ─────────────────
+# ── Multi-line graph (downloads) ───────────────────────────────────────────
 def gen_multi(dates: list[date], series: dict[str, list[int]],
               title: str, ylabel: str, out: Path,
               show_total: bool = False,
               releases: list | None = None,
               allowed_aliases: set | None = None):
-    fig, ax = base_fig(height=3.8)
+    """
+    series: ordered dict {alias: counts}
+    Stats bar (Δ yesterday / 7-day avg / 31-day avg) appended below chart.
+    """
+    fig, ax = base_fig(height=4.3)   # extra height for stats bar
     x_num = setup_x_axis(ax, dates)
     ax.margins(x=0.02, y=0.05)
     ax.set_ylim(bottom=-0.5)
@@ -322,13 +392,13 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
         y = np.array(counts, float)
         total += y
         all_y.extend(counts)
-        color = LINE_COLORS.get(alias, BLUE)
+        color = REP_COLORS.get(alias, BLUE)
         xs, ys = smooth(x_num, y)
         ax.plot(xs, ys, color=color, linewidth=2.0, zorder=3, label=alias)
         ax.scatter(x_num, y, color=color, s=18, zorder=4, linewidths=0)
 
     if show_total and len(series) > 1:
-        tc = LINE_COLORS["Total"]
+        tc = REP_COLORS["Total"]
         xs, ys = smooth(x_num, total)
         ax.plot(xs, ys, color=tc, linewidth=2.5, linestyle="--", zorder=3, label="Total")
         ax.scatter(x_num, total, color=tc, s=22, zorder=4, linewidths=0, marker="D")
@@ -337,14 +407,26 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
     setup_y_axis(ax, max(all_y) if all_y else 0)
 
     ncols = len(series) + (1 if show_total and len(series) > 1 else 0)
-    ax.legend(fontsize=7, framealpha=0, labelcolor=BLUE,
-              loc="upper left", ncol=ncols)
+    ax.legend(fontsize=7, framealpha=0, labelcolor="none",
+              loc="upper left", ncol=ncols).remove()
+
+    # Manual legend so we can color each entry with its rep color
+    handles, labels = ax.get_legend_handles_labels()
+    leg = ax.legend(handles, labels, fontsize=7, framealpha=0,
+                    loc="upper left", ncol=ncols)
+    for text, alias in zip(leg.get_texts(), list(series.keys()) + (["Total"] if show_total and len(series) > 1 else [])):
+        text.set_color(REP_COLORS.get(alias, BLUE))
+
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
+    plt.subplots_adjust(bottom=0.13)   # room for stats bar
 
-    # markers AFTER tight_layout — ylim is stable now
+    # Stats bar
+    add_stats_bar(fig, total)
+
+    # Release markers + colored tick labels (must be after tight_layout)
     if releases:
-        draw_release_markers(ax, releases, x_num[0], x_num[-1], allowed_aliases)
+        apply_release_visuals(ax, fig, dates, releases, allowed_aliases)
 
     save_svg(fig, out)
 
@@ -364,13 +446,13 @@ def main():
                "New Followers",
                ASSETS_DIR / "followers.svg")
 
-    # ── Stars (total across all repos — single line)
+    # ── Stars (total)
     gen_single(dates, daily_delta(h, "stars_total"),
                f"{name} — Daily Stars",
                "New Stars",
                ASSETS_DIR / "stars.svg")
 
-    # ── Profile views (GitHub traffic API already returns daily counts)
+    # ── Profile views (GitHub traffic API: 14-day daily data)
     view_map = dict(fetch_profile_views())
     start    = TODAY - timedelta(days=DAYS - 1)
     views    = [view_map.get(start + timedelta(days=i), 0) for i in range(DAYS)]
@@ -379,7 +461,7 @@ def main():
                "Views / day",
                ASSETS_DIR / "profile-views.svg")
 
-    # ── GitHub Downloads — Rep1/Rep2/Rep3 + Total (dashed), all release markers
+    # ── GitHub Downloads — Rep1/Rep2/Rep3 + Total + markers + stats
     gh_dl = {alias: daily_delta(h, "gh_downloads", alias) for alias in REPOS}
     gen_multi(dates, gh_dl,
               f"{name} — GitHub Downloads / day",
@@ -389,7 +471,7 @@ def main():
               releases=releases,
               allowed_aliases=set(REPOS.keys()))
 
-    # ── PSGallery Downloads — Rep1/Rep2 only, Rep1/Rep2 release markers
+    # ── PSGallery Downloads — Rep1/Rep2 + markers (Rep1/Rep2 only) + stats
     if PS_MODULES:
         ps_dl = {alias: daily_delta(h, "ps_downloads", alias) for alias in PS_MODULES}
         gen_multi(dates, ps_dl,
@@ -400,7 +482,8 @@ def main():
                   releases=releases,
                   allowed_aliases={"Rep1", "Rep2"})
     else:
-        print("[INFO] PS_MODULES empty — skipping psgallery-downloads.svg", file=sys.stderr)
+        print("[INFO] PS_MODULE env vars not set — skipping psgallery-downloads.svg",
+              file=sys.stderr)
 
 if __name__ == "__main__":
     main()
