@@ -70,7 +70,7 @@ If these tools saved you time or kept hardware updated — consider supporting d
 [![Patreon](https://img.shields.io/badge/Patreon-Patron-F96854?style=for-the-badge&logo=patreon)](https://www.patreon.com/c/firstevertech/membership)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Coffee-Donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![Ko-fi](https://img.shields.io/badge/Ko--fi-Donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/firstever)
 
 ## 🏢 Sponsors
-*No sponsors yet — [be the first and add your company ad!](https://www.patreon.com/FirstEverTech)*
+*No sponsors yet — [be the first and add your company ad!](https://www.patreon.com/c/firstevertech/membership)*
 
 ## ❤️ Supporters
 
