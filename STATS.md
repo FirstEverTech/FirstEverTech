@@ -30,10 +30,6 @@
 
 # 📊 Stats
 
-> Auto-generated daily · [← Back to profile](./README.md)
-
----
-
 ## 📥 GitHub Downloads
 
 Lines: `Rep1` Universal-Intel-Chipset-Updater · `Rep2` Universal-Intel-WiFi-BT-Updater · `Rep3` Adobe-AVX2-Patch · `Total` (dashed)
@@ -41,15 +37,11 @@ Markers below axis = release dates.
 
 ![GitHub Downloads](assets/github-downloads.svg)
 
----
-
 ## 🎯 PSGallery Downloads
 
 Lines: `Rep1` · `Rep2` · Release markers for Rep1/Rep2 only.
 
 ![PSGallery Downloads](assets/psgallery-downloads.svg)
-
----
 
 ## ⭐ Stars
 
@@ -57,13 +49,10 @@ Total daily stars across all repositories.
 
 ![Stars](assets/stars.svg)
 
----
-
 ## 👥 Followers
 
 ![Followers](assets/followers.svg)
 
----
 
 ## 👁️ Profile Views
 
@@ -71,8 +60,18 @@ Daily traffic on the profile README (last 31 days, sourced from GitHub traffic A
 
 ![Profile Views](assets/profile-views.svg)
 
----
 
 ## 🤝 Contribution
 
 ![Contribution Graph](assets/contribution-graph.svg)
+
+#$ 📘 Useful Links
+
+- [FirstEver Technology GitHub](https://github.com/FirstEverTech)
+- [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater)
+- [Universal Intel Wi-Fi and Bluetooth Drivers Updater](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater)
+- [Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)
+
+---
+
+Author: Marcin Grygiel aka FirstEver ([LinkedIn](https://www.linkedin.com/in/marcin-grygiel))
