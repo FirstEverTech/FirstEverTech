@@ -15,6 +15,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta, date, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from scipy.interpolate import CubicSpline
 
@@ -44,7 +45,7 @@ RELEASES_FILE = Path("assets/releases.conf")
 MENTIONS_FILE = Path("assets/mentions.conf")   # forum posts, YT videos, web mentions
 ASSETS_DIR    = Path("assets")
 DAYS = 31
-TODAY = date.today()
+TODAY = datetime.now(ZoneInfo("Europe/London")).date()
 
 # ── Color palette ──────────────────────────────────────────────────────────
 BLUE     = "#58a6ff"
@@ -245,8 +246,14 @@ def style_ax(ax, title: str, ylabel: str):
                  fontfamily="DejaVu Sans", pad=10)
     ax.set_ylabel(ylabel, color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold")
-    ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
-                  fontfamily="DejaVu Sans", fontweight="bold")
+    ax.set_xlabel(
+        "Last Month",
+        color=BLUE,
+        fontsize=8,
+        fontfamily="DejaVu Sans",
+        fontweight="bold",
+        labelpad=38
+    )
 
 def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     x_num = mdates.date2num([datetime.combine(d, datetime.min.time()) for d in dates])
@@ -326,10 +333,10 @@ def apply_annotations(ax, fig, dates: list[date],
         tick_colors[rel_date] = color
 
     for alias, d in releases:
-        draw_marker(alias, d, "v", -14, "R")   # ▼, row 1
+        draw_marker(alias, d, "v", -10, "R")   # ▼, row 1
 
     for alias, d in mentions:
-        draw_marker(alias, d, "*", -26, "M")   # ★, row 2
+        draw_marker(alias, d, "*", -20, "M")   # ★, row 2
 
     # Recolor X-axis tick labels that coincide with any annotation
     if not tick_colors:
@@ -367,7 +374,7 @@ def gen_single(dates: list[date], counts: list[int],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.13)
+    plt.subplots_adjust(bottom=0.20)
 
     add_stats_bar(fig, y)
 
@@ -421,7 +428,7 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.13)
+    plt.subplots_adjust(bottom=0.20)
 
     # Stats use total of all series
     add_stats_bar(fig, total)
