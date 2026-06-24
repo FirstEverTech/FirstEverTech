@@ -15,7 +15,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta, date, timezone
-from zoneinfo import ZoneInfo
 from pathlib import Path
 from scipy.interpolate import CubicSpline
 
@@ -45,7 +44,7 @@ RELEASES_FILE = Path("assets/releases.conf")
 MENTIONS_FILE = Path("assets/mentions.conf")   # forum posts, YT videos, web mentions
 ASSETS_DIR    = Path("assets")
 DAYS = 31
-TODAY = datetime.now(ZoneInfo("Europe/London")).date()
+TODAY = date.today()
 
 # ── Color palette ──────────────────────────────────────────────────────────
 BLUE     = "#58a6ff"
@@ -246,19 +245,15 @@ def style_ax(ax, title: str, ylabel: str):
                  fontfamily="DejaVu Sans", pad=10)
     ax.set_ylabel(ylabel, color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold")
-    ax.set_xlabel(
-        "Last Month",
-        color=BLUE,
-        fontsize=8,
-        fontfamily="DejaVu Sans",
-        fontweight="bold",
-        labelpad=38
-    )
+    ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
+                  fontfamily="DejaVu Sans", fontweight="bold",
+                  labelpad=30)   # sits below R row (-16pt) and M row (-27pt)
 
 def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     x_num = mdates.date2num([datetime.combine(d, datetime.min.time()) for d in dates])
     ax.xaxis.set_major_locator(mdates.DayLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d"))
+    ax.tick_params(axis="x", pad=2)   # tick labels close to axis → room for R/M rows below
     ax.grid(True, axis="x", color=GRID_MAJ, linewidth=0.7, linestyle=":")
     return x_num
 
@@ -286,8 +281,8 @@ def save_svg(fig, out: Path):
 # ── Annotation markers ─────────────────────────────────────────────────────
 # Two annotation types rendered below the X-axis:
 #
-#   releases (releases.conf)  →  ▼ triangle,  label "R1/R2/R3",  row y_offset=-14
-#   mentions (mentions.conf)  →  ★ star,      label "M1/M2",     row y_offset=-26
+#   releases (releases.conf)  →  ▼ triangle,  label "R1/R2/R3",  row y_offset=-16
+#   mentions (mentions.conf)  →  ★ star,      label "M1/M2",     row y_offset=-27
 #
 # Marker + label color = rep color (white/green/red-orange).
 # Tick label for the day number is also recolored to match.
@@ -333,10 +328,10 @@ def apply_annotations(ax, fig, dates: list[date],
         tick_colors[rel_date] = color
 
     for alias, d in releases:
-        draw_marker(alias, d, "v", -10, "R")   # ▼, row 1
+        draw_marker(alias, d, "v", -16, "R")   # ▼ row 1 — just below day number
 
     for alias, d in mentions:
-        draw_marker(alias, d, "*", -20, "M")   # ★, row 2
+        draw_marker(alias, d, "*", -27, "M")   # ★ row 2 — just below R row
 
     # Recolor X-axis tick labels that coincide with any annotation
     if not tick_colors:
@@ -374,7 +369,7 @@ def gen_single(dates: list[date], counts: list[int],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.20)
+    plt.subplots_adjust(bottom=0.22)
 
     add_stats_bar(fig, y)
 
@@ -428,7 +423,7 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.20)
+    plt.subplots_adjust(bottom=0.22)
 
     # Stats use total of all series
     add_stats_bar(fig, total)
