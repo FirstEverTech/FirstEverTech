@@ -210,9 +210,10 @@ def load_mentions() -> list[tuple[str, date]]:
 # ── Stats computation ──────────────────────────────────────────────────────
 def compute_stats(counts: np.ndarray) -> tuple[str, str, str]:
     arr = counts.astype(float)
-    delta = arr[-1] - arr[-2] if len(arr) >= 2 else (arr[-1] if len(arr) else 0.0)
-    avg7  = float(np.mean(arr[-7:]))  if len(arr) >= 7  else float(np.mean(arr))
-    avg31 = float(np.mean(arr))
+    done = arr[:-1]   # pomijamy dzisiaj — dzień w trakcie, dane niepełne
+    delta = done[-1] - done[-2] if len(done) >= 2 else 0.0
+    avg7  = float(np.mean(done[-7:]))  if len(done) >= 7  else float(np.mean(done))
+    avg31 = float(np.mean(done))
     delta_str = f"+{delta:.0f}" if delta >= 0 else f"{delta:.0f}"
     return delta_str, f"{avg7:.1f}", f"{avg31:.1f}"
 
