@@ -77,7 +77,7 @@ If these tools saved you time or kept hardware updated — consider supporting d
 A huge thank you to all our supporters – your contributions make a real difference.  
 Your name could be here too. Every bit helps cover development costs and ensures these tools continue to improve.
 <!-- SUPPORTERS_START -->
-> - Sqania, jadeanemail, westor7, J. A. Dean, Bartechr, tsantaliki
+- Sqania, jadeanemail, westor7, J. A. Dean, Bartechr, tsantaliki
 <!-- SUPPORTERS_END -->
 
 ## 💼 Career Opportunity
