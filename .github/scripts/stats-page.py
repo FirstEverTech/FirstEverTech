@@ -113,13 +113,38 @@ def save_history(h: dict):
     HISTORY_FILE.write_text(json.dumps(h, indent=2))
 
 def take_snapshot(h: dict) -> dict:
+    followers   = fetch_followers()
+    stars       = fetch_stars_total()
+    gh_dl       = {alias: fetch_repo_downloads(full) for alias, full in REPOS.items()}
+    ps_dl       = {alias: fetch_psgallery(mod)       for alias, mod  in PS_MODULES.items()}
+
+    print(f"[INFO] {TODAY}  followers={followers}  stars={stars}")
+    print(f"[INFO] gh_downloads={gh_dl}")
+    print(f"[INFO] ps_downloads={ps_dl}")
+
     snap = {
-        "followers":    fetch_followers(),
-        "stars_total":  fetch_stars_total(),
-        "gh_downloads": {alias: fetch_repo_downloads(full) for alias, full in REPOS.items()},
-        "ps_downloads": {alias: fetch_psgallery(mod) for alias, mod in PS_MODULES.items()},
+        "followers":    followers,
+        "stars_total":  stars,
+        "gh_downloads": gh_dl,
+        "ps_downloads": ps_dl,
     }
-    h[TODAY.isoformat()] = snap
+
+    # Preserve profile_views already stored for today (set below), then write snap
+    existing = h.get(TODAY.isoformat(), {})
+    h[TODAY.isoformat()] = {**existing, **snap}
+
+    # Traffic API covers last 14 days — store each day in history so data accumulates
+    # over time instead of being lost after every run.
+    view_data = fetch_profile_views()
+    print(f"[INFO] profile_views from API: {view_data}")
+    for view_date, count in view_data:
+        d_str = view_date.isoformat()
+        if d_str not in h:
+            h[d_str] = {}
+        # Only overwrite with 0 if we have no previous value for that day
+        if count > 0 or "profile_views" not in h[d_str]:
+            h[d_str]["profile_views"] = count
+
     return h
 
 def daily_delta(h: dict, *key_path) -> list[int]:
@@ -247,13 +272,13 @@ def style_ax(ax, title: str, ylabel: str):
                   fontfamily="DejaVu Sans", fontweight="bold")
     ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold",
-                  labelpad=30)   # sits below R row (-16pt) and M row (-27pt)
+                  labelpad=30)
 
 def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     x_num = mdates.date2num([datetime.combine(d, datetime.min.time()) for d in dates])
     ax.xaxis.set_major_locator(mdates.DayLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d"))
-    ax.tick_params(axis="x", pad=2)   # tick labels close to axis → room for R/M rows below
+    ax.tick_params(axis="x", pad=2)
     ax.grid(True, axis="x", color=GRID_MAJ, linewidth=0.7, linestyle=":")
     return x_num
 
@@ -281,8 +306,8 @@ def save_svg(fig, out: Path):
 # ── Annotation markers ─────────────────────────────────────────────────────
 # Two annotation types rendered below the X-axis:
 #
-#   releases (releases.conf)  →  ▼ triangle,  label "R1/R2/R3",  row y_offset=-16
-#   mentions (mentions.conf)  →  ★ star,      label "M1/M2",     row y_offset=-27
+#   releases (releases.conf)  →  ▼ triangle,  label "R1/R2/R3",  row y_offset=-14
+#   mentions (mentions.conf)  →  ★ star,      label "M1/M2",     row y_offset=-26
 #
 # Marker + label color = rep color (white/green/red-orange).
 # Tick label for the day number is also recolored to match.
@@ -458,10 +483,13 @@ def main():
                f"{name} — Daily Stars", "New Stars",
                ASSETS_DIR / "stars.svg")
 
-    # ── Profile views (14-day window from traffic API, older days = 0)
-    view_map = dict(fetch_profile_views())
-    start    = TODAY - timedelta(days=DAYS - 1)
-    views    = [view_map.get(start + timedelta(days=i), 0) for i in range(DAYS)]
+    # ── Profile views — read from history (populated by take_snapshot from Traffic API)
+    # This survives API caching/rate-limits and builds a 31-day archive over time.
+    start = TODAY - timedelta(days=DAYS - 1)
+    views = [
+        h.get((start + timedelta(days=i)).isoformat(), {}).get("profile_views", 0)
+        for i in range(DAYS)
+    ]
     gen_single(dates, views,
                f"{name} — Profile Views", "Views / day",
                ASSETS_DIR / "profile-views.svg")
