@@ -455,7 +455,8 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
 
     svg_w   = float(m_w.group(2))
     svg_h   = float(m_h.group(2))
-    new_h   = svg_h + 70   # więcej miejsca
+    # Zwiększamy wysokość o 90 px, aby zmieścić większe odstępy
+    new_h   = svg_h + 90
     cx      = svg_w / 2
 
     content = content[:m_h.start()] + m_h.group(1) + str(new_h) + m_h.group(3) + content[m_h.end():]
@@ -463,13 +464,15 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
     def _extend_vb(m):
         parts = m.group(2).split()
         if len(parts) == 4:
-            parts[3] = str(float(parts[3]) + 70)
+            parts[3] = str(float(parts[3]) + 90)
         return m.group(1) + " ".join(parts) + m.group(3)
     content = re.sub(r'(viewBox=["\'])([^"\']+)(["\'])', _extend_vb, content, count=1)
 
-    # Zwiększone odstępy – teraz "Last Month" i statystyki są dalej od siebie i od osi
-    last_month_y = svg_h + 22
-    stats_y      = svg_h + 44
+    # Ustawiamy pozycje z dużymi odstępami:
+    # "Last Month" będzie 30 px poniżej osi (większa przerwa od M2)
+    last_month_y = svg_h + 30
+    # Statystyki będą kolejne 30 px poniżej "Last Month"
+    stats_y      = svg_h + 60
 
     footer = (
         f'\n<!-- stats-footer -->\n'
