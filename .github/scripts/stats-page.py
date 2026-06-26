@@ -35,8 +35,8 @@ REPOS = {
 }
 
 PS_MODULES = {
-    "Rep1": os.environ.get("PS_REP1_MODULE", "Universal-Intel-Chipset-Updater"),
-    "Rep2": os.environ.get("PS_REP2_MODULE", "Universal-Intel-WiFi-BT-Updater"),
+    "Rep1": os.environ.get("PS_REP1_MODULE", "universal-intel-chipset-device-updater"),
+    "Rep2": os.environ.get("PS_REP2_MODULE", "universal-intel-wifi-bt-driver-updater"),
 }
 
 HISTORY_FILE  = Path("assets/data/stats_history.json")
@@ -91,11 +91,15 @@ def fetch_psgallery(module: str) -> int:
     try:
         r = requests.get(
             "https://www.powershellgallery.com/api/v2/FindPackagesById()",
-            params={"id": f"'{module}'", "$select": "DownloadCount"},
+            params={"id": f"'{module}'"},
             timeout=30,
         )
-        counts = re.findall(r"<d:DownloadCount[^>]*>(\d+)</d:DownloadCount>", r.text)
-        return sum(int(c) for c in counts)
+        r.raise_for_status()
+        # VersionDownloadCount = per-version; DownloadCount = package total (same value repeated)
+        counts = re.findall(r"<d:VersionDownloadCount[^>]*>(\d+)</d:VersionDownloadCount>", r.text)
+        total = sum(int(c) for c in counts)
+        print(f"[INFO] PSGallery {module}: versions={len(counts)} total={total}")
+        return total
     except Exception as e:
         print(f"[WARN] PSGallery {module}: {e}", file=sys.stderr)
         return 0
@@ -425,10 +429,14 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
         text.set_color(REP_COLORS.get(alias, BLUE))
 
     style_ax(ax, title, ylabel)
+    # Override xlabel labelpad to push "Last Month" below the R/M annotation markers
+    ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
+                  fontfamily="DejaVu Sans", fontweight="bold",
+                  labelpad=20)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.22)   # ZWIĘKSZONE z 0.15 na 0.22
+    plt.subplots_adjust(bottom=0.28)
 
-    add_stats_bar(fig, total, y_pos=0.06)   # PODNIESIONE statystyki
+    add_stats_bar(fig, total, y_pos=0.10)
 
     if releases or mentions:
         apply_annotations(ax, fig, dates,
