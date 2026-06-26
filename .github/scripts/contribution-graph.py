@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import PchipInterpolator   # <-- kluczowa zmiana
 
 USERNAME = os.environ.get("USERNAME", "FirstEverTech")
 TOKEN    = os.environ.get("GITHUB_TOKEN")
@@ -109,11 +109,12 @@ def generate(dates, counts, username, out):
     y = counts
     x_num = mdates.date2num(x_dates)
 
-    # Wygładzanie
-    cs = CubicSpline(x_num, y, bc_type='natural')
+    # Wygładzanie z zachowaniem monotoniczności – PCHIP przechodzi przez punkty
+    # i nie tworzy niepotrzebnych ekstremów między punktami
+    interp = PchipInterpolator(x_num, y)
     x_smooth = np.linspace(x_num[0], x_num[-1], 300)
-    y_smooth = cs(x_smooth)
-    y_smooth = np.maximum(y_smooth, 0)
+    y_smooth = interp(x_smooth)
+    y_smooth = np.maximum(y_smooth, 0)   # zabezpieczenie przed wartościami ujemnymi
 
     fig, ax = plt.subplots(figsize=(10, 3.2), dpi=150)
     fig.patch.set_facecolor("none")
@@ -123,7 +124,7 @@ def generate(dates, counts, username, out):
     ax.plot(x_smooth, y_smooth, color=LINE, linewidth=2.5, zorder=3)
     ax.fill_between(x_smooth, y_smooth, color=LINE, alpha=0.15, zorder=2)
 
-    # Kropki
+    # Kropki – na oryginalnych punktach
     ax.scatter(x_num, y, color=BLUE, s=30, zorder=4, linewidths=0)
 
     # Marginesy
