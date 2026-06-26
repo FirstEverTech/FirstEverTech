@@ -205,14 +205,14 @@ def compute_stats(counts: np.ndarray) -> tuple[str, str, str]:
     delta_str = f"+{delta:.0f}" if delta >= 0 else f"{delta:.0f}"
     return delta_str, f"{avg7:.1f}", f"{avg31:.1f}"
 
-def add_stats_bar(fig, counts: np.ndarray):
+def add_stats_bar(fig, counts: np.ndarray, y_pos: float = 0.04):
     delta_str, avg7, avg31 = compute_stats(counts)
     text = (
         f"▲ vs yesterday: {delta_str} / day"
         f"   │   ⌀ last 7 days: {avg7} / day"
         f"   │   ⌀ last 31 days: {avg31} / day"
     )
-    fig.text(0.5, 0.04, text, ha="center", va="bottom",
+    fig.text(0.5, y_pos, text, ha="center", va="bottom",
              color=BLUE, fontsize=7.5, fontfamily="DejaVu Sans", fontweight="bold")
 
 # ── SVG draw animation ─────────────────────────────────────────────────────
@@ -375,7 +375,7 @@ def gen_single(dates: list[date], counts: list[int],
     plt.tight_layout(pad=0.8)
     plt.subplots_adjust(bottom=0.18)
 
-    add_stats_bar(fig, y)
+    add_stats_bar(fig, y)   # domyślnie y_pos=0.04
 
     if releases or mentions:
         apply_annotations(ax, fig, dates,
@@ -425,9 +425,9 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.15)
+    plt.subplots_adjust(bottom=0.22)   # ZWIĘKSZONE z 0.15 na 0.22
 
-    add_stats_bar(fig, total)
+    add_stats_bar(fig, total, y_pos=0.06)   # PODNIESIONE statystyki
 
     if releases or mentions:
         apply_annotations(ax, fig, dates,
