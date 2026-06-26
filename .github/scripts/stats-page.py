@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta, date, timezone
 from pathlib import Path
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import PchipInterpolator   # <-- KLUCZOWA ZMIANA
 
 # ── Config ─────────────────────────────────────────────────────────────────
 USERNAME     = os.environ.get("GH_USERNAME", "FirstEverTech")
@@ -290,12 +290,16 @@ def setup_y_axis(ax, y_max_val: float):
     ax.grid(True, axis="y", color=GRID_MAJ, linewidth=0.7, linestyle=":")
 
 def smooth(x_num: np.ndarray, y) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Wygładzanie z zachowaniem monotoniczności – PCHIP przechodzi przez punkty
+    i nie tworzy niepotrzebnych ekstremów między nimi.
+    """
     y = np.array(y, float)
     if len(x_num) < 3:
         return x_num, np.maximum(y, 0)
-    cs = CubicSpline(x_num, y, bc_type="natural")
+    interp = PchipInterpolator(x_num, y)
     xs = np.linspace(x_num[0], x_num[-1], 300)
-    return xs, np.maximum(cs(xs), 0)
+    return xs, np.maximum(interp(xs), 0)
 
 def save_svg(fig, out: Path):
     out.parent.mkdir(parents=True, exist_ok=True)
