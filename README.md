@@ -40,6 +40,7 @@ I don’t just advise; I **build, fix, and improve** whatever is broken or outda
 > *“One person, team‑level results.”*
 
 ![GitHub Downloads](assets/github-downloads.svg)
+<p align="center"><sub>Rep1 = <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">Universal Intel Chipset Updater</a> &nbsp;|&nbsp; Rep2 = <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">Universal Intel WiFi & BT Updater</a> &nbsp;|&nbsp; Rep3 = <a href="https://github.com/FirstEverTech/Adobe-AVX2-Patch">Adobe AVX2 Patch</a> &nbsp;·&nbsp; R = Release &nbsp;·&nbsp; M = Media Mention</sub></p>
 
 ---
 
