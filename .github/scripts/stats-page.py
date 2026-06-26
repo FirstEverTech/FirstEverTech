@@ -333,6 +333,7 @@ def apply_annotations(ax, fig, dates: list[date],
         )
         tick_colors[rel_date] = color
 
+    # R1/R2 i M1/M2 – znaczniki tuż pod osią
     for alias, d in releases:
         draw_marker(alias, d, "v", -10, "R")
     for alias, d in mentions:
@@ -455,8 +456,7 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
 
     svg_w   = float(m_w.group(2))
     svg_h   = float(m_h.group(2))
-    # Zwiększamy wysokość o 90 px, aby zmieścić większe odstępy
-    new_h   = svg_h + 90
+    new_h   = svg_h + 120   # DUŻA przestrzeń na rozsunięcie elementów
     cx      = svg_w / 2
 
     content = content[:m_h.start()] + m_h.group(1) + str(new_h) + m_h.group(3) + content[m_h.end():]
@@ -464,15 +464,13 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
     def _extend_vb(m):
         parts = m.group(2).split()
         if len(parts) == 4:
-            parts[3] = str(float(parts[3]) + 90)
+            parts[3] = str(float(parts[3]) + 120)
         return m.group(1) + " ".join(parts) + m.group(3)
     content = re.sub(r'(viewBox=["\'])([^"\']+)(["\'])', _extend_vb, content, count=1)
 
-    # Ustawiamy pozycje z dużymi odstępami:
-    # "Last Month" będzie 30 px poniżej osi (większa przerwa od M2)
-    last_month_y = svg_h + 30
-    # Statystyki będą kolejne 30 px poniżej "Last Month"
-    stats_y      = svg_h + 60
+    # Znacząco rozsunięte pozycje – teraz między wierszami jest duża przerwa
+    last_month_y = svg_h + 35   # daleko od osi, żeby nie nachodził na M2
+    stats_y      = svg_h + 65   # jeszcze dalej od Last Month
 
     footer = (
         f'\n<!-- stats-footer -->\n'
