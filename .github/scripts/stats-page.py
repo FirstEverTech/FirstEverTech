@@ -542,7 +542,7 @@ def main():
     gen_multi(dates, ps_dl,
               f"{name} — PSGallery Downloads / day", "Downloads / day",
               ASSETS_DIR / "psgallery-downloads.svg",
-              show_total=False,
+              show_total=True,
               releases=releases,
               mentions=mentions,
               allowed_aliases={"Rep1", "Rep2"})
