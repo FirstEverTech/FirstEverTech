@@ -212,7 +212,7 @@ def add_stats_bar(fig, counts: np.ndarray):
         f"   │   ⌀ last 7 days: {avg7} / day"
         f"   │   ⌀ last 31 days: {avg31} / day"
     )
-    fig.text(0.5, 0.005, text, ha="center", va="bottom",
+    fig.text(0.5, 0.025, text, ha="center", va="bottom",
              color=BLUE, fontsize=7.5, fontfamily="DejaVu Sans", fontweight="bold")
 
 # ── SVG draw animation ─────────────────────────────────────────────────────
@@ -373,7 +373,7 @@ def gen_single(dates: list[date], counts: list[int],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.26)
+    plt.subplots_adjust(bottom=0.18)
 
     add_stats_bar(fig, y)
 
@@ -425,7 +425,7 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.22)
+    plt.subplots_adjust(bottom=0.15)
 
     add_stats_bar(fig, total)
 
@@ -470,10 +470,10 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
 
     footer = (
         f'\n<!-- stats-footer -->\n'
-        f'<text x="{cx}" y="{svg_h + 18}" text-anchor="middle" '
+        f'<text x="{cx}" y="{svg_h + 8}" text-anchor="middle" '
         f'font-family="DejaVu Sans" font-size="11" font-weight="bold" '
         f'fill="{BLUE}">Last Month</text>\n'
-        f'<text x="{cx}" y="{svg_h + 36}" text-anchor="middle" '
+        f'<text x="{cx}" y="{svg_h + 22}" text-anchor="middle" '
         f'font-family="DejaVu Sans" font-size="8.5" font-weight="bold" '
         f'fill="{BLUE}">{stats_text}</text>\n'
         f'<!-- /stats-footer -->\n'
