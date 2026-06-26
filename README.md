@@ -39,7 +39,7 @@ I don’t just advise; I **build, fix, and improve** whatever is broken or outda
 
 > *“One person, team‑level results.”*
 
-![Contribution Graph](assets/contribution-graph.svg)
+![GitHub Downloads](assets/github-downloads.svg)
 
 ---
 
