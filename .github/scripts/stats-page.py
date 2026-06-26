@@ -271,9 +271,6 @@ def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     return x_num
 
 def setup_y_axis(ax, y_max_val: float):
-    """
-    Ustawia 8 linii siatki i dodaje margines u góry (pół kroku).
-    """
     N = 8
     if y_max_val <= 0:
         step = 1
@@ -283,7 +280,6 @@ def setup_y_axis(ax, y_max_val: float):
     if nice_max < N - 1:
         nice_max = N - 1
     ax.set_yticks(np.linspace(0, nice_max, N))
-    # Dodaj margines u góry – pół kroku
     ax.set_ylim(0, nice_max + step * 0.5)
     ax.grid(True, axis="y", color=GRID_MAJ, linewidth=0.7, linestyle=":")
 
@@ -337,10 +333,11 @@ def apply_annotations(ax, fig, dates: list[date],
         )
         tick_colors[rel_date] = color
 
+    # ZMIANA: przesunięcia zmniejszone z -16/-27 do -10/-18
     for alias, d in releases:
-        draw_marker(alias, d, "v", -16, "R")
+        draw_marker(alias, d, "v", -10, "R")
     for alias, d in mentions:
-        draw_marker(alias, d, "*", -27, "M")
+        draw_marker(alias, d, "*", -18, "M")
 
     if not tick_colors:
         return
@@ -366,7 +363,6 @@ def gen_single(dates: list[date], counts: list[int],
     y = np.array(counts, float)
     fig, ax = base_fig(height=3.8)
     x_num = setup_x_axis(ax, dates)
-    # Usunięto ax.set_ylim(bottom=-0.5) – teraz robi to setup_y_axis
     setup_y_axis(ax, float(y.max()) if y.size else 0)
     ax.margins(x=0.02, y=0.05)
 
