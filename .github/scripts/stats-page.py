@@ -416,8 +416,10 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
     setup_y_axis(ax, max(all_y) if all_y else 0)
 
     handles, labels = ax.get_legend_handles_labels()
+    # LEGENDA PRZENIESIONA NA DÓŁ
     leg = ax.legend(handles, labels, fontsize=7, framealpha=0,
-                    loc="upper left",
+                    loc="lower center",
+                    bbox_to_anchor=(0.5, -0.25),
                     ncol=len(series) + (1 if show_total and len(series) > 1 else 0))
     all_aliases = list(series.keys()) + (["Total"] if show_total and len(series) > 1 else [])
     for text, alias in zip(leg.get_texts(), all_aliases):
@@ -425,9 +427,9 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.22)   # ZWIĘKSZONE z 0.15 na 0.22
+    plt.subplots_adjust(bottom=0.30)   # zwiększone, żeby zmieścić legendę
 
-    add_stats_bar(fig, total, y_pos=0.06)   # PODNIESIONE statystyki
+    add_stats_bar(fig, total, y_pos=0.06)
 
     if releases or mentions:
         apply_annotations(ax, fig, dates,
@@ -456,7 +458,7 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
 
     svg_w   = float(m_w.group(2))
     svg_h   = float(m_h.group(2))
-    new_h   = svg_h + 120   # DUŻA przestrzeń na rozsunięcie elementów
+    new_h   = svg_h + 120
     cx      = svg_w / 2
 
     content = content[:m_h.start()] + m_h.group(1) + str(new_h) + m_h.group(3) + content[m_h.end():]
@@ -468,9 +470,8 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
         return m.group(1) + " ".join(parts) + m.group(3)
     content = re.sub(r'(viewBox=["\'])([^"\']+)(["\'])', _extend_vb, content, count=1)
 
-    # Znacząco rozsunięte pozycje – teraz między wierszami jest duża przerwa
-    last_month_y = svg_h + 35   # daleko od osi, żeby nie nachodził na M2
-    stats_y      = svg_h + 65   # jeszcze dalej od Last Month
+    last_month_y = svg_h + 35
+    stats_y      = svg_h + 65
 
     footer = (
         f'\n<!-- stats-footer -->\n'
