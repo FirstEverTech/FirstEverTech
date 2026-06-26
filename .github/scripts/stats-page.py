@@ -212,7 +212,7 @@ def add_stats_bar(fig, counts: np.ndarray):
         f"   │   ⌀ last 7 days: {avg7} / day"
         f"   │   ⌀ last 31 days: {avg31} / day"
     )
-    fig.text(0.5, 0.005, text, ha="center", va="bottom",
+    fig.text(0.5, 0.04, text, ha="center", va="bottom",
              color=BLUE, fontsize=7.5, fontfamily="DejaVu Sans", fontweight="bold")
 
 # ── SVG draw animation ─────────────────────────────────────────────────────
@@ -260,7 +260,7 @@ def style_ax(ax, title: str, ylabel: str):
                   fontfamily="DejaVu Sans", fontweight="bold")
     ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold",
-                  labelpad=30)
+                  labelpad=10)
 
 def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     x_num = mdates.date2num([datetime.combine(d, datetime.min.time()) for d in dates])
@@ -271,9 +271,6 @@ def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     return x_num
 
 def setup_y_axis(ax, y_max_val: float):
-    """
-    Ustawia 8 linii siatki i dodaje margines u góry (pół kroku).
-    """
     N = 8
     if y_max_val <= 0:
         step = 1
@@ -283,7 +280,6 @@ def setup_y_axis(ax, y_max_val: float):
     if nice_max < N - 1:
         nice_max = N - 1
     ax.set_yticks(np.linspace(0, nice_max, N))
-    # Dodaj margines u góry – pół kroku
     ax.set_ylim(0, nice_max + step * 0.5)
     ax.grid(True, axis="y", color=GRID_MAJ, linewidth=0.7, linestyle=":")
 
@@ -337,10 +333,11 @@ def apply_annotations(ax, fig, dates: list[date],
         )
         tick_colors[rel_date] = color
 
+    # R1/R2 i M1/M2 – znaczniki tuż pod osią
     for alias, d in releases:
-        draw_marker(alias, d, "v", -16, "R")
+        draw_marker(alias, d, "v", -10, "R")
     for alias, d in mentions:
-        draw_marker(alias, d, "*", -27, "M")
+        draw_marker(alias, d, "*", -18, "M")
 
     if not tick_colors:
         return
@@ -366,7 +363,6 @@ def gen_single(dates: list[date], counts: list[int],
     y = np.array(counts, float)
     fig, ax = base_fig(height=3.8)
     x_num = setup_x_axis(ax, dates)
-    # Usunięto ax.set_ylim(bottom=-0.5) – teraz robi to setup_y_axis
     setup_y_axis(ax, float(y.max()) if y.size else 0)
     ax.margins(x=0.02, y=0.05)
 
@@ -377,7 +373,7 @@ def gen_single(dates: list[date], counts: list[int],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.26)
+    plt.subplots_adjust(bottom=0.18)
 
     add_stats_bar(fig, y)
 
@@ -429,7 +425,7 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.22)
+    plt.subplots_adjust(bottom=0.15)
 
     add_stats_bar(fig, total)
 
@@ -460,7 +456,7 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
 
     svg_w   = float(m_w.group(2))
     svg_h   = float(m_h.group(2))
-    new_h   = svg_h + 45
+    new_h   = svg_h + 120   # DUŻA przestrzeń na rozsunięcie elementów
     cx      = svg_w / 2
 
     content = content[:m_h.start()] + m_h.group(1) + str(new_h) + m_h.group(3) + content[m_h.end():]
@@ -468,16 +464,20 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
     def _extend_vb(m):
         parts = m.group(2).split()
         if len(parts) == 4:
-            parts[3] = str(float(parts[3]) + 45)
+            parts[3] = str(float(parts[3]) + 120)
         return m.group(1) + " ".join(parts) + m.group(3)
     content = re.sub(r'(viewBox=["\'])([^"\']+)(["\'])', _extend_vb, content, count=1)
 
+    # Znacząco rozsunięte pozycje – teraz między wierszami jest duża przerwa
+    last_month_y = svg_h + 35   # daleko od osi, żeby nie nachodził na M2
+    stats_y      = svg_h + 65   # jeszcze dalej od Last Month
+
     footer = (
         f'\n<!-- stats-footer -->\n'
-        f'<text x="{cx}" y="{svg_h + 18}" text-anchor="middle" '
+        f'<text x="{cx}" y="{last_month_y}" text-anchor="middle" '
         f'font-family="DejaVu Sans" font-size="11" font-weight="bold" '
         f'fill="{BLUE}">Last Month</text>\n'
-        f'<text x="{cx}" y="{svg_h + 36}" text-anchor="middle" '
+        f'<text x="{cx}" y="{stats_y}" text-anchor="middle" '
         f'font-family="DejaVu Sans" font-size="8.5" font-weight="bold" '
         f'fill="{BLUE}">{stats_text}</text>\n'
         f'<!-- /stats-footer -->\n'
