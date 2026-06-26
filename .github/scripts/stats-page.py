@@ -212,7 +212,8 @@ def add_stats_bar(fig, counts: np.ndarray):
         f"   │   ⌀ last 7 days: {avg7} / day"
         f"   │   ⌀ last 31 days: {avg31} / day"
     )
-    fig.text(0.5, 0.035, text, ha="center", va="bottom",
+    # Podniesione, żeby było bliżej wykresu
+    fig.text(0.5, 0.04, text, ha="center", va="bottom",
              color=BLUE, fontsize=7.5, fontfamily="DejaVu Sans", fontweight="bold")
 
 # ── SVG draw animation ─────────────────────────────────────────────────────
@@ -260,7 +261,7 @@ def style_ax(ax, title: str, ylabel: str):
                   fontfamily="DejaVu Sans", fontweight="bold")
     ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold",
-                  labelpad=8)
+                  labelpad=10)   # bliżej osi
 
 def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     x_num = mdates.date2num([datetime.combine(d, datetime.min.time()) for d in dates])
@@ -333,6 +334,7 @@ def apply_annotations(ax, fig, dates: list[date],
         )
         tick_colors[rel_date] = color
 
+    # R1/R2 i M1/M2 tuż pod osią
     for alias, d in releases:
         draw_marker(alias, d, "v", -10, "R")
     for alias, d in mentions:
@@ -455,7 +457,7 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
 
     svg_w   = float(m_w.group(2))
     svg_h   = float(m_h.group(2))
-    new_h   = svg_h + 30
+    new_h   = svg_h + 40   # dodatkowa przestrzeń
     cx      = svg_w / 2
 
     content = content[:m_h.start()] + m_h.group(1) + str(new_h) + m_h.group(3) + content[m_h.end():]
@@ -463,16 +465,20 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
     def _extend_vb(m):
         parts = m.group(2).split()
         if len(parts) == 4:
-            parts[3] = str(float(parts[3]) + 30)
+            parts[3] = str(float(parts[3]) + 40)
         return m.group(1) + " ".join(parts) + m.group(3)
     content = re.sub(r'(viewBox=["\'])([^"\']+)(["\'])', _extend_vb, content, count=1)
 
+    # Ustawienia pozycji z przerwami
+    last_month_y = svg_h + 14   # pierwsza linia poniżej osi (z przerwą od M1/M2)
+    stats_y      = svg_h + 28   # druga linia (z przerwą od Last Month)
+
     footer = (
         f'\n<!-- stats-footer -->\n'
-        f'<text x="{cx}" y="{svg_h + 6}" text-anchor="middle" '
+        f'<text x="{cx}" y="{last_month_y}" text-anchor="middle" '
         f'font-family="DejaVu Sans" font-size="11" font-weight="bold" '
         f'fill="{BLUE}">Last Month</text>\n'
-        f'<text x="{cx}" y="{svg_h + 22}" text-anchor="middle" '
+        f'<text x="{cx}" y="{stats_y}" text-anchor="middle" '
         f'font-family="DejaVu Sans" font-size="8.5" font-weight="bold" '
         f'fill="{BLUE}">{stats_text}</text>\n'
         f'<!-- /stats-footer -->\n'
