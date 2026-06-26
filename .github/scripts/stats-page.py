@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta, date, timezone
 from pathlib import Path
-from scipy.interpolate import PchipInterpolator   # <-- KLUCZOWA ZMIANA
+from scipy.interpolate import PchipInterpolator
 
 # ── Config ─────────────────────────────────────────────────────────────────
 USERNAME     = os.environ.get("GH_USERNAME", "FirstEverTech")
@@ -41,7 +41,7 @@ PS_MODULES = {
 
 HISTORY_FILE  = Path("assets/data/stats_history.json")
 RELEASES_FILE = Path("assets/releases.conf")
-MENTIONS_FILE = Path("assets/mentions.conf")   # forum posts, YT videos, web mentions
+MENTIONS_FILE = Path("assets/mentions.conf")
 ASSETS_DIR    = Path("assets")
 DAYS = 31
 TODAY = date.today()
@@ -77,7 +77,6 @@ def fetch_repo_downloads(full_repo: str) -> int:
                for rel in releases for a in rel.get("assets", []))
 
 def fetch_profile_views() -> list[tuple[date, int]]:
-    """Traffic API: last 14 days daily counts. Own repo + GITHUB_TOKEN = sufficient access."""
     try:
         data = gh(f"/repos/{PROFILE_REPO}/traffic/views")
         return [
@@ -89,7 +88,6 @@ def fetch_profile_views() -> list[tuple[date, int]]:
         return []
 
 def fetch_psgallery(module: str) -> int:
-    """PSGallery v2 OData — sums DownloadCount across all versions."""
     try:
         r = requests.get(
             "https://www.powershellgallery.com/api/v2/FindPackagesById()",
@@ -129,19 +127,15 @@ def take_snapshot(h: dict) -> dict:
         "ps_downloads": ps_dl,
     }
 
-    # Preserve profile_views already stored for today (set below), then write snap
     existing = h.get(TODAY.isoformat(), {})
     h[TODAY.isoformat()] = {**existing, **snap}
 
-    # Traffic API covers last 14 days — store each day in history so data accumulates
-    # over time instead of being lost after every run.
     view_data = fetch_profile_views()
     print(f"[INFO] profile_views from API: {view_data}")
     for view_date, count in view_data:
         d_str = view_date.isoformat()
         if d_str not in h:
             h[d_str] = {}
-        # Only overwrite with 0 if we have no previous value for that day
         if count > 0 or "profile_views" not in h[d_str]:
             h[d_str]["profile_views"] = count
 
@@ -179,11 +173,6 @@ def date_range() -> list[date]:
 
 # ── Annotation config files ────────────────────────────────────────────────
 def _parse_conf(path: Path) -> list[tuple[str, date]]:
-    """
-    Shared parser for releases.conf and mentions.conf.
-    Format per line:  Rep1 = 4/06
-    Returns [(alias, date), ...]  for current year only.
-    """
     if not path.exists():
         return []
     result = []
@@ -204,13 +193,12 @@ def load_releases() -> list[tuple[str, date]]:
     return _parse_conf(RELEASES_FILE)
 
 def load_mentions() -> list[tuple[str, date]]:
-    """Forum posts, YouTube videos, web articles — any public mention of the project."""
     return _parse_conf(MENTIONS_FILE)
 
 # ── Stats computation ──────────────────────────────────────────────────────
 def compute_stats(counts: np.ndarray) -> tuple[str, str, str]:
     arr = counts.astype(float)
-    done = arr[:-1]   # pomijamy dzisiaj — dzień w trakcie, dane niepełne
+    done = arr[:-1]
     delta = done[-1] - done[-2] if len(done) >= 2 else 0.0
     avg7  = float(np.mean(done[-7:]))  if len(done) >= 7  else float(np.mean(done))
     avg31 = float(np.mean(done))
@@ -218,7 +206,6 @@ def compute_stats(counts: np.ndarray) -> tuple[str, str, str]:
     return delta_str, f"{avg7:.1f}", f"{avg31:.1f}"
 
 def add_stats_bar(fig, counts: np.ndarray):
-    """One-line stats strip at the very bottom of every chart."""
     delta_str, avg7, avg31 = compute_stats(counts)
     text = (
         f"▲ vs yesterday: {delta_str} / day"
@@ -284,16 +271,23 @@ def setup_x_axis(ax, dates: list[date]) -> np.ndarray:
     return x_num
 
 def setup_y_axis(ax, y_max_val: float):
+    """
+    Ustawia 8 linii siatki i dodaje margines u góry (pół kroku).
+    """
     N = 8
-    nice_max = max(N - 1, math.ceil(y_max_val / max(1, N - 1)) * (N - 1))
+    if y_max_val <= 0:
+        step = 1
+    else:
+        step = math.ceil(y_max_val / (N - 1))
+    nice_max = step * (N - 1)
+    if nice_max < N - 1:
+        nice_max = N - 1
     ax.set_yticks(np.linspace(0, nice_max, N))
+    # Dodaj margines u góry – pół kroku
+    ax.set_ylim(0, nice_max + step * 0.5)
     ax.grid(True, axis="y", color=GRID_MAJ, linewidth=0.7, linestyle=":")
 
 def smooth(x_num: np.ndarray, y) -> tuple[np.ndarray, np.ndarray]:
-    """
-    Wygładzanie z zachowaniem monotoniczności – PCHIP przechodzi przez punkty
-    i nie tworzy niepotrzebnych ekstremów między nimi.
-    """
     y = np.array(y, float)
     if len(x_num) < 3:
         return x_num, np.maximum(y, 0)
@@ -309,16 +303,7 @@ def save_svg(fig, out: Path):
     add_draw_animation(out)
 
 # ── Annotation markers ─────────────────────────────────────────────────────
-# Two annotation types rendered below the X-axis:
-#
-#   releases (releases.conf)  →  ▼ triangle,  label "R1/R2/R3",  row y_offset=-14
-#   mentions (mentions.conf)  →  ★ star,      label "M1/M2",     row y_offset=-26
-#
-# Marker + label color = rep color (white/green/red-orange).
-# Tick label for the day number is also recolored to match.
-
 def _alias_to_short(alias: str, prefix: str) -> str:
-    """Rep1 → {prefix}1,  Rep2 → {prefix}2, etc."""
     num = re.sub(r"(?i)rep", "", alias)
     return f"{prefix}{num}"
 
@@ -326,17 +311,12 @@ def apply_annotations(ax, fig, dates: list[date],
                        releases: list[tuple[str, date]],
                        mentions:  list[tuple[str, date]],
                        allowed: set | None = None):
-    """
-    Draws release and mention markers below the X-axis and recolors tick labels.
-    Must be called AFTER tight_layout so ylim and tick positions are stable.
-    """
     date_set = set(dates)
     x_nums   = {d: mdates.date2num(datetime.combine(d, datetime.min.time())) for d in dates}
     x_start  = min(x_nums.values())
     x_end    = max(x_nums.values())
     y_bot    = ax.get_ylim()[0]
 
-    # Track which days get a recolored tick (last color wins if multiple events same day)
     tick_colors: dict[date, str] = {}
 
     def draw_marker(alias, rel_date, marker_symbol, y_offset, label_prefix):
@@ -358,12 +338,10 @@ def apply_annotations(ax, fig, dates: list[date],
         tick_colors[rel_date] = color
 
     for alias, d in releases:
-        draw_marker(alias, d, "v", -16, "R")   # ▼ row 1 — just below day number
-
+        draw_marker(alias, d, "v", -16, "R")
     for alias, d in mentions:
-        draw_marker(alias, d, "*", -27, "M")   # ★ row 2 — just below R row
+        draw_marker(alias, d, "*", -27, "M")
 
-    # Recolor X-axis tick labels that coincide with any annotation
     if not tick_colors:
         return
     fig.canvas.draw()
@@ -388,9 +366,9 @@ def gen_single(dates: list[date], counts: list[int],
     y = np.array(counts, float)
     fig, ax = base_fig(height=3.8)
     x_num = setup_x_axis(ax, dates)
+    # Usunięto ax.set_ylim(bottom=-0.5) – teraz robi to setup_y_axis
     setup_y_axis(ax, float(y.max()) if y.size else 0)
     ax.margins(x=0.02, y=0.05)
-    ax.set_ylim(bottom=-0.5)
 
     xs, ys = smooth(x_num, y)
     ax.plot(xs, ys, color=LINE, linewidth=2.5, zorder=3)
@@ -399,7 +377,7 @@ def gen_single(dates: list[date], counts: list[int],
 
     style_ax(ax, title, ylabel)
     plt.tight_layout(pad=0.8)
-    plt.subplots_adjust(bottom=0.26)   # extra room vs gen_multi — no annotation rows here
+    plt.subplots_adjust(bottom=0.26)
 
     add_stats_bar(fig, y)
 
@@ -419,7 +397,6 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
     fig, ax = base_fig(height=4.3)
     x_num = setup_x_axis(ax, dates)
     ax.margins(x=0.02, y=0.05)
-    ax.set_ylim(bottom=-0.5)
 
     all_y: list[float] = []
     total = np.zeros(len(dates))
@@ -442,7 +419,6 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
     setup_y_axis(ax, max(all_y) if all_y else 0)
 
-    # Legend with per-rep colors
     handles, labels = ax.get_legend_handles_labels()
     leg = ax.legend(handles, labels, fontsize=7, framealpha=0,
                     loc="upper left",
@@ -455,7 +431,6 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
     plt.tight_layout(pad=0.8)
     plt.subplots_adjust(bottom=0.22)
 
-    # Stats use total of all series
     add_stats_bar(fig, total)
 
     if releases or mentions:
@@ -466,25 +441,16 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
 
 # ── Contribution graph footer ──────────────────────────────────────────────
 def add_contribution_footer(svg_path: Path, stats_text: str):
-    """
-    Post-processes contribution-graph.svg:
-    - Extends the SVG height by 45px to make room below the graph
-    - Inserts 'Last Month' label and stats bar into the new space
-    Safe to call repeatedly — strips any previously added footer first.
-    """
     if not svg_path.exists():
         print(f"[WARN] {svg_path} not found, skipping footer", file=sys.stderr)
         return
 
     content = svg_path.read_text(encoding="utf-8")
-
-    # Strip previously injected footer to avoid accumulation on re-runs
     content = re.sub(
         r'<!-- stats-footer -->.*?<!-- /stats-footer -->',
         '', content, flags=re.DOTALL
     )
 
-    # Parse current SVG width and height
     m_w = re.search(r'(<svg[^>]+width=["\'])([0-9.]+)(["\'])', content)
     m_h = re.search(r'(<svg[^>]+height=["\'])([0-9.]+)(["\'])', content)
     if not m_w or not m_h:
@@ -494,13 +460,11 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
 
     svg_w   = float(m_w.group(2))
     svg_h   = float(m_h.group(2))
-    new_h   = svg_h + 45           # 45px extra below the graph
+    new_h   = svg_h + 45
     cx      = svg_w / 2
 
-    # Extend SVG height
     content = content[:m_h.start()] + m_h.group(1) + str(new_h) + m_h.group(3) + content[m_h.end():]
 
-    # Also extend viewBox height if present
     def _extend_vb(m):
         parts = m.group(2).split()
         if len(parts) == 4:
@@ -508,7 +472,6 @@ def add_contribution_footer(svg_path: Path, stats_text: str):
         return m.group(1) + " ".join(parts) + m.group(3)
     content = re.sub(r'(viewBox=["\'])([^"\']+)(["\'])', _extend_vb, content, count=1)
 
-    # Append text elements in the new bottom space
     footer = (
         f'\n<!-- stats-footer -->\n'
         f'<text x="{cx}" y="{svg_h + 18}" text-anchor="middle" '
@@ -534,7 +497,6 @@ def main():
     dates     = date_range()
     name      = "Marcin Grygiel aka FirstEver"
 
-    # Aliases with mentions (Rep1/Rep2 only — Rep3=Adobe has no forum threads)
     mention_aliases = {"Rep1", "Rep2"}
 
     # ── Followers
@@ -547,8 +509,7 @@ def main():
                f"{name} — Daily Stars", "New Stars",
                ASSETS_DIR / "stars.svg")
 
-    # ── Profile views — read from history (populated by take_snapshot from Traffic API)
-    # This survives API caching/rate-limits and builds a 31-day archive over time.
+    # ── Profile views
     start = TODAY - timedelta(days=DAYS - 1)
     views = [
         h.get((start + timedelta(days=i)).isoformat(), {}).get("profile_views", 0)
@@ -558,7 +519,7 @@ def main():
                f"{name} — Profile Views", "Views / day",
                ASSETS_DIR / "profile-views.svg")
 
-    # ── GitHub Downloads — Rep1/Rep2/Rep3 + Total + releases + mentions (Rep1/Rep2)
+    # ── GitHub Downloads
     gh_dl = {alias: daily_delta(h, "gh_downloads", alias) for alias in REPOS}
     gen_multi(dates, gh_dl,
               f"{name} — GitHub Downloads / day", "Downloads / day",
@@ -567,9 +528,8 @@ def main():
               releases=releases,
               mentions=mentions,
               allowed_aliases=set(REPOS.keys()))
-    # ^ mention markers filtered to Rep1/Rep2 inside apply_annotations via mentions.conf aliases
 
-    # ── PSGallery Downloads — Rep1/Rep2 + releases + mentions (Rep1/Rep2)
+    # ── PSGallery Downloads
     ps_dl = {alias: daily_delta(h, "ps_downloads", alias) for alias in PS_MODULES}
     gen_multi(dates, ps_dl,
               f"{name} — PSGallery Downloads / day", "Downloads / day",
@@ -579,8 +539,7 @@ def main():
               mentions=mentions,
               allowed_aliases={"Rep1", "Rep2"})
 
-    # ── Contribution graph footer — appended to the SVG generated by a separate workflow
-    # Stats shown: profile views (most relevant to contribution activity)
+    # ── Contribution graph footer
     views_arr = np.array(views, float)
     delta_str, avg7, avg31 = compute_stats(views_arr)
     contrib_stats = (
