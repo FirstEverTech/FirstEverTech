@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="README.md">🇬🇧 English</a> |
+  <a href="STATS.md">🇬🇧 English</a> |
   <a href="https://translate.google.com/translate?sl=en&tl=pl&u=https://github.com/FirstEverTech/STATS.md">🇵🇱 Polski</a> |
   <a href="https://translate.google.com/translate?sl=en&tl=de&u=https://github.com/FirstEverTech/STATS.md">🇩🇪 Deutsch</a> |
   <a href="https://translate.google.com/translate?sl=en&tl=fr&u=https://github.com/FirstEverTech/STATS.md">🇫🇷 Français</a> |
