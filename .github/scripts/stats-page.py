@@ -322,43 +322,71 @@ def apply_annotations(ax, fig, dates: list[date],
                        releases: list[tuple[str, date]],
                        mentions:  list[tuple[str, date]],
                        allowed: set | None = None):
-    date_set = set(dates)
-    x_nums   = {d: mdates.date2num(datetime.combine(d, datetime.min.time())) for d in dates}
-    x_start  = min(x_nums.values())
-    x_end    = max(x_nums.values())
-    y_bot    = ax.get_ylim()[0]
+    from collections import defaultdict
+    x_nums  = {d: mdates.date2num(datetime.combine(d, datetime.min.time())) for d in dates}
+    x_start = min(x_nums.values())
+    x_end   = max(x_nums.values())
+    y_bot   = ax.get_ylim()[0]
 
     tick_colors: dict[date, str] = {}
-    per_day_slots: dict[date, int] = {}  # counts markers placed per date (for stacking)
 
-    def draw_marker(alias, rel_date, marker_symbol, label_prefix):
-        if allowed and alias not in allowed:
+    SLASH_COLOR = "#8b949e"   # gray separator between M1/M2
+    CHAR_W      = 3.5         # approx pt width per char at fontsize=6
+
+    def _in_range(d):
+        rx = mdates.date2num(datetime.combine(d, datetime.min.time()))
+        return x_start <= rx <= x_end, rx
+
+    def draw_group(rel_date, aliases, marker_symbol, label_prefix):
+        ok, rx = _in_range(rel_date)
+        if not ok:
             return
-        rx = mdates.date2num(datetime.combine(rel_date, datetime.min.time()))
-        if not (x_start <= rx <= x_end):
-            return
-        color = REP_COLORS.get(alias, BLUE)
-        label = _alias_to_short(alias, label_prefix)
-
-        slot = per_day_slots.get(rel_date, 0)
-        per_day_slots[rel_date] = slot + 1
-        y_offset = -10 - slot * 9  # stack: -10, -19, -28, ...
-
-        ax.plot(rx, y_bot, marker_symbol, color=color,
+        c0 = REP_COLORS.get(aliases[0], BLUE)
+        ax.plot(rx, y_bot, marker_symbol, color=c0,
                 markersize=5, clip_on=False, zorder=6)
-        ax.annotate(
-            label, xy=(rx, y_bot), xycoords="data",
-            xytext=(0, y_offset), textcoords="offset points",
-            fontsize=6, color=color, ha="center", va="top",
-            fontweight="bold", annotation_clip=False,
-        )
-        tick_colors[rel_date] = color
 
-    # R1/R2 i M1/M2 – znaczniki tuż pod osią; kolejne tego samego dnia przesuwane w dół
+        if len(aliases) == 1:
+            ax.annotate(
+                _alias_to_short(aliases[0], label_prefix),
+                xy=(rx, y_bot), xycoords="data",
+                xytext=(0, -10), textcoords="offset points",
+                fontsize=6, color=c0, ha="center", va="top",
+                fontweight="bold", annotation_clip=False,
+            )
+        else:
+            # Render "L1 / L2" in individual colors, all on one row at y=-10
+            l1 = _alias_to_short(aliases[0], label_prefix)
+            l2 = _alias_to_short(aliases[1], label_prefix)
+            c1 = REP_COLORS.get(aliases[0], BLUE)
+            c2 = REP_COLORS.get(aliases[1], BLUE)
+            w1, ws, w2 = len(l1)*CHAR_W, CHAR_W, len(l2)*CHAR_W
+            total = w1 + ws + w2
+            ox1 = -total/2 + w1/2
+            oxs = -total/2 + w1 + ws/2
+            ox2 = -total/2 + w1 + ws + w2/2
+            for text, color, ox in [(l1, c1, ox1), ("/", SLASH_COLOR, oxs), (l2, c2, ox2)]:
+                ax.annotate(
+                    text, xy=(rx, y_bot), xycoords="data",
+                    xytext=(ox, -10), textcoords="offset points",
+                    fontsize=6, color=color, ha="center", va="top",
+                    fontweight="bold", annotation_clip=False,
+                )
+        tick_colors[rel_date] = c0
+
+    # Group by date (R and M guaranteed never on same day)
+    release_by_date: dict[date, list[str]] = defaultdict(list)
+    mention_by_date: dict[date, list[str]] = defaultdict(list)
     for alias, d in releases:
-        draw_marker(alias, d, "v", "R")
+        if not allowed or alias in allowed:
+            release_by_date[d].append(alias)
     for alias, d in mentions:
-        draw_marker(alias, d, "*", "M")
+        if not allowed or alias in allowed:
+            mention_by_date[d].append(alias)
+
+    for d, aliases in release_by_date.items():
+        draw_group(d, aliases, "v", "R")
+    for d, aliases in mention_by_date.items():
+        draw_group(d, aliases, "*", "M")
 
     if not tick_colors:
         return
