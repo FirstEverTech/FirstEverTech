@@ -347,29 +347,32 @@ def apply_annotations(ax, fig, dates: list[date],
 
     tick_colors = {}
 
-    # Stałe przesunięcie w dniach (ok. 0.15 dnia = 3.6h)
-    DX = 0.15
+    # Stałe przesunięcie w poziomie dla znaczników (w jednostkach daty)
+    DX_DATA = 0.3   # dzień
+    # Przesunięcie etykiet w punktach (odstęp między etykietami)
+    DX_PT = 20      # punkty
 
     for d, items in groups.items():
         n = len(items)
         rx_center = x_nums[d]
-        # Rozłóż znaczniki równomiernie w zakresie [rx_center - DX*(n-1)/2, rx_center + DX*(n-1)/2]
+        # Rozłóż znaczniki w poziomie
         for i, (alias, typ) in enumerate(items):
-            offset_x = (i - (n-1)/2) * DX
-            rx = rx_center + offset_x
+            offset_data = (i - (n-1)/2) * DX_DATA
+            rx = rx_center + offset_data
             color = REP_COLORS.get(alias, BLUE)
             prefix = "R" if typ == 'release' else "M"
             label = _alias_to_short(alias, prefix)
             # Marker
             marker = "v" if typ == 'release' else "*"
-            # Dla wielu znaczników przesuwamy też adnotację w poziomie
             ax.plot(rx, y_bot, marker, color=color,
                     markersize=5, clip_on=False, zorder=6)
-            # Adnotacja – przesunięcie w pionie zależy od typu (R niżej, M wyżej)
+            # Przesunięcie etykiety w poziomie (w punktach)
+            offset_pt = (i - (n-1)/2) * DX_PT
+            # Przesunięcie w pionie zależy od typu
             y_offset = -10 if typ == 'release' else -18
             ax.annotate(
                 label, xy=(rx, y_bot), xycoords="data",
-                xytext=(0, y_offset), textcoords="offset points",
+                xytext=(offset_pt, y_offset), textcoords="offset points",
                 fontsize=6, color=color, ha="center", va="top",
                 fontweight="bold", annotation_clip=False,
             )
