@@ -356,26 +356,43 @@ def apply_annotations(ax, fig, dates: list[date],
         n = len(items)
         rx_center = x_nums[d]
         # Rozłóż znaczniki w poziomie
-        for i, (alias, typ) in enumerate(items):
-            offset_data = (i - (n-1)/2) * DX_DATA
-            rx = rx_center + offset_data
-            color = REP_COLORS.get(alias, BLUE)
-            prefix = "R" if typ == 'release' else "M"
-            label = _alias_to_short(alias, prefix)
-            # Marker
-            marker = "v" if typ == 'release' else "*"
-            ax.plot(rx, y_bot, marker, color=color,
-                    markersize=5, clip_on=False, zorder=6)
-            # Przesunięcie etykiety w poziomie (w punktach)
-            offset_pt = (i - (n-1)/2) * DX_PT
-            # Przesunięcie w pionie zależy od typu
-            y_offset = -10 if typ == 'release' else -18
-            ax.annotate(
-                label, xy=(rx, y_bot), xycoords="data",
-                xytext=(offset_pt, y_offset), textcoords="offset points",
-                fontsize=6, color=color, ha="center", va="top",
-                fontweight="bold", annotation_clip=False,
-            )
+labels = []
+
+for i, (alias, typ) in enumerate(items):
+    offset_data = (i - (n-1)/2) * DX_DATA
+    rx = rx_center + offset_data
+
+    color = REP_COLORS.get(alias, BLUE)
+    marker = "v" if typ == "release" else "*"
+
+    ax.plot(
+        rx,
+        y_bot,
+        marker,
+        color=color,
+        markersize=5,
+        clip_on=False,
+        zorder=6,
+    )
+
+    prefix = "R" if typ == "release" else "M"
+    labels.append(_alias_to_short(alias, prefix))
+
+label_text = " ".join(labels)
+
+ax.annotate(
+    label_text,
+    xy=(rx_center, y_bot),
+    xycoords="data",
+    xytext=(0, -18),
+    textcoords="offset points",
+    fontsize=6,
+    color=BLUE,
+    ha="center",
+    va="top",
+    fontweight="bold",
+    annotation_clip=False,
+)
 
         # Ustaw kolor etykiety osi X tylko gdy jest dokładnie jeden znacznik w tym dniu
         if n == 1:
