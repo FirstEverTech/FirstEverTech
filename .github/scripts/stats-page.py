@@ -50,12 +50,14 @@ TODAY = date.today()
 BLUE     = "#58a6ff"
 LINE     = "#1f6feb"
 GRID_MAJ = "#283d58"
+AVG_COLOR = "#87ceeb"   # light blue (monthly average line)
 
 REP_COLORS = {
-    "Rep1":  "#ffffff",   # white
-    "Rep2":  "#3fb950",   # green
-    "Rep3":  "#f78166",   # red-orange
-    "Total": "#e3b341",   # yellow (dashed)
+    "Rep1":    "#ffffff",   # white
+    "Rep2":    "#3fb950",   # green
+    "Rep3":    "#f78166",   # red-orange
+    "Total":   "#e3b341",   # yellow (dashed)
+    "Average": "#87ceeb",   # light blue (dotted horizontal)
 }
 
 # ── GitHub API ─────────────────────────────────────────────────────────────
@@ -417,14 +419,21 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
         ax.scatter(x_num, total, color=tc, s=22, zorder=4, linewidths=0, marker="D")
         all_y.extend(total.tolist())
 
+    # Monthly average horizontal line (dotted, light blue)
+    avg_val = float(np.mean(total[:-1])) if len(total) > 1 else float(np.mean(total))
+    ax.axhline(avg_val, color=AVG_COLOR, linewidth=1.5, linestyle=":", zorder=2, label="Average")
+
     setup_y_axis(ax, max(all_y) if all_y else 0)
 
     # LEGENDA PRZYWRÓCONA DO ORYGINAŁU (górny lewy róg)
     handles, labels = ax.get_legend_handles_labels()
+    extra_cols = (1 if show_total and len(series) > 1 else 0) + 1  # +1 for Average
     leg = ax.legend(handles, labels, fontsize=7, framealpha=0,
                     loc="upper left",
-                    ncol=len(series) + (1 if show_total and len(series) > 1 else 0))
-    all_aliases = list(series.keys()) + (["Total"] if show_total and len(series) > 1 else [])
+                    ncol=len(series) + extra_cols)
+    all_aliases = (list(series.keys())
+                   + (["Total"] if show_total and len(series) > 1 else [])
+                   + ["Average"])
     for text, alias in zip(leg.get_texts(), all_aliases):
         text.set_color(REP_COLORS.get(alias, BLUE))
 
