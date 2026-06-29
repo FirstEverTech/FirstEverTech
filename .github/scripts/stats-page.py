@@ -50,14 +50,14 @@ TODAY = date.today()
 BLUE     = "#58a6ff"
 LINE     = "#1f6feb"
 GRID_MAJ = "#283d58"
-AVG_COLOR = "#87ceeb"   # light blue (monthly average line)
+AVG_COLOR = "#f472b6"   # pink (monthly average line)
 
 REP_COLORS = {
-    "Rep1":    "#ffffff",   # white
+    "Rep1":    "#1e4d8c",   # navy blue
     "Rep2":    "#3fb950",   # green
     "Rep3":    "#f78166",   # red-orange
     "Total":   "#e3b341",   # yellow (dashed)
-    "Average": "#87ceeb",   # light blue (dotted horizontal)
+    "Average": "#f472b6",   # pink (dotted horizontal)
 }
 
 # ── GitHub API ─────────────────────────────────────────────────────────────
@@ -329,8 +329,9 @@ def apply_annotations(ax, fig, dates: list[date],
     y_bot    = ax.get_ylim()[0]
 
     tick_colors: dict[date, str] = {}
+    per_day_slots: dict[date, int] = {}  # counts markers placed per date (for stacking)
 
-    def draw_marker(alias, rel_date, marker_symbol, y_offset, label_prefix):
+    def draw_marker(alias, rel_date, marker_symbol, label_prefix):
         if allowed and alias not in allowed:
             return
         rx = mdates.date2num(datetime.combine(rel_date, datetime.min.time()))
@@ -338,6 +339,11 @@ def apply_annotations(ax, fig, dates: list[date],
             return
         color = REP_COLORS.get(alias, BLUE)
         label = _alias_to_short(alias, label_prefix)
+
+        slot = per_day_slots.get(rel_date, 0)
+        per_day_slots[rel_date] = slot + 1
+        y_offset = -10 - slot * 9  # stack: -10, -19, -28, ...
+
         ax.plot(rx, y_bot, marker_symbol, color=color,
                 markersize=5, clip_on=False, zorder=6)
         ax.annotate(
@@ -348,11 +354,11 @@ def apply_annotations(ax, fig, dates: list[date],
         )
         tick_colors[rel_date] = color
 
-    # R1/R2 i M1/M2 – znaczniki tuż pod osią
+    # R1/R2 i M1/M2 – znaczniki tuż pod osią; kolejne tego samego dnia przesuwane w dół
     for alias, d in releases:
-        draw_marker(alias, d, "v", -10, "R")
+        draw_marker(alias, d, "v", "R")
     for alias, d in mentions:
-        draw_marker(alias, d, "*", -18, "M")
+        draw_marker(alias, d, "*", "M")
 
     if not tick_colors:
         return
