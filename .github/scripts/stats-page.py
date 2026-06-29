@@ -17,6 +17,7 @@ import matplotlib.dates as mdates
 from datetime import datetime, timedelta, date, timezone
 from pathlib import Path
 from scipy.interpolate import PchipInterpolator
+from collections import defaultdict
 
 # ── Config ─────────────────────────────────────────────────────────────────
 USERNAME     = os.environ.get("GH_USERNAME", "FirstEverTech")
@@ -50,14 +51,14 @@ TODAY = date.today()
 BLUE     = "#58a6ff"
 LINE     = "#1f6feb"
 GRID_MAJ = "#283d58"
-AVG_COLOR = "#f472b6"   # pink (monthly average line)
+AVG_COLOR = "#ff6b6b"          # różowy (średnia miesięczna)
 
 REP_COLORS = {
-    "Rep1":    "#1e4d8c",   # navy blue
-    "Rep2":    "#3fb950",   # green
-    "Rep3":    "#f78166",   # red-orange
-    "Total":   "#e3b341",   # yellow (dashed)
-    "Average": "#f472b6",   # pink (dotted horizontal)
+    "Rep1":    "#1a73e8",      # granatowy (widoczny w jasnym tle)
+    "Rep2":    "#3fb950",      # zielony
+    "Rep3":    "#f78166",      # czerwono-pomarańczowy
+    "Total":   "#e3b341",      # żółty (przerywana)
+    "Average": "#ff6b6b",      # różowy (kropkowana)
 }
 
 # ── GitHub API ─────────────────────────────────────────────────────────────
@@ -97,7 +98,6 @@ def fetch_psgallery(module: str) -> int:
             timeout=30,
         )
         r.raise_for_status()
-        # VersionDownloadCount = per-version; DownloadCount = package total (same value repeated)
         counts = re.findall(r"<d:VersionDownloadCount[^>]*>(\d+)</d:VersionDownloadCount>", r.text)
         total = sum(int(c) for c in counts)
         print(f"[INFO] PSGallery {module}: versions={len(counts)} total={total}")
@@ -322,86 +322,76 @@ def apply_annotations(ax, fig, dates: list[date],
                        releases: list[tuple[str, date]],
                        mentions:  list[tuple[str, date]],
                        allowed: set | None = None):
-    from collections import defaultdict
-    x_nums  = {d: mdates.date2num(datetime.combine(d, datetime.min.time())) for d in dates}
-    x_start = min(x_nums.values())
-    x_end   = max(x_nums.values())
-    y_bot   = ax.get_ylim()[0]
+    date_set = set(dates)
+    x_nums   = {d: mdates.date2num(datetime.combine(d, datetime.min.time())) for d in dates}
+    x_start  = min(x_nums.values())
+    x_end    = max(x_nums.values())
+    y_bot    = ax.get_ylim()[0]
 
-    tick_colors: dict[date, str] = {}
+    # Zbierz wszystkie znaczniki
+    markers = []
+    for alias, d in releases:
+        if d in date_set and (allowed is None or alias in allowed):
+            markers.append((d, alias, 'release'))
+    for alias, d in mentions:
+        if d in date_set and (allowed is None or alias in allowed):
+            markers.append((d, alias, 'mention'))
 
-    SLASH_COLOR = "#8b949e"   # gray separator between M1/M2
-    CHAR_W      = 3.5         # approx pt width per char at fontsize=6
+    if not markers:
+        return
 
-    def _in_range(d):
-        rx = mdates.date2num(datetime.combine(d, datetime.min.time()))
-        return x_start <= rx <= x_end, rx
+    # Pogrupuj po dacie
+    groups = defaultdict(list)
+    for d, alias, typ in markers:
+        groups[d].append((alias, typ))
 
-    def draw_group(rel_date, aliases, marker_symbol, label_prefix):
-        ok, rx = _in_range(rel_date)
-        if not ok:
-            return
-        c0 = REP_COLORS.get(aliases[0], BLUE)
-        ax.plot(rx, y_bot, marker_symbol, color=c0,
-                markersize=5, clip_on=False, zorder=6)
+    tick_colors = {}
 
-        if len(aliases) == 1:
+    # Stałe przesunięcie w dniach (ok. 0.15 dnia = 3.6h)
+    DX = 0.15
+
+    for d, items in groups.items():
+        n = len(items)
+        rx_center = x_nums[d]
+        # Rozłóż znaczniki równomiernie w zakresie [rx_center - DX*(n-1)/2, rx_center + DX*(n-1)/2]
+        for i, (alias, typ) in enumerate(items):
+            offset_x = (i - (n-1)/2) * DX
+            rx = rx_center + offset_x
+            color = REP_COLORS.get(alias, BLUE)
+            prefix = "R" if typ == 'release' else "M"
+            label = _alias_to_short(alias, prefix)
+            # Marker
+            marker = "v" if typ == 'release' else "*"
+            # Dla wielu znaczników przesuwamy też adnotację w poziomie
+            ax.plot(rx, y_bot, marker, color=color,
+                    markersize=5, clip_on=False, zorder=6)
+            # Adnotacja – przesunięcie w pionie zależy od typu (R niżej, M wyżej)
+            y_offset = -10 if typ == 'release' else -18
             ax.annotate(
-                _alias_to_short(aliases[0], label_prefix),
-                xy=(rx, y_bot), xycoords="data",
-                xytext=(0, -10), textcoords="offset points",
-                fontsize=6, color=c0, ha="center", va="top",
+                label, xy=(rx, y_bot), xycoords="data",
+                xytext=(0, y_offset), textcoords="offset points",
+                fontsize=6, color=color, ha="center", va="top",
                 fontweight="bold", annotation_clip=False,
             )
-        else:
-            # Render "L1 / L2" in individual colors, all on one row at y=-10
-            l1 = _alias_to_short(aliases[0], label_prefix)
-            l2 = _alias_to_short(aliases[1], label_prefix)
-            c1 = REP_COLORS.get(aliases[0], BLUE)
-            c2 = REP_COLORS.get(aliases[1], BLUE)
-            w1, ws, w2 = len(l1)*CHAR_W, CHAR_W, len(l2)*CHAR_W
-            total = w1 + ws + w2
-            ox1 = -total/2 + w1/2
-            oxs = -total/2 + w1 + ws/2
-            ox2 = -total/2 + w1 + ws + w2/2
-            for text, color, ox in [(l1, c1, ox1), ("/", SLASH_COLOR, oxs), (l2, c2, ox2)]:
-                ax.annotate(
-                    text, xy=(rx, y_bot), xycoords="data",
-                    xytext=(ox, -10), textcoords="offset points",
-                    fontsize=6, color=color, ha="center", va="top",
-                    fontweight="bold", annotation_clip=False,
-                )
-        tick_colors[rel_date] = c0
 
-    # Group by date (R and M guaranteed never on same day)
-    release_by_date: dict[date, list[str]] = defaultdict(list)
-    mention_by_date: dict[date, list[str]] = defaultdict(list)
-    for alias, d in releases:
-        if not allowed or alias in allowed:
-            release_by_date[d].append(alias)
-    for alias, d in mentions:
-        if not allowed or alias in allowed:
-            mention_by_date[d].append(alias)
+        # Ustaw kolor etykiety osi X tylko gdy jest dokładnie jeden znacznik w tym dniu
+        if n == 1:
+            tick_colors[d] = REP_COLORS.get(items[0][0], BLUE)
 
-    for d, aliases in release_by_date.items():
-        draw_group(d, aliases, "v", "R")
-    for d, aliases in mention_by_date.items():
-        draw_group(d, aliases, "*", "M")
-
-    if not tick_colors:
-        return
-    fig.canvas.draw()
-    for lbl in ax.get_xticklabels():
-        if not lbl.get_text():
-            continue
-        try:
-            tick_date = mdates.num2date(lbl.get_position()[0]).date()
-        except (ValueError, OverflowError):
-            continue
-        if tick_date in tick_colors:
-            lbl.set_color(tick_colors[tick_date])
-            lbl.set_fontweight("bold")
-            lbl.set_fontsize(8)
+    # Zastosuj kolory do etykiet osi X
+    if tick_colors:
+        fig.canvas.draw()
+        for lbl in ax.get_xticklabels():
+            if not lbl.get_text():
+                continue
+            try:
+                tick_date = mdates.num2date(lbl.get_position()[0]).date()
+            except (ValueError, OverflowError):
+                continue
+            if tick_date in tick_colors:
+                lbl.set_color(tick_colors[tick_date])
+                lbl.set_fontweight("bold")
+                lbl.set_fontsize(8)
 
 # ── Single-line graph ──────────────────────────────────────────────────────
 def gen_single(dates: list[date], counts: list[int],
@@ -425,7 +415,7 @@ def gen_single(dates: list[date], counts: list[int],
     plt.tight_layout(pad=0.8)
     plt.subplots_adjust(bottom=0.18)
 
-    add_stats_bar(fig, y, prev_month_sum=prev_month_sum)   # domyślnie y_pos=0.04
+    add_stats_bar(fig, y, prev_month_sum=prev_month_sum)
 
     if releases or mentions:
         apply_annotations(ax, fig, dates,
@@ -464,15 +454,15 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
         ax.scatter(x_num, total, color=tc, s=22, zorder=4, linewidths=0, marker="D")
         all_y.extend(total.tolist())
 
-    # Monthly average horizontal line (dotted, light blue)
+    # Średnia miesięczna (pozioma linia kropkowana)
     avg_val = float(np.mean(total[:-1])) if len(total) > 1 else float(np.mean(total))
     ax.axhline(avg_val, color=AVG_COLOR, linewidth=1.5, linestyle=":", zorder=2, label="Average")
 
     setup_y_axis(ax, max(all_y) if all_y else 0)
 
-    # LEGENDA PRZYWRÓCONA DO ORYGINAŁU (górny lewy róg)
+    # Legenda
     handles, labels = ax.get_legend_handles_labels()
-    extra_cols = (1 if show_total and len(series) > 1 else 0) + 1  # +1 for Average
+    extra_cols = (1 if show_total and len(series) > 1 else 0) + 1
     leg = ax.legend(handles, labels, fontsize=7, framealpha=0,
                     loc="upper left",
                     ncol=len(series) + extra_cols)
@@ -483,7 +473,6 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
         text.set_color(REP_COLORS.get(alias, BLUE))
 
     style_ax(ax, title, ylabel)
-    # Override xlabel labelpad to push "Last Month" below the R/M annotation markers
     ax.set_xlabel("Last Month", color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold",
                   labelpad=20)
