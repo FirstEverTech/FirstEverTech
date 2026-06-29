@@ -589,7 +589,7 @@ def main():
 
     # ── Contribution graph footer
     views_arr = np.array(views, float)
-    delta_str, avg7, avg31 = compute_stats(views_arr)
+    delta_str, avg7, avg31, _ = compute_stats(views_arr)
     contrib_stats = (
         f"▲ vs yesterday: {delta_str} / day"
         f"   │   ⌀ last 7 days: {avg7} / day"
