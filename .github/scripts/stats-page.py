@@ -350,7 +350,7 @@ def apply_annotations(ax, fig, dates: list[date],
     # Stałe przesunięcie w poziomie dla znaczników (w jednostkach daty)
     DX_DATA = 0.3   # dzień
     # Przesunięcie etykiet w punktach (odstęp między etykietami) – zwiększone dla czytelności
-    DX_PT = 15      # punkty
+    DX_PT = 5      # punkty
 
     for d, items in groups.items():
         n = len(items)
