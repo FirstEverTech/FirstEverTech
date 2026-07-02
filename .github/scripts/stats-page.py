@@ -369,7 +369,7 @@ def apply_annotations(ax, fig, dates: list[date],
             # Przesunięcie etykiety w poziomie (w punktach)
             offset_pt = (i - (n-1)/2) * DX_PT
             # Przesunięcie w pionie zależy od typu
-            y_offset = -10 if typ == 'release' else -18
+            y_offset = -13 if typ == 'release' else -19
             ax.annotate(
                 label, xy=(rx, y_bot), xycoords="data",
                 xytext=(offset_pt, y_offset), textcoords="offset points",
