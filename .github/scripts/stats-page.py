@@ -147,24 +147,24 @@ def take_snapshot(h: dict) -> dict:
 
     return h
 
-def daily_delta(h: dict, *key_path, offset_days: int = 0) -> list[int]:
-    def get_val(day_key: str):
-        node = h.get(day_key, {})
-        for k in key_path:
-            if not isinstance(node, dict):
-                return None
-            node = node.get(k)
-        return node
+def _get_val(h: dict, day_key: str, key_path: tuple):
+    node = h.get(day_key, {})
+    for k in key_path:
+        if not isinstance(node, dict):
+            return None
+        node = node.get(k)
+    return node
 
+def daily_delta(h: dict, *key_path, offset_days: int = 0) -> list[int]:
     sorted_keys = sorted(h.keys())
     start = TODAY - timedelta(days=DAYS - 1 + offset_days)
     result = []
     for i in range(DAYS):
         d_key = (start + timedelta(days=i)).isoformat()
-        curr  = get_val(d_key)
+        curr  = _get_val(h, d_key, key_path)
         prev  = next(
-            (get_val(k) for k in reversed(sorted_keys)
-             if k < d_key and get_val(k) is not None),
+            (_get_val(h, k, key_path) for k in reversed(sorted_keys)
+             if k < d_key and _get_val(h, k, key_path) is not None),
             None,
         )
         if curr is None or prev is None:
@@ -172,6 +172,47 @@ def daily_delta(h: dict, *key_path, offset_days: int = 0) -> list[int]:
         else:
             result.append(max(0, curr - prev))
     return result
+
+def full_daily_delta(h: dict, *key_path) -> list[int]:
+    """Daily delta series over the ENTIRE recorded history (not just the DAYS window)."""
+    sorted_keys = sorted(h.keys())
+    if not sorted_keys:
+        return []
+    start = date.fromisoformat(sorted_keys[0])
+    n = (TODAY - start).days + 1
+    result = []
+    for i in range(n):
+        d_key = (start + timedelta(days=i)).isoformat()
+        curr  = _get_val(h, d_key, key_path)
+        prev  = next(
+            (_get_val(h, k, key_path) for k in reversed(sorted_keys)
+             if k < d_key and _get_val(h, k, key_path) is not None),
+            None,
+        )
+        if curr is None or prev is None:
+            result.append(0)
+        else:
+            result.append(max(0, curr - prev))
+    return result
+
+def alltime_peak(h: dict, *key_path) -> float:
+    """Max daily delta across full history, excluding today (incomplete day)."""
+    vals = full_daily_delta(h, *key_path)
+    if not vals:
+        return 0.0
+    done = vals[:-1] if len(vals) > 1 else vals
+    return float(max(done)) if done else 0.0
+
+def alltime_peak_multi(h: dict, key_paths: list[tuple]) -> float:
+    """Max daily *summed* delta across a set of series (e.g. Rep1+Rep2+Rep3), full history."""
+    series = [full_daily_delta(h, *kp) for kp in key_paths]
+    series = [s for s in series if s]
+    if not series:
+        return 0.0
+    # all series derive from the same global sorted_keys(h) start/length, so lengths match
+    totals = [sum(vals) for vals in zip(*series)]
+    done = totals[:-1] if len(totals) > 1 else totals
+    return float(max(done)) if done else 0.0
 
 def date_range() -> list[date]:
     start = TODAY - timedelta(days=DAYS - 1)
@@ -202,7 +243,8 @@ def load_mentions() -> list[tuple[str, date]]:
     return _parse_conf(MENTIONS_FILE)
 
 # ── Stats computation ──────────────────────────────────────────────────────
-def compute_stats(counts: np.ndarray, prev_month_sum: float | None = None) -> tuple[str, str, str, str | None]:
+def compute_stats(counts: np.ndarray, prev_month_sum: float | None = None,
+                  peak_alltime: float | None = None) -> tuple[str, str, str, str | None, str | None]:
     arr = counts.astype(float)
     done = arr[:-1]
     delta = done[-1] - done[-2] if len(done) >= 2 else 0.0
@@ -215,11 +257,16 @@ def compute_stats(counts: np.ndarray, prev_month_sum: float | None = None) -> tu
         diff = curr_sum - prev_month_sum
         sign = "+" if diff >= 0 else ""
         vs_month = f"{sign}{diff:.0f}"
-    return delta_str, f"{avg7:.1f}", f"{avg31:.1f}", vs_month
+    peak_str: str | None = None
+    if peak_alltime is not None:
+        peak_str = f"{peak_alltime:.0f}"
+    return delta_str, f"{avg7:.1f}", f"{avg31:.1f}", vs_month, peak_str
 
 def add_stats_bar(fig, counts: np.ndarray, y_pos: float = 0.04,
-                  prev_month_sum: float | None = None):
-    delta_str, avg7, avg31, vs_month = compute_stats(counts, prev_month_sum)
+                  prev_month_sum: float | None = None,
+                  peak_alltime: float | None = None):
+    delta_str, avg7, avg31, vs_month, peak_str = compute_stats(
+        counts, prev_month_sum=prev_month_sum, peak_alltime=peak_alltime)
     text = (
         f"▲ vs yesterday: {delta_str} / day"
         f"   │   ⌀ last 7 days: {avg7} / day"
@@ -227,6 +274,8 @@ def add_stats_bar(fig, counts: np.ndarray, y_pos: float = 0.04,
     )
     if vs_month is not None:
         text += f"   │   vs last month: {vs_month} / month"
+    if peak_str is not None:
+        text += f"   │   Peak (all-time): {peak_str} / day"
     fig.text(0.5, y_pos, text, ha="center", va="bottom",
              color=BLUE, fontsize=7.5, fontfamily="DejaVu Sans", fontweight="bold")
 
@@ -402,7 +451,8 @@ def gen_single(dates: list[date], counts: list[int],
                releases: list | None = None,
                mentions:  list | None = None,
                allowed_aliases: set | None = None,
-               prev_month_sum: float | None = None):
+               prev_month_sum: float | None = None,
+               peak_alltime: float | None = None):
     y = np.array(counts, float)
     fig, ax = base_fig(height=3.8)
     x_num = setup_x_axis(ax, dates)
@@ -418,7 +468,7 @@ def gen_single(dates: list[date], counts: list[int],
     plt.tight_layout(pad=0.8)
     plt.subplots_adjust(bottom=0.18)
 
-    add_stats_bar(fig, y, prev_month_sum=prev_month_sum)
+    add_stats_bar(fig, y, prev_month_sum=prev_month_sum, peak_alltime=peak_alltime)
 
     if releases or mentions:
         apply_annotations(ax, fig, dates,
@@ -433,7 +483,8 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
               releases: list | None = None,
               mentions:  list | None = None,
               allowed_aliases: set | None = None,
-              prev_month_sum: float | None = None):
+              prev_month_sum: float | None = None,
+              peak_alltime: float | None = None):
     fig, ax = base_fig(height=4.3)
     x_num = setup_x_axis(ax, dates)
     ax.margins(x=0.02, y=0.05)
@@ -482,7 +533,7 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
     plt.tight_layout(pad=0.8)
     plt.subplots_adjust(bottom=0.28)
 
-    add_stats_bar(fig, total, y_pos=0.10, prev_month_sum=prev_month_sum)
+    add_stats_bar(fig, total, y_pos=0.10, prev_month_sum=prev_month_sum, peak_alltime=peak_alltime)
 
     if releases or mentions:
         apply_annotations(ax, fig, dates,
@@ -558,14 +609,16 @@ def main():
     gen_single(dates, daily_delta(h, "followers"),
                f"{name} — Daily Follower Growth", "New Followers",
                ASSETS_DIR / "followers.svg",
-               prev_month_sum=float(prev_followers))
+               prev_month_sum=float(prev_followers),
+               peak_alltime=alltime_peak(h, "followers"))
 
     # ── Stars (total)
     prev_stars = sum(daily_delta(h, "stars_total", offset_days=DAYS))
     gen_single(dates, daily_delta(h, "stars_total"),
                f"{name} — Daily Stars", "New Stars",
                ASSETS_DIR / "stars.svg",
-               prev_month_sum=float(prev_stars))
+               prev_month_sum=float(prev_stars),
+               peak_alltime=alltime_peak(h, "stars_total"))
 
     # ── Profile views
     start = TODAY - timedelta(days=DAYS - 1)
@@ -581,7 +634,8 @@ def main():
     gen_single(dates, views,
                f"{name} — Profile Views", "Views / day",
                ASSETS_DIR / "profile-views.svg",
-               prev_month_sum=prev_views_sum)
+               prev_month_sum=prev_views_sum,
+               peak_alltime=alltime_peak(h, "profile_views"))
 
     # ── GitHub Downloads
     gh_dl = {alias: daily_delta(h, "gh_downloads", alias) for alias in REPOS}
@@ -596,7 +650,8 @@ def main():
               releases=releases,
               mentions=mentions,
               allowed_aliases=set(REPOS.keys()),
-              prev_month_sum=prev_gh_total)
+              prev_month_sum=prev_gh_total,
+              peak_alltime=alltime_peak_multi(h, [("gh_downloads", alias) for alias in REPOS]))
 
     # ── PSGallery Downloads
     ps_dl = {alias: daily_delta(h, "ps_downloads", alias) for alias in PS_MODULES}
@@ -611,11 +666,12 @@ def main():
               releases=releases,
               mentions=mentions,
               allowed_aliases={"Rep1", "Rep2"},
-              prev_month_sum=prev_ps_total)
+              prev_month_sum=prev_ps_total,
+              peak_alltime=alltime_peak_multi(h, [("ps_downloads", alias) for alias in PS_MODULES]))
 
     # ── Contribution graph footer
     views_arr = np.array(views, float)
-    delta_str, avg7, avg31, _ = compute_stats(views_arr)
+    delta_str, avg7, avg31, _, _ = compute_stats(views_arr)
     contrib_stats = (
         f"▲ vs yesterday: {delta_str} / day"
         f"   │   ⌀ last 7 days: {avg7} / day"
