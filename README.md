@@ -300,6 +300,6 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 > **⚠️ Disclaimer**  
 > All tools and projects provided by FirstEver Technology are shared **"as-is"** for educational, research, and convenience purposes only.  
 > 
-> While we strive for accuracy, security, and reliability, **you assume full responsibility** for verifying compatibility and functionality in your specific environment. Always cross-check critical updates, patches, or system modifications through **official vendor channels** before deployment in production.  
+> While I strive for accuracy, security, and reliability, **you assume full responsibility** for verifying compatibility and functionality in your specific environment. Always cross-check critical updates, patches, or system modifications through **official vendor channels** before deployment in production.  
 > 
-> We believe in full transparency—source code, methodologies, and supporting databases (where applicable) are open for community review, auditing, and contributions.
+> I believe in full transparency—source code, methodologies, and supporting databases (where applicable) are open for community review, auditing, and contributions.
