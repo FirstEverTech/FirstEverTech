@@ -26,7 +26,7 @@
        src="https://raw.githubusercontent.com/FirstEverTech/Universal-Intel-Chipset-Updater/main/assets/FirstEverTech-animation.gif" />
 </a>
 
-[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge&label=Followers)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)[![Downloads](https://img.shields.io/badge/Downloads-114.7K-blue?style=for-the-badge&label=Downloads)](https://github.com/FirstEverTech/FirstEverTech/blob/main/STATS.md)
+[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge&label=Followers)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)[![Downloads](https://img.shields.io/badge/Downloads-114.9K-blue?style=for-the-badge&label=Downloads)](https://github.com/FirstEverTech/FirstEverTech/blob/main/STATS.md)
 
 ## Marcin Grygiel aka First Ever
 
