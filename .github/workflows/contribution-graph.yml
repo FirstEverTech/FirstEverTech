@@ -20,7 +20,7 @@ jobs:
         run: pip install requests matplotlib numpy scipy
       - name: Generate SVG
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CONTRIB_GRAPH_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
         run: python .github/scripts/contribution-graph.py
       - uses: stefanzweifel/git-auto-commit-action@v5
