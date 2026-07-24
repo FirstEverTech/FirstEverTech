@@ -24,7 +24,7 @@ jobs:
 
       - name: Generate stats SVGs
         env:
-          GITHUB_TOKEN: ${{ secrets.STATS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.STATS_PAGE_TOKEN }}
           GH_USERNAME:  ${{ github.repository_owner }}
           # Set these in:
           # Settings → Secrets and variables → Actions → Variables (not Secrets)
