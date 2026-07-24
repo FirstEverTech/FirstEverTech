@@ -19,7 +19,7 @@ jobs:
         run: pip install requests
       - name: Run script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DOWNLOADS_BADGE_TOKEN }}
         run: python .github/scripts/downloads-badge.py
       - name: Commit changes
         run: |
