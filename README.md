@@ -26,7 +26,7 @@
        src="https://raw.githubusercontent.com/FirstEverTech/Universal-Intel-Chipset-Updater/main/assets/FirstEverTech-animation.gif" />
 </a>
 
-[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge&label=Followers)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)[![Downloads](https://img.shields.io/badge/Downloads-125.3K-blue?style=for-the-badge&label=Downloads)](https://github.com/FirstEverTech/FirstEverTech/blob/main/STATS.md)
+[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge&label=Followers)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)[![Downloads](https://img.shields.io/badge/Downloads-125.2K-blue?style=for-the-badge&label=Downloads)](https://github.com/FirstEverTech/FirstEverTech/blob/main/STATS.md)
 
 ## Marcin Grygiel aka First Ever
 
@@ -128,6 +128,18 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 > Every project below shows a different face of my "orchestra" ability. Click the image to see the full story.
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse;">
+    <!-- Universal Windows Updater (2026) -->
+  <tr>
+    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://github.com/FirstEverTech/Universal-Windows-Updater">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Windows_Updater.png?raw=true" style="width: 100%; max-width: 100%;" alt="Universal Windows Updater">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <strong>Universal Windows Updater (2026)</strong><br>
+      Developed the first open-source solution capable of upgrading every Windows release from XP through Windows 10 directly to the latest Windows 11 build in a single in-place upgrade. Eliminating years of sequential OS migrations by combining legacy Windows Setup with modern deployment technology through reverse engineering, making it possible to upgrade a 21-year-old Windows XP installation directly to the latest Windows 11 26H1.
+    </td>
+  </tr>
   <!-- Universal Intel Chipset Device Updater (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
