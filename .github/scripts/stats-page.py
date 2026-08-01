@@ -227,11 +227,19 @@ def _parse_conf(path: Path) -> list[tuple[str, date]]:
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        m = re.match(r"(\w+)\s*=\s*(\d{1,2})/(\d{2})$", line)
+        # v2: year is now optional for backward compatibility with existing
+        # bare "DD/MM" entries, but should always be included going forward
+        # as "DD/MM/YYYY". Relying on TODAY.year as a fallback breaks any
+        # entry from December once the calendar rolls over to a new year —
+        # e.g. "27/12" parsed in January 2027 becomes 27/12/2027 instead of
+        # 27/12/2026, silently vanishing from the 31-day window right when
+        # it should be most visible. Always writing the year avoids this.
+        m = re.match(r"(\w+)\s*=\s*(\d{1,2})/(\d{2})(?:/(\d{4}))?$", line)
         if m:
             alias, day, month = m.group(1), int(m.group(2)), int(m.group(3))
+            year = int(m.group(4)) if m.group(4) else TODAY.year
             try:
-                result.append((alias, date(TODAY.year, month, day)))
+                result.append((alias, date(year, month, day)))
             except ValueError:
                 pass
     return result
