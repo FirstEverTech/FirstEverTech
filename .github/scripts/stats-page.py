@@ -54,7 +54,7 @@ GRID_MAJ = "#283d58"
 AVG_COLOR = "#ff6b6b"          # różowy (średnia miesięczna)
 
 REP_COLORS = {
-    "Rep1":    "#1a73e8",      # granatowy (widoczny w jasnym tle)
+    "Rep1":    "#1a73e8",      # granatowy
     "Rep2":    "#3fb950",      # zielony
     "Rep3":    "#f78166",      # czerwono-pomarańczowy
     "Total":   "#e3b341",      # żółty (przerywana)
@@ -74,10 +74,28 @@ def fetch_followers() -> int:
 def fetch_stars_total() -> int:
     return sum(gh(f"/repos/{full}")["stargazers_count"] for full in REPOS.values())
 
+
+# ── FIX: paginacja w fetch_repo_downloads ──────────────────────────────────
 def fetch_repo_downloads(full_repo: str) -> int:
-    releases = gh(f"/repos/{full_repo}/releases", {"per_page": 100})
-    return sum(a.get("download_count", 0)
-               for rel in releases for a in rel.get("assets", []))
+    total = 0
+    page = 1
+    while True:
+        releases = gh(f"/repos/{full_repo}/releases",
+                      {"per_page": 100, "page": page})
+        if not releases:
+            break
+        total += sum(
+            a.get("download_count", 0)
+            for rel in releases
+            for a in rel.get("assets", [])
+        )
+        if len(releases) < 100:
+            break
+        page += 1
+        if page > 50:  # safety limit
+            break
+    return total
+
 
 def fetch_profile_views() -> list[tuple[date, int]]:
     try:
@@ -174,7 +192,6 @@ def daily_delta(h: dict, *key_path, offset_days: int = 0) -> list[int]:
     return result
 
 def full_daily_delta(h: dict, *key_path) -> list[int]:
-    """Daily delta series over the ENTIRE recorded history (not just the DAYS window)."""
     sorted_keys = sorted(h.keys())
     if not sorted_keys:
         return []
@@ -196,7 +213,6 @@ def full_daily_delta(h: dict, *key_path) -> list[int]:
     return result
 
 def alltime_peak(h: dict, *key_path) -> float:
-    """Max daily delta across full history, excluding today (incomplete day)."""
     vals = full_daily_delta(h, *key_path)
     if not vals:
         return 0.0
@@ -204,12 +220,10 @@ def alltime_peak(h: dict, *key_path) -> float:
     return float(max(done)) if done else 0.0
 
 def alltime_peak_multi(h: dict, key_paths: list[tuple]) -> float:
-    """Max daily *summed* delta across a set of series (e.g. Rep1+Rep2+Rep3), full history."""
     series = [full_daily_delta(h, *kp) for kp in key_paths]
     series = [s for s in series if s]
     if not series:
         return 0.0
-    # all series derive from the same global sorted_keys(h) start/length, so lengths match
     totals = [sum(vals) for vals in zip(*series)]
     done = totals[:-1] if len(totals) > 1 else totals
     return float(max(done)) if done else 0.0
@@ -227,13 +241,6 @@ def _parse_conf(path: Path) -> list[tuple[str, date]]:
         line = line.strip()
         if not line or line.startswith("#"):
             continue
-        # v2: year is now optional for backward compatibility with existing
-        # bare "DD/MM" entries, but should always be included going forward
-        # as "DD/MM/YYYY". Relying on TODAY.year as a fallback breaks any
-        # entry from December once the calendar rolls over to a new year —
-        # e.g. "27/12" parsed in January 2027 becomes 27/12/2027 instead of
-        # 27/12/2026, silently vanishing from the 31-day window right when
-        # it should be most visible. Always writing the year avoids this.
         m = re.match(r"(\w+)\s*=\s*(\d{1,2})/(\d{2})(?:/(\d{4}))?$", line)
         if m:
             alias, day, month = m.group(1), int(m.group(2)), int(m.group(3))
@@ -385,7 +392,6 @@ def apply_annotations(ax, fig, dates: list[date],
     x_end    = max(x_nums.values())
     y_bot    = ax.get_ylim()[0]
 
-    # Zbierz wszystkie znaczniki
     markers = []
     for alias, d in releases:
         if d in date_set and (allowed is None or alias in allowed):
@@ -397,35 +403,28 @@ def apply_annotations(ax, fig, dates: list[date],
     if not markers:
         return
 
-    # Pogrupuj po dacie
     groups = defaultdict(list)
     for d, alias, typ in markers:
         groups[d].append((alias, typ))
 
     tick_colors = {}
 
-    # Stałe przesunięcie w poziomie dla znaczników (w jednostkach daty)
-    DX_DATA = 0.3   # dzień
-    # Przesunięcie etykiet w punktach (odstęp między etykietami) – zwiększone dla czytelności
-    DX_PT = 5      # punkty
+    DX_DATA = 0.3
+    DX_PT = 5
 
     for d, items in groups.items():
         n = len(items)
         rx_center = x_nums[d]
-        # Rozłóż znaczniki w poziomie
         for i, (alias, typ) in enumerate(items):
             offset_data = (i - (n-1)/2) * DX_DATA
             rx = rx_center + offset_data
             color = REP_COLORS.get(alias, BLUE)
             prefix = "R" if typ == 'release' else "M"
             label = _alias_to_short(alias, prefix)
-            # Marker
             marker = "v" if typ == 'release' else "*"
             ax.plot(rx, y_bot, marker, color=color,
                     markersize=5, clip_on=False, zorder=6)
-            # Przesunięcie etykiety w poziomie (w punktach)
             offset_pt = (i - (n-1)/2) * DX_PT
-            # Przesunięcie w pionie zależy od typu
             y_offset = -13 if typ == 'release' else -19
             ax.annotate(
                 label, xy=(rx, y_bot), xycoords="data",
@@ -434,11 +433,9 @@ def apply_annotations(ax, fig, dates: list[date],
                 fontweight="bold", annotation_clip=False,
             )
 
-        # Ustaw kolor etykiety osi X tylko gdy jest dokładnie jeden znacznik w tym dniu
         if n == 1:
             tick_colors[d] = REP_COLORS.get(items[0][0], BLUE)
 
-    # Zastosuj kolory do etykiet osi X
     if tick_colors:
         fig.canvas.draw()
         for lbl in ax.get_xticklabels():
@@ -516,13 +513,11 @@ def gen_multi(dates: list[date], series: dict[str, list[int]],
         ax.scatter(x_num, total, color=tc, s=22, zorder=4, linewidths=0, marker="D")
         all_y.extend(total.tolist())
 
-    # Średnia miesięczna (pozioma linia kropkowana)
     avg_val = float(np.mean(total[:-1])) if len(total) > 1 else float(np.mean(total))
     ax.axhline(avg_val, color=AVG_COLOR, linewidth=1.5, linestyle=":", zorder=2, label="Average")
 
     setup_y_axis(ax, max(all_y) if all_y else 0)
 
-    # Legenda
     handles, labels = ax.get_legend_handles_labels()
     extra_cols = (1 if show_total and len(series) > 1 else 0) + 1
     leg = ax.legend(handles, labels, fontsize=7, framealpha=0,
