@@ -140,6 +140,17 @@ def take_snapshot(h: dict) -> dict:
     gh_dl       = {alias: fetch_repo_downloads(full) for alias, full in REPOS.items()}
     ps_dl       = {alias: fetch_psgallery(mod)       for alias, mod  in PS_MODULES.items()}
 
+    # Liczniki są kumulatywne – spadek = błędna odpowiedź API (np. HTTP 200 + pusta
+    # lista release'ów) i zrobiłby gigantyczny skok w wykresie następnego dnia.
+    # fetch_psgallery() zwraca 0 przy błędzie, więc to samo dotyczy PSGallery.
+    for key, vals in (("gh_downloads", gh_dl), ("ps_downloads", ps_dl)):
+        for alias in list(vals):
+            known = max((day.get(key, {}).get(alias, 0) for day in h.values()), default=0)
+            if vals[alias] < known:
+                print(f"[WARN] {key}/{alias}: API={vals[alias]} < known {known}, keeping {known}",
+                      file=sys.stderr)
+                vals[alias] = known
+
     print(f"[INFO] {TODAY}  followers={followers}  stars={stars}")
     print(f"[INFO] gh_downloads={gh_dl}")
     print(f"[INFO] ps_downloads={ps_dl}")

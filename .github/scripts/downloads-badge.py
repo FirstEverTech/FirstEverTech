@@ -112,6 +112,30 @@ for repo in REPOS:
 
 print(f"[INFO] Suma wszystkich repo: {total_downloads}")
 
+# ── FIX 4: sanity check – licznik pobrań jest kumulatywny, nie może maleć ──
+# GitHub potrafi zwrócić HTTP 200 + pustą listę release'ów (incydent 22.10.2026),
+# więc status 200 nie gwarantuje poprawnych danych. Porównaj z historią.
+ALIAS = {
+    "Universal-Intel-Chipset-Updater": "Rep1",
+    "Universal-Intel-WiFi-BT-Updater": "Rep2",
+    "Adobe-AVX2-Patch": "Rep3",
+}
+try:
+    import json
+    with open("assets/data/stats_history.json", encoding="utf-8") as f:
+        _hist = json.load(f)
+except (OSError, ValueError):
+    _hist = {}
+for repo, count in per_repo_counts.items():
+    known = max(
+        (day.get("gh_downloads", {}).get(ALIAS[repo], 0) for day in _hist.values()),
+        default=0,
+    )
+    if count < known:
+        print(f"[ERROR] {repo}: API={count} < ostatnia znana wartość {known} "
+              f"– odrzucam (puste/niepełne dane z API)")
+        failed_repos.append(repo)
+
 # ── FIX 3: NIE nadpisuj badge'a błędną sumą ───────────────────────────────
 if failed_repos:
     print(f"[ERROR] Nie udało się pobrać danych z: {failed_repos}")
