@@ -137,7 +137,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Windows Updater (2026)</strong><br>
-      Developed the first open-source solution capable of upgrading every Windows release from XP through Windows 10 directly to the latest Windows 11 build in a single in-place upgrade. Eliminating years of sequential OS migrations by combining legacy Windows Setup with modern deployment technology through reverse engineering, making it possible to upgrade a 21-year-old Windows XP installation directly to the latest Windows 11 26H2.
+      Developed the first open-source solution capable of upgrading every Windows release from XP through Windows 10 directly to the latest Windows 11 build in a single in-place upgrade. Eliminating years of sequential OS migrations by combining legacy Windows Setup with modern deployment technology through reverse engineering, making it possible to upgrade a 21-year-old Windows XP installation directly to the latest Windows 11.
     </td>
   </tr>
   <!-- Universal Intel Chipset Device Updater (2025) -->
