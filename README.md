@@ -67,6 +67,35 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 ---
 
+## 📰 Latest News
+
+<sub>Short updates from the workshop — newest first.</sub>
+
+### 🆕 07/11/2026 — New repository coming: Universal Windows Wallpaper Changer
+I'm finishing work on a brand-new repository for the **Universal Windows Wallpaper Changer** project — [github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer). The repo is almost ready and I'll be making the new tool publicly available very soon. Stay tuned!
+
+### 🏆 07/11/2026 — Milestones: 400 stars and 200K+ downloads
+A quick moment to celebrate the FirstEverTech account's progress: we've just crossed **400 GitHub stars** and **200,000+ total downloads** across all projects. Thank you to everyone who starred, downloaded, tested and reported issues — it genuinely keeps these tools moving forward.
+If you'd like to support continued development, you can now do so via **Patreon**: [patreon.com/cw/FirstEverTech](https://www.patreon.com/cw/FirstEverTech). Every bit helps. 🙏
+
+### 🔄 26/11/2026 — Intel Wi‑Fi & Bluetooth driver database updated
+I've just added new Intel Wireless Wi‑Fi and Bluetooth drivers to the updater database:
+
+- **Intel Bluetooth Drivers 24.90.0.3** (28/10/2026) — [intel-bt-driver-latest.md](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater/blob/main/intel-bt-driver-latest.md)
+- **Intel Wi‑Fi Drivers 24.90.0.3** (25/10/2026) — [intel-wifi-driver-latest.md](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater/blob/main/intel-wifi-driver-latest.md)
+
+The **Universal Intel Wi‑Fi & Bluetooth Drivers Updater** code itself remains unchanged — this is a database-only update, so existing installations will pick up the new entries on the next check.
+
+<details>
+<summary><strong>Show more…</strong></summary>
+
+### 📰 26/11/2026 — Introducing the Latest News section
+I've added this **Latest News** section to the README so you can quickly follow what's new — driver database updates, new releases, project milestones, and upcoming tools — all in one place. Newest posts appear first; older ones are tucked under **Show more…** below.
+
+</details>
+
+---
+
 ## 💖 Support This Author
 
 All tools are free and open-source — maintained by a single developer.  
