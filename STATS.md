@@ -26,7 +26,7 @@
        src="https://raw.githubusercontent.com/FirstEverTech/Universal-Intel-Chipset-Updater/main/assets/FirstEverTech-animation.gif" />
 </a>
 
-[![Home](https://img.shields.io/badge/HOME-blue?style=for-the-badge)](https://github.com/FirstEverTech)[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge&label=Followers)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)[![Downloads](https://img.shields.io/badge/Downloads-201.7K-blue?style=for-the-badge&label=Downloads)](https://github.com/FirstEverTech/FirstEverTech/blob/main/STATS.md)
+[![Home](https://img.shields.io/badge/HOME-blue?style=for-the-badge)](https://github.com/FirstEverTech)[![GitHub Stars](https://img.shields.io/github/stars/FirstEverTech?style=for-the-badge&label=GitHub+Stars)](https://github.com/FirstEverTech)[![GitHub Followers](https://img.shields.io/github/followers/FirstEverTech?style=for-the-badge&label=Followers)](https://github.com/FirstEverTech)[![Profile Views](https://komarev.com/ghpvc/?username=FirstEverTech&style=for-the-badge)](https://github.com/FirstEverTech)[![Downloads](https://img.shields.io/badge/Downloads-201.6K-blue?style=for-the-badge&label=Downloads)](https://github.com/FirstEverTech/FirstEverTech/blob/main/STATS.md)
 
 # 📊 Stats
 
@@ -70,8 +70,8 @@ Daily traffic on the profile README (last 31 days, sourced from GitHub traffic A
 [FirstEver Technology GitHub](https://github.com/FirstEverTech)  
 [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater)  
 [Universal Intel Wi-Fi and Bluetooth Drivers Updater](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater)  
-[Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)  
 [Universal Windows Wallpaper Changer](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)  
+[Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)  
 
 ---
 
