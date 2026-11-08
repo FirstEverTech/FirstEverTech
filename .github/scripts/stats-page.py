@@ -33,7 +33,13 @@ REPOS = {
     "Rep1": "FirstEverTech/Universal-Intel-Chipset-Updater",
     "Rep2": "FirstEverTech/Universal-Intel-WiFi-BT-Updater",
     "Rep3": "FirstEverTech/Adobe-AVX2-Patch",
+    "Rep4": "FirstEverTech/Universal-Windows-Wallpaper-Changer",
 }
+
+# Releases that are NOT counted as downloads. Empty = everything is counted,
+# including the Rep4 "wallpapers" release (photo downloads are counted too).
+# To exclude it: EXCLUDE_RELEASE_TAGS = {"Rep4": {"wallpapers"}}
+EXCLUDE_RELEASE_TAGS: dict[str, set] = {}
 
 PS_MODULES = {
     "Rep1": os.environ.get("PS_REP1_MODULE", "universal-intel-chipset-device-updater"),
@@ -57,6 +63,7 @@ REP_COLORS = {
     "Rep1":    "#1a73e8",      # granatowy
     "Rep2":    "#3fb950",      # zielony
     "Rep3":    "#f78166",      # czerwono-pomarańczowy
+    "Rep4":    "#a371f7",      # fioletowy
     "Total":   "#e3b341",      # żółty (przerywana)
     "Average": "#ff6b6b",      # różowy (kropkowana)
 }
@@ -76,7 +83,8 @@ def fetch_stars_total() -> int:
 
 
 # ── FIX: paginacja w fetch_repo_downloads ──────────────────────────────────
-def fetch_repo_downloads(full_repo: str) -> int:
+def fetch_repo_downloads(full_repo: str, exclude_tags: set | None = None) -> int:
+    exclude_tags = exclude_tags or set()
     total = 0
     page = 1
     while True:
@@ -87,6 +95,7 @@ def fetch_repo_downloads(full_repo: str) -> int:
         total += sum(
             a.get("download_count", 0)
             for rel in releases
+            if rel.get("tag_name") not in exclude_tags
             for a in rel.get("assets", [])
         )
         if len(releases) < 100:
@@ -137,7 +146,8 @@ def save_history(h: dict):
 def take_snapshot(h: dict) -> dict:
     followers   = fetch_followers()
     stars       = fetch_stars_total()
-    gh_dl       = {alias: fetch_repo_downloads(full) for alias, full in REPOS.items()}
+    gh_dl       = {alias: fetch_repo_downloads(full, EXCLUDE_RELEASE_TAGS.get(alias))
+                   for alias, full in REPOS.items()}
     ps_dl       = {alias: fetch_psgallery(mod)       for alias, mod  in PS_MODULES.items()}
 
     # Liczniki są kumulatywne – spadek = błędna odpowiedź API (np. HTTP 200 + pusta

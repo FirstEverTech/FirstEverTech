@@ -9,7 +9,14 @@ REPOS = [
     "Universal-Intel-Chipset-Updater",
     "Universal-Intel-WiFi-BT-Updater",
     "Adobe-AVX2-Patch",
+    "Universal-Windows-Wallpaper-Changer",
 ]
+
+# Releases that are NOT counted as downloads (keep in sync with
+# EXCLUDE_RELEASE_TAGS in stats-page.py). Empty = everything is counted,
+# including the "wallpapers" release (photo downloads are counted too).
+# To exclude it: EXCLUDE_RELEASE_TAGS = {"Universal-Windows-Wallpaper-Changer": {"wallpapers"}}
+EXCLUDE_RELEASE_TAGS: dict[str, set] = {}
 
 headers = {
     "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
@@ -104,6 +111,7 @@ for repo in REPOS:
     repo_total = sum(
         asset.get("download_count", 0)
         for release in releases
+        if release.get("tag_name") not in EXCLUDE_RELEASE_TAGS.get(repo, set())
         for asset in release.get("assets", [])
     )
     per_repo_counts[repo] = repo_total
@@ -119,6 +127,7 @@ ALIAS = {
     "Universal-Intel-Chipset-Updater": "Rep1",
     "Universal-Intel-WiFi-BT-Updater": "Rep2",
     "Adobe-AVX2-Patch": "Rep3",
+    "Universal-Windows-Wallpaper-Changer": "Rep4",
 }
 try:
     import json
