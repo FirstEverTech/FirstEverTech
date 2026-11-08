@@ -157,6 +157,18 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
 > Every project below shows a different face of my "orchestra" ability. Click the image to see the full story.
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse;">
+    <!-- Universal Windows Wallpaper Changer (2026) -->
+  <tr>
+    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <a href="https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">
+        <img src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Windows_Wallpaper_Changer.png?raw=true" style="width: 100%; max-width: 100%;" alt="Universal Windows Wallpaper Changer">
+      </a>
+    </td>
+    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
+      <strong>Universal Windows Wallpaper Changer (2026)</strong><br>
+      Built a lightweight PowerShell tool that sets a fresh, free 4K wallpaper on Windows once or on a schedule, with a tray icon and no administrator rights. Windows has no built-in way to rotate wallpapers from multiple free sources without third-party bloatware. My tool picks random images from sources that need no API key, including my own photo collection, or from your own folders, and verifies its own integrity with SHA-256.
+    </td>
+  </tr>
     <!-- Universal Windows Updater (2026) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
