@@ -166,7 +166,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Universal Windows Wallpaper Changer (2026)</strong><br>
-      Built a lightweight PowerShell tool that sets a fresh, free 4K wallpaper on Windows once or on a schedule, with a tray icon and no administrator rights. Windows has no built-in way to rotate wallpapers from multiple free sources without third-party bloatware. My tool picks random images from sources that need no API key, including my own photo collection, or from your own folders, and verifies its own integrity with SHA-256.
+      Built a lightweight PowerShell tool that sets a fresh, free high-resolution wallpaper on Windows once or on a schedule, with a tray icon and no administrator rights. Windows has no built-in way to rotate wallpapers from multiple free sources without third-party bloatware. My tool picks random images from sources that need no API key, including my own photo collection, or from your own folders, and verifies its own integrity with SHA-256.
     </td>
   </tr>
     <!-- Universal Windows Updater (2026) -->
