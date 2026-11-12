@@ -81,7 +81,7 @@ I'm finishing work on a brand-new repository for the **Universal Windows Wallpap
 
 ### 🏆 07/11/2026 — Milestones: 400 stars and 200K+ downloads
 A quick moment to celebrate the FirstEverTech account's progress: we've just crossed **400 GitHub stars** and **200,000+ total downloads** across all projects. Thank you to everyone who starred, downloaded, tested and reported issues — it genuinely keeps these tools moving forward.
-If you'd like to support continued development, you can now do so via **Patreon**: [patreon.com/cw/FirstEverTech](https://www.patreon.com/cw/FirstEverTech). Every bit helps. 🙏
+If you'd like to support continued development, you can now do so via **Patreon**: [patreon.com/cw/FirstEverTech](https://www.patreon.com/cw/FirstEverTech) - every bit helps 🙏
 
 ### 🔄 26/11/2026 — Intel Wi‑Fi & Bluetooth driver database updated
 I've just added new Intel Wireless Wi‑Fi and Bluetooth drivers to the updater database:
