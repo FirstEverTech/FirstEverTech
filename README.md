@@ -73,14 +73,14 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 ### 🆕 12/11/2026 - New 4K wallpapers in Universal Windows Wallpaper Changer
 
-In addition to free wallpapers selected with a filter from various online services, my tool now also includes my own wallpapers. I’m pleased to announce the first series of 30 photos in 4K quality and PNG format, taken on the island of Santorini. You can also use the filter to search for photos by phrase (1-3 words), e.g. Sunset, Architecture, Ship. I will add more photos from other locations in the future.
+In addition to free wallpapers selected with a filter from various online services, my tool now also includes my own wallpapers. I’m pleased to announce the first series of 30 photos in 4K quality and PNG format, taken on the island of Santorini. You can also use the filter to search for photos by phrase (1-3 words), e.g. Sunset, Architecture, Ship. I will add more photos from other locations in the future. 👉 [Link](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)
+
 
 [![Santorini - new 4K wallpapers](https://raw.githubusercontent.com/FirstEverTech/FirstEverTech/main/Images/FET_01_Santorini.png)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)
 
 ### 🆕 11/11/2026 — Adobe AVX2 Patch v1.0.1 works with Adobe Photoshop 2027 (v28.0)
 
-Good news for users of **Adobe AVX2 Patch v1.0.1** — the existing release, originally built for patching the **2026** version of Adobe Photoshop, turns out to work with the new **Adobe Photoshop 2027 (v28.0)** as well, without any changes needed. The tool modifies Adobe's standalone installer file (Application.json) so the product can be installed on computers whose processors support AVX but **not AVX2** — and this now includes the latest Photoshop release. As before, the patch unlocks the installer only and does not modify any installed program files.  
-👉 [Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)
+Good news for users of **Adobe AVX2 Patch v1.0.1** — the existing release, originally built for patching the **2026** version of Adobe Photoshop, turns out to work with the new **Adobe Photoshop 2027 (v28.0)** as well, without any changes needed. The tool modifies Adobe's standalone installer file (Application.json) so the product can be installed on computers whose processors support AVX but **not AVX2** — and this now includes the latest Photoshop release. As before, the patch unlocks the installer only and does not modify any installed program files. 👉 [Link](https://github.com/FirstEverTech/Adobe-AVX2-Patch)
 
 ### 🆕 07/11/2026 — New repository coming: Universal Windows Wallpaper Changer
 I'm finishing work on a brand-new repository for the **Universal Windows Wallpaper Changer** project — [github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer). The repo is almost ready and I'll be making the new tool publicly available very soon. Stay tuned!
