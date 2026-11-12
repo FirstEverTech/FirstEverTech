@@ -71,6 +71,10 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 <sub>Short updates from the workshop — newest first.</sub>
 
+### 🆕 11/11/2026 — Adobe AVX2 Patch v1.0.1 works with Adobe Photoshop 2027 (v28.0)
+
+Good news for users of **Adobe AVX2 Patch v1.0.1** — the existing release, originally built for patching the **2026** version of Adobe Photoshop, turns out to work with the new **Adobe Photoshop 2027 (v28.0)** as well, without any changes needed. The tool modifies Adobe's standalone installer file so the product can be installed on computers whose processors support AVX but **not AVX2** — and this now includes the latest Photoshop release. As before, the patch unlocks the installer only and does not modify any installed program files. 👉 [Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)
+
 ### 🆕 07/11/2026 — New repository coming: Universal Windows Wallpaper Changer
 I'm finishing work on a brand-new repository for the **Universal Windows Wallpaper Changer** project — [github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer). The repo is almost ready and I'll be making the new tool publicly available very soon. Stay tuned!
 
@@ -214,7 +218,7 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
     </td>
     <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
       <strong>Adobe AVX2 Patch (2025)</strong><br>
-      Built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files.
+      Built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026 and 2027) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files.
     </td>
   </tr>
   <!-- Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025) -->
