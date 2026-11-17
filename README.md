@@ -30,14 +30,15 @@
 
 ## Marcin Grygiel aka First Ever
 
-**IT Architect · Strategic Consultant · The Soloist Who Replaces a Full IT Orchestra**
+**IT Architect | Engineer | Consultant | Problem Solver**
 
 <div align="left">
 
-An IT Architect & Engineer who delivers global‑scale solutions alone – because I can.
-I don’t just advise; I **build, fix, and improve** whatever is broken or outdated. Whether it’s a legacy system, a missing automation pipeline, or a hardware limitation that others call “impossible” – I step in and do the work that usually requires a whole cross‑functional team.
+I combine 15+ years of IT experience with strategic thinking and hands-on engineering. From business analysis and IT architecture to automation, software development and complex troubleshooting, I turn problems into practical, working solutions.
 
-> *“One person, team‑level results.”*
+I don't just advise — I design, build, implement and maintain. My independently developed open-source tools have exceeded 200,000 downloads, including the Universal Intel Chipset Device Updater. I believe in end-to-end ownership, technical excellence and measurable results.
+
+> *“One person, team-level results. From strategy to execution.”*
 
 ![GitHub Downloads](assets/github-downloads.svg)
 <p align="center"><sub>Rep1 = <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">Universal Intel Chipset Updater</a> &nbsp;|&nbsp; Rep2 = <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">Universal Intel WiFi & BT Updater</a> &nbsp;|&nbsp; Rep3 = <a href="https://github.com/FirstEverTech/Adobe-AVX2-Patch">Adobe AVX2 Patch</a> &nbsp;|&nbsp; Rep4 = <a href="https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">Universal Windows Wallpaper Changer</a> &nbsp;·&nbsp; R = Release &nbsp;·&nbsp; M = Media Mention</sub></p>
