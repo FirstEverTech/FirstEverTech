@@ -72,6 +72,10 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 <sub>Short updates from the workshop — newest first.</sub>
 
+### 🆕 17/11/2026 — Unknown PCI device DEV_6E74 added to Intel Bluetooth driver database
+
+The latest database update now includes a new device, **PCI\VEN_8086&DEV_6E74** — and interestingly, there isn't a single mention of it anywhere online yet. It may be a new Intel Bluetooth 6.0 adapter, though that's only a guess at this point. What matters most is that if someone buys a new computer equipped with this card, my updater will install the latest drivers for it. The device is now listed in the **Supported PCI Devices** table of the Intel Bluetooth driver database. 👉 [intel-bt-driver-latest.md](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater/blob/main/data/intel-bt-driver-latest.md)
+
 ### 🆕 12/11/2026 - New 4K wallpapers in Universal Windows Wallpaper Changer
 
 In addition to free wallpapers selected with a filter from various online services, my tool now also includes my own wallpapers. I’m pleased to announce the first series of 30 photos in 4K quality and PNG format, taken on the island of Santorini. You can also use the filter to search for photos by phrase (1-3 words), e.g. Sunset, Architecture, Ship. I will add more photos from other locations in the future. 👉 [Link](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)
@@ -90,6 +94,9 @@ I'm finishing work on a brand-new repository for the **Universal Windows Wallpap
 A quick moment to celebrate the FirstEverTech account's progress: we've just crossed **400 GitHub stars** and **200,000+ total downloads** across all projects. Thank you to everyone who starred, downloaded, tested and reported issues — it genuinely keeps these tools moving forward.
 If you'd like to support continued development, you can now do so via **Patreon**: [patreon.com/cw/FirstEverTech](https://www.patreon.com/cw/FirstEverTech) - every bit helps 🙏
 
+<details>
+<summary><strong>Show more…</strong></summary>
+
 ### 🔄 26/11/2026 — Intel Wi‑Fi & Bluetooth driver database updated
 I've just added new Intel Wireless Wi‑Fi and Bluetooth drivers to the updater database:
 
@@ -97,9 +104,6 @@ I've just added new Intel Wireless Wi‑Fi and Bluetooth drivers to the updater 
 - **Intel Wi‑Fi Drivers 24.90.0.3** (25/10/2026) — [intel-wifi-driver-latest.md](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater/blob/main/intel-wifi-driver-latest.md)
 
 The **Universal Intel Wi‑Fi & Bluetooth Drivers Updater** code itself remains unchanged — this is a database-only update, so existing installations will pick up the new entries on the next check.
-
-<details>
-<summary><strong>Show more…</strong></summary>
 
 ### 📰 26/11/2026 — Introducing the Latest News section
 I've added this **Latest News** section to the README so you can quickly follow what's new — driver database updates, new releases, project milestones, and upcoming tools — all in one place. Newest posts appear first; older ones are tucked under **Show more…** below.
