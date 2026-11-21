@@ -72,6 +72,12 @@ Based at [**FirstEver Technology**](https://www.firstever.tech/), I help small a
 
 <sub>Short updates from the workshop — newest first.</sub>
 
+### 🆕 21/11/2026 - New Christmas 4K wallpapers in Universal Windows Wallpaper Changer
+
+In addition to free wallpapers selected with a filter from various online services, my tool now also includes my own wallpapers. I'm pleased to announce a new series of 11 Christmas-themed photos in 4K quality and PNG format, taken in a British pub. You can also use the filter to search for photos by phrase (1-3 words), e.g. Christmas, Tree, Decoration, Lights, English, Pub. I will add more photos from other locations in the future. 👉 [Link](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)
+
+[![Christmas - new 4K wallpapers](https://raw.githubusercontent.com/FirstEverTech/FirstEverTech/main/Images/FET_02_Christmas.png)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)
+
 ### 🆕 17/11/2026 — Unknown PCI device DEV_6E74 added to Intel Bluetooth driver database
 
 The latest database update now includes a new device, **PCI\VEN_8086&DEV_6E74** — and interestingly, there isn't a single mention of it anywhere online yet. It may be a new Intel Bluetooth 6.0 adapter, though that's only a guess at this point. What matters most is that if someone buys a new computer equipped with this card, my updater will install the latest drivers for it. The device is now listed in the **Supported PCI Devices** table of the Intel Bluetooth driver database. 👉 [intel-bt-driver-latest.md](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater/blob/main/data/intel-bt-driver-latest.md)
