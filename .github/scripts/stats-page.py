@@ -32,8 +32,7 @@ HEADERS = {
 REPOS = {
     "Rep1": "FirstEverTech/Universal-Intel-Chipset-Updater",
     "Rep2": "FirstEverTech/Universal-Intel-WiFi-BT-Updater",
-    "Rep3": "FirstEverTech/Adobe-AVX2-Patch",
-    "Rep4": "FirstEverTech/Universal-Windows-Wallpaper-Changer",
+    "Rep3": "FirstEverTech/Universal-Windows-Wallpaper-Changer",
 }
 
 # Releases that are NOT counted as downloads. Empty = everything is counted,
@@ -62,8 +61,7 @@ AVG_COLOR = "#ff6b6b"          # różowy (średnia miesięczna)
 REP_COLORS = {
     "Rep1":    "#1a73e8",      # granatowy
     "Rep2":    "#3fb950",      # zielony
-    "Rep3":    "#f78166",      # czerwono-pomarańczowy
-    "Rep4":    "#a371f7",      # fioletowy
+    "Rep3":    "#a371f7",      # fioletowy
     "Total":   "#e3b341",      # żółty (przerywana)
     "Average": "#ff6b6b",      # różowy (kropkowana)
 }
