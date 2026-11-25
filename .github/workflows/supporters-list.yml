@@ -33,6 +33,7 @@ jobs:
               org,
               'Universal-Intel-Chipset-Updater',
               'Universal-Intel-WiFi-BT-Updater',
+              'Universal-Windows-Wallpaper-Changer',
           ]
 
           for repo in repos:
