@@ -32,7 +32,7 @@
 
 ## 📥 GitHub Downloads
 
-Lines: `Rep1` Universal-Intel-Chipset-Updater · `Rep2` Universal-Intel-WiFi-BT-Updater · `Rep3` Adobe-AVX2-Patch · `Rep4` Universal-Windows-Wallpaper-Changer · `Total` (dashed)
+Lines: `Rep1` Universal-Intel-Chipset-Updater · `Rep2` Universal-Intel-WiFi-BT-Updater · `Rep3` Universal-Windows-Wallpaper-Changer · `Total` (dashed)
 Markers below axis = release dates.
 
 ![GitHub Downloads](assets/github-downloads.svg)
@@ -71,7 +71,6 @@ Daily traffic on the profile README (last 31 days, sourced from GitHub traffic A
 [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater)  
 [Universal Intel Wi-Fi and Bluetooth Drivers Updater](https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater)  
 [Universal Windows Wallpaper Changer](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)  
-[Adobe AVX2 Patch](https://github.com/FirstEverTech/Adobe-AVX2-Patch)  
 
 ---
 
