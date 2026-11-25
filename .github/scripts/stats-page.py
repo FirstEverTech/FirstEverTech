@@ -36,8 +36,8 @@ REPOS = {
 }
 
 # Releases that are NOT counted as downloads. Empty = everything is counted,
-# including the Rep4 "wallpapers" release (photo downloads are counted too).
-# To exclude it: EXCLUDE_RELEASE_TAGS = {"Rep4": {"wallpapers"}}
+# including the Rep3 "wallpapers" release (photo downloads are counted too).
+# To exclude it: EXCLUDE_RELEASE_TAGS = {"Rep3": {"wallpapers"}}
 EXCLUDE_RELEASE_TAGS: dict[str, set] = {}
 
 PS_MODULES = {
