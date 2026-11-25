@@ -41,7 +41,7 @@ I don't just advise — I design, build, implement and maintain. My independentl
 > *“One person, team-level results. From strategy to execution.”*
 
 ![GitHub Downloads](assets/github-downloads.svg)
-<p align="center"><sub>Rep1 = <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">Universal Intel Chipset Updater</a> &nbsp;|&nbsp; Rep2 = <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">Universal Intel WiFi & BT Updater</a> &nbsp;|&nbsp; Rep4 = <a href="https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">Universal Windows Wallpaper Changer</a> &nbsp;·&nbsp; R = Release &nbsp;·&nbsp; M = Media Mention</sub></p>
+<p align="center"><sub>Rep1 = <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">Universal Intel Chipset Updater</a> &nbsp;|&nbsp; Rep2 = <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">Universal Intel WiFi & BT Updater</a> &nbsp;|&nbsp; Rep3= <a href="https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">Universal Windows Wallpaper Changer</a> &nbsp;·&nbsp; R = Release &nbsp;·&nbsp; M = Media Mention</sub></p>
 
 <div align="center">  
 ⚠️ The stats graph was introduced mid-project — a full month of data is needed for accurate averages.
