@@ -8,7 +8,6 @@ USERNAME = "FirstEverTech"
 REPOS = [
     "Universal-Intel-Chipset-Updater",
     "Universal-Intel-WiFi-BT-Updater",
-    "Adobe-AVX2-Patch",
     "Universal-Windows-Wallpaper-Changer",
 ]
 
@@ -126,8 +125,7 @@ print(f"[INFO] Suma wszystkich repo: {total_downloads}")
 ALIAS = {
     "Universal-Intel-Chipset-Updater": "Rep1",
     "Universal-Intel-WiFi-BT-Updater": "Rep2",
-    "Adobe-AVX2-Patch": "Rep3",
-    "Universal-Windows-Wallpaper-Changer": "Rep4",
+    "Universal-Windows-Wallpaper-Changer": "Rep3",
 }
 try:
     import json
