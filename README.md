@@ -41,7 +41,7 @@ I don't just advise — I design, build, implement and maintain. My independentl
 > *“One person, team-level results. From strategy to execution.”*
 
 ![GitHub Downloads](assets/github-downloads.svg)
-<p align="center"><sub>Rep1 = <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">Universal Intel Chipset Updater</a> &nbsp;|&nbsp; Rep2 = <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">Universal Intel WiFi & BT Updater</a> &nbsp;|&nbsp; Rep3 = <a href="https://github.com/FirstEverTech/Adobe-AVX2-Patch">Adobe AVX2 Patch</a> &nbsp;|&nbsp; Rep4 = <a href="https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">Universal Windows Wallpaper Changer</a> &nbsp;·&nbsp; R = Release &nbsp;·&nbsp; M = Media Mention</sub></p>
+<p align="center"><sub>Rep1 = <a href="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater">Universal Intel Chipset Updater</a> &nbsp;|&nbsp; Rep2 = <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">Universal Intel WiFi & BT Updater</a> &nbsp;|&nbsp; Rep4 = <a href="https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer">Universal Windows Wallpaper Changer</a> &nbsp;·&nbsp; R = Release &nbsp;·&nbsp; M = Media Mention</sub></p>
 
 <div align="center">  
 ⚠️ The stats graph was introduced mid-project — a full month of data is needed for accurate averages.
@@ -88,13 +88,6 @@ In addition to free wallpapers selected with a filter from various online servic
 
 
 [![Santorini - new 4K wallpapers](https://raw.githubusercontent.com/FirstEverTech/FirstEverTech/main/Images/FET_01_Santorini.png)](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer)
-
-### 🆕 11/11/2026 — Adobe AVX2 Patch v1.0.1 works with Adobe Photoshop 2027 (v28.0)
-
-Good news for users of **Adobe AVX2 Patch v1.0.1** — the existing release, originally built for patching the **2026** version of Adobe Photoshop, turns out to work with the new **Adobe Photoshop 2027 (v28.0)** as well, without any changes needed. The tool modifies Adobe's standalone installer file (Application.json) so the product can be installed on computers whose processors support AVX but **not AVX2** — and this now includes the latest Photoshop release. As before, the patch unlocks the installer only and does not modify any installed program files. 👉 [Link](https://github.com/FirstEverTech/Adobe-AVX2-Patch)
-
-### 🆕 07/11/2026 — New repository coming: Universal Windows Wallpaper Changer
-I'm finishing work on a brand-new repository for the **Universal Windows Wallpaper Changer** project — [github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer](https://github.com/FirstEverTech/Universal-Windows-Wallpaper-Changer). The repo is almost ready and I'll be making the new tool publicly available very soon. Stay tuned!
 
 ### 🏆 07/11/2026 — Milestones: 400 stars and 200K+ downloads
 A quick moment to celebrate the FirstEverTech account's progress: we've just crossed **400 GitHub stars** and **200,000+ total downloads** across all projects. Thank you to everyone who starred, downloaded, tested and reported issues — it genuinely keeps these tools moving forward.
@@ -227,19 +220,6 @@ I specialize in Windows deployment, driver automation, hardware compatibility, M
       Created the first public video showing NVIDIA's Smooth Motion technology – days before NVIDIA’s own official presentation. Running on a 12‑year‑old Xeon PC (2013) with an RTX 4070 Ti, the video also showcases my full production skills: script, capture, editing, colour grade, and voiceover in DaVinci Resolve. The final quality matches corporate NVIDIA promos, proving that one person can deliver world‑class tech content.
     </td>
   </tr>
-  <!-- Adobe AVX2 Patch (2025) -->
-  <tr>
-    <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <a href="https://github.com/FirstEverTech/Adobe-AVX2-Patch">
-        <img alt="Adobe AVX2 Patch Demo" src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Adobe_AVX2_Patch.png?raw=true" style="width: 100%; max-width: 100%;" />
-      </a>
-    </td>
-    <td width="70%" style="border: none; vertical-align: top; padding: 0px 0;">
-      <strong>Adobe AVX2 Patch (2025)</strong><br>
-      Built a lightweight tool that modifies Adobe standalone installer files, allowing installation of Adobe products (e.g., Photoshop 2026 and 2027) on processors that support AVX but not AVX2. Adobe has restricted its latest products to processors with AVX2 — even though these products do not actually require AVX2 to run. My tool unlocks the installer without modifying any installed program files.
-    </td>
-  </tr>
-  <!-- Universal Intel Wi‑Fi & Bluetooth Drivers Updater (2025) -->
   <tr>
     <td width="30%" style="border: none; vertical-align: top; padding: 0px 0;">
       <a href="https://github.com/FirstEverTech/Universal-Intel-WiFi-BT-Updater">
